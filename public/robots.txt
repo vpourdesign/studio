@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ecolelestudio.com/sitemap.xml
+
+# École le Studio — École de musique à Sainte-Rose, Laval

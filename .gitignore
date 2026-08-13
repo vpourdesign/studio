@@ -1,0 +1,60 @@
+# ── Dépendances et sorties de build ──────────────────────────────
+node_modules
+dist
+dist-ssr
+*.local
+
+# ── Logs ─────────────────────────────────────────────────────────
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ── Éditeurs et système ──────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── Secrets et identifiants ──────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Données personnelles. Ce dépôt est public. ───────────────────
+# Liste d'audience Meta : environ 940 courriels et numéros de téléphone.
+# Ne jamais versionner, ni ici ni ailleurs.
+meta_audience_clean.csv
+*audience*.csv
+
+# ── Matériel d'agence, hors périmètre du site ────────────────────
+META-ADS/
+01_strategie/
+02_audiences/
+03_creatifs/
+04_messages/
+05_plan_media/
+06_livrables/
+STRATEGIE-MARKETING-*.md
+NOTES.md
+plan-bascule-*.html
+
+# ── Photos brutes du shooting ────────────────────────────────────
+# 49 Mo de JPEG pleine résolution, conservés dans Dropbox.
+# Les WebP dérivés sont versionnés dans src/assets/photos/,
+# le site se construit donc sans ce dossier.
+src/images-site/
+
+# ── Copies de travail des visuels ────────────────────────────────
+# Barre oblique initiale obligatoire : sans elle, le motif attrape aussi
+# public/images/, où vivent les photos de professeurs servies par le site.
+/images/
+temporary screenshots/
