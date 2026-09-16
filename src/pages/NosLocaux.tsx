@@ -127,7 +127,7 @@ const reperes = [
   { valeur: '191B', label: 'boulevard Sainte-Rose, Laval' },
   { valeur: 'Gratuit', label: 'stationnement sur place' },
   { valeur: '9 h à 21 h', label: 'du lundi au vendredi' },
-  { valeur: '9 h à 17 h', label: 'le samedi' },
+  { valeur: '9 h à 18 h', label: 'samedi et dimanche' },
 ]
 
 export default function NosLocaux() {
@@ -135,7 +135,7 @@ export default function NosLocaux() {
     <>
       <SEO
         title="Nos locaux | École le Studio — École de musique à Sainte-Rose, Laval"
-        description="Visitez les locaux de l'École le Studio à Sainte-Rose, Laval : locaux de piano, guitare, chant, batterie et violon traités acoustiquement, accueil, salle d'attente et stationnement gratuit."
+        description="Visitez les locaux de l'École le Studio à Sainte-Rose, Laval : locaux de piano, guitare, basse, chant, batterie, violon et ukulélé traités acoustiquement, accueil, salle d'attente et stationnement gratuit."
         path="/nos-locaux"
       />
 

@@ -7,7 +7,7 @@ import Breadcrumbs from '../components/Breadcrumbs'
 const faqQuestions = [
   {
     question: 'Quels sont les horaires de l\'école de musique ?',
-    answer: 'L\'École le Studio est ouverte du lundi au vendredi de 9 h à 21 h, et le samedi de 9 h à 17 h. Les cours sont offerts selon les disponibilités de nos professeurs et de nos élèves.',
+    answer: 'L\'École le Studio est ouverte du lundi au vendredi de 9 h à 21 h, et le samedi et le dimanche de 9 h à 18 h. Les cours sont offerts selon les disponibilités de nos professeurs et de nos élèves.',
   },
   {
     question: 'Combien de temps prend le traitement d\'une demande ?',
@@ -101,7 +101,7 @@ export default function NousJoindre() {
     <>
       <SEO
         title="Contactez-nous | École le Studio — Sainte-Rose, Laval"
-        description="Contactez l'École le Studio à Sainte-Rose, Laval. Appelez le 514-677-7713 ou visitez-nous au 191B Boulevard Sainte-Rose. Cours de piano, guitare, chant, batterie et violon."
+        description="Contactez l'École le Studio à Sainte-Rose, Laval. Appelez le 514-677-7713 ou visitez-nous au 191B Boulevard Sainte-Rose. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé."
         path="/nous-joindre"
       />
       <FAQSchema questions={faqQuestions} />
@@ -312,7 +312,7 @@ export default function NousJoindre() {
                       <p className="font-semibold text-marine text-sm">Heures d'ouverture</p>
                       <div className="text-slate text-sm leading-relaxed space-y-0.5">
                         <p>Lundi au vendredi : 9 h &agrave; 21 h</p>
-                        <p>Samedi : 9 h &agrave; 17 h</p>
+                        <p>Samedi et dimanche : 9 h &agrave; 18 h</p>
                         <p>Dimanche : Ferm&eacute;</p>
                       </div>
                     </div>
@@ -439,7 +439,7 @@ export default function NousJoindre() {
               Prêt à commencer votre parcours musical ?
             </h2>
             <p className="text-white/70 max-w-lg mx-auto mb-8" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-              Inscrivez-vous dès maintenant et profitez d'un premier cours satisfait ou remboursé. Notre équipe de professeurs passionnés vous attend à Sainte-Rose.
+              Inscrivez-vous dès maintenant. Notre équipe de professeurs passionnés vous attend à Sainte-Rose.
             </p>
             <Link
               to="/inscription"

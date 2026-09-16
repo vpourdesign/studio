@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
-import heroBg from './assets/photos/hero-piano-queue-1920w.webp'
-import heroBgSmall from './assets/photos/hero-piano-queue-1280w.webp'
+import heroPiano from './assets/photos/hero-piano-queue-1920w.webp'
+import heroPianoSmall from './assets/photos/hero-piano-queue-1280w.webp'
+import heroGuitares from './assets/photos/hero-guitares-1920w.webp'
+import heroGuitaresSmall from './assets/photos/hero-guitares-1280w.webp'
 import imgPiano from './assets/piano.png'
 import imgChant from './assets/chant.png'
 import imgGuitare from './assets/guitare.png'
@@ -329,23 +331,54 @@ function Navigation() {
 }
 
 /* ─── Hero Section — Full screen, eticalgarve-inspired ─── */
+const heroSlides = [
+  {
+    src: heroPiano,
+    srcSmall: heroPianoSmall,
+    alt: "Studio de piano à queue de l'École le Studio, à Sainte-Rose, Laval",
+  },
+  {
+    src: heroGuitares,
+    srcSmall: heroGuitaresSmall,
+    alt: "Local de guitare et de basse de l'École le Studio, à Sainte-Rose, Laval",
+  },
+]
+
 function Hero() {
+  const [slide, setSlide] = useState(0)
+
+  // Alternance piano / guitare, comme sur l'ancienne version du site.
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = setInterval(() => setSlide((i) => (i + 1) % heroSlides.length), 7000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section className="relative min-h-[100dvh] bg-teal-dark overflow-hidden">
       {/* Full-screen background */}
       <div className="absolute inset-0">
-        <img
-          src={heroBg}
-          srcSet={`${heroBgSmall} 1280w, ${heroBg} 1920w`}
-          sizes="100vw"
-          width={1920}
-          height={1282}
-          alt="Studio de piano à queue de l'École le Studio, à Sainte-Rose, Laval"
-          className="w-full h-full object-cover"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-dark/85 via-teal-dark/75 to-teal-dark/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-teal-dark/70 to-transparent" />
+        {heroSlides.map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            srcSet={`${s.srcSmall} 1280w, ${s.src} 1920w`}
+            sizes="100vw"
+            width={1920}
+            height={1282}
+            alt={s.alt}
+            aria-hidden={i !== slide}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-[1600ms]"
+            style={{
+              opacity: i === slide ? 1 : 0,
+              transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+            fetchPriority={i === 0 ? 'high' : 'low'}
+            loading={i === 0 ? 'eager' : 'lazy'}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-b from-teal-dark/55 via-teal-dark/45 to-teal-dark/65" />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-dark/45 to-transparent" />
         <div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-yellow/15 blur-3xl" />
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 rounded-full bg-yellow/10 blur-3xl" />
         <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-white/5 blur-3xl" />
@@ -356,15 +389,15 @@ function Hero() {
       {/* Bottom-left white cutout */}
       <div className="absolute bottom-0 left-0 z-20">
         <div className="relative">
-          <div className="bg-cream px-6 md:px-10 pt-6 pb-8 md:pt-8 md:pb-10 max-w-sm md:max-w-md lg:max-w-lg rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-115" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <div className="bg-cream px-5 md:px-8 pt-5 pb-6 md:pt-6 md:pb-7 max-w-[19rem] md:max-w-sm lg:max-w-md rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <h2
-              className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-3"
-              style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
+              className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-2"
+              style={{ fontSize: 'clamp(1.25rem, 2.6vw, 1.85rem)' }}
             >
               La musique pour tous
             </h2>
-            <p className="text-slate text-sm leading-relaxed mb-6 max-w-[40ch]">
-              Cours de piano, guitare, chant, batterie et violon pour enfants et adultes. Sainte-Rose, Laval.
+            <p className="text-slate text-[0.8rem] md:text-sm leading-relaxed mb-4 max-w-[36ch]">
+              Cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour enfants et adultes. Sainte-Rose, Laval.
             </p>
             <Link
               to="/inscription"
@@ -394,12 +427,12 @@ function Hero() {
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
         <div className="text-center">
           <h1
-            className="font-display font-extrabold text-white leading-[0.95] tracking-[-0.04em] opacity-90"
+            className="font-display font-extrabold text-white leading-[0.95] tracking-[-0.04em]"
             style={{ fontSize: 'clamp(4rem, 12vw, 10rem)' }}
           >
             Le Studio
           </h1>
-          <p className="font-inter text-white/50 text-sm md:text-base mt-4 tracking-widest uppercase">
+          <p className="font-inter text-white/80 text-sm md:text-base mt-4 tracking-widest uppercase">
             École de musique à Ste-Rose, Laval
           </p>
         </div>
@@ -500,16 +533,16 @@ function HomeSEOContent() {
           </h2>
           <div className="text-slate leading-relaxed space-y-4" style={{ fontSize: 'clamp(0.9375rem, 1.4vw, 1.0625rem)' }}>
             <p>
-              L'École le Studio est une <strong>école de musique à Sainte-Rose, Laval</strong>, offrant des <strong>cours de piano, guitare, chant, batterie et violon</strong> depuis plus de 20 ans. Fondée par le musicien Benoit Girard, notre école accueille des élèves de tous les âges — des enfants dès 4 ans aux adultes — dans un environnement chaleureux et professionnel.
+              L'École le Studio est une <strong>école de musique à Sainte-Rose, Laval</strong>, offrant des <strong>cours de piano, guitare, basse, chant, batterie, violon et ukulélé</strong> depuis plus de 20 ans. Fondée par le musicien Benoit Girard, notre école accueille des élèves de tous les âges — des enfants dès 4 ans aux adultes — dans un environnement chaleureux et professionnel.
             </p>
             <p>
-              Avec plus de <strong>25 professeurs qualifiés</strong> et plus de <strong>5 000 cours dispensés chaque année</strong>, l'École le Studio est la référence en matière de <strong>cours de musique à Laval</strong>. Notre approche pédagogique personnalisée permet à chaque élève d'apprendre la musique selon ses goûts — que ce soit le classique, le jazz, le pop, le rock ou le blues.
+              Avec plus de <strong>30 professeurs qualifiés</strong> et plus de <strong>5 000 cours dispensés chaque année</strong>, l'École le Studio est la référence en matière de <strong>cours de musique à Laval</strong>. Notre approche pédagogique personnalisée permet à chaque élève d'apprendre la musique selon ses goûts — que ce soit le classique, le jazz, le pop, le rock ou le blues.
             </p>
             <p>
               Située au 191B boulevard Sainte-Rose, notre école est facilement accessible depuis <strong>Fabreville, Auteuil, Vimont, Chomedey, Rosemère, Sainte-Thérèse</strong> et les quartiers avoisinants. Un stationnement gratuit est disponible sur place. Nous offrons des <strong>cours de musique pour enfants à Laval</strong>, des cours pour adolescents et des <strong>cours de musique pour adultes</strong>.
             </p>
             <p>
-              Que vous cherchiez des <strong>cours de piano à Laval</strong>, des <strong>cours de guitare pour débutants</strong>, des <strong>leçons de chant</strong>, des <strong>cours de batterie</strong> ou des <strong>cours de violon</strong>, notre équipe de professeurs passionnés vous accompagnera dans votre parcours musical. Chaque session se conclut par des spectacles où les élèves se produisent devant leur famille et amis.
+              Que vous cherchiez des <strong>cours de piano à Laval</strong>, des <strong>cours de guitare pour débutants</strong>, des <strong>leçons de chant</strong>, des <strong>cours de batterie</strong> ou des <strong>cours de violon</strong>, notre équipe de professeurs passionnés vous accompagnera dans votre parcours musical. Un spectacle annuel permet aux élèves de se produire devant leur famille et leurs amis.
             </p>
           </div>
           <div className="flex flex-wrap gap-3 mt-8">
@@ -533,7 +566,7 @@ const stats = [
   { num: '+15 000', label: 'heures de cours (Benoit Girard)' },
   { num: '+5 000', label: 'cours par année' },
   { num: '+425', label: 'élèves actifs' },
-  { num: '+25', label: 'professeurs qualifiés' },
+  { num: '+30', label: 'professeurs qualifiés' },
   { num: '+100', label: 'heures de spectacles étudiants' },
 ]
 
@@ -691,7 +724,7 @@ function Fondateur() {
               Avec près de 20 ans d'expérience et plus de 15 000 heures de cours à son actif, Benoit a formé des centaines d'élèves de tous âges. Sa philosophie : un apprentissage basé sur le plaisir et le dépassement de soi.
             </p>
             <p className="text-white/70 leading-relaxed mb-8">
-              Aujourd'hui, l'école qu'il a fondée compte plus de 25 professeurs qualifiés et accueille plus de 425 élèves actifs chaque année à Sainte-Rose.
+              Aujourd'hui, l'école qu'il a fondée compte plus de 30 professeurs qualifiés et accueille plus de 425 élèves actifs chaque année à Sainte-Rose.
             </p>
             <div className="flex flex-wrap gap-8">
               {[
@@ -744,7 +777,7 @@ function HomePage() {
     <>
       <SEO
         title="École de musique à Laval | Cours piano, guitare, chant — Le Studio"
-        description="École de musique à Sainte-Rose, Laval. Cours de piano, guitare, chant, batterie et violon pour tous les âges. +20 ans d'expérience, 25+ professeurs qualifiés. Inscrivez-vous!"
+        description="École de musique à Sainte-Rose, Laval. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour tous les âges. +20 ans d'expérience, plus de 30 professeurs qualifiés. Inscrivez-vous!"
         path="/"
       />
       <LocalBusinessSchema />

@@ -16,7 +16,7 @@ export default function Footer() {
               <span className="w-2 h-2 rounded-full bg-coral" />
             </Link>
             <p className="text-sm leading-relaxed mb-5">
-              École de musique à Sainte-Rose, Laval. Cours de piano, guitare, chant, batterie et violon pour tous les âges depuis plus de 20 ans.
+              École de musique à Sainte-Rose, Laval. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour tous les âges depuis plus de 20 ans.
             </p>
             <div className="flex items-center gap-3">
               <a

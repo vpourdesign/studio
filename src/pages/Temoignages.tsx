@@ -73,7 +73,7 @@ const testimonials = [
     instrument: 'Piano & guitare',
     ageGroup: 'Parent (2 enfants inscrits)',
     rating: 5,
-    text: 'Nos deux enfants sont inscrits — l\'un en piano, l\'autre en guitare. Les horaires sont flexibles, les professeurs sont passionnés, et le premier cours satisfait ou remboursé nous a vraiment rassurés. Après trois sessions, toute la famille est convaincue. On recommande les yeux fermés !',
+    text: 'Nos deux enfants sont inscrits — l\'un en piano, l\'autre en guitare. Les horaires sont flexibles et les professeurs sont passionnés. Après trois sessions, toute la famille est convaincue. On recommande les yeux fermés !',
   },
 ]
 
@@ -287,7 +287,7 @@ export default function Temoignages() {
               Rejoignez notre communauté musicale
             </h2>
             <p className="text-white/70 max-w-lg mx-auto mb-8" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-              Plus de 425 élèves nous font déjà confiance. Inscrivez-vous dès maintenant et vivez l'expérience le Studio avec un premier cours satisfait ou remboursé.
+              Plus de 425 élèves nous font déjà confiance. Inscrivez-vous dès maintenant et vivez l'expérience le Studio.
             </p>
             <Link
               to="/inscription"

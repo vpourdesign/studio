@@ -15,7 +15,7 @@ const faqItems = [
   },
   {
     q: 'Quels sont les frais d\'inscription ?',
-    a: 'Les frais d\'inscription sont de 18,50 $ par famille, par session. Pour la session d\'été, il n\'y a aucun frais d\'inscription. Un cartable scolaire de 21,50 $ est requis lors de la première inscription.',
+    a: 'Les frais d\'inscription sont de 18,50 $ par famille. Pour la session d\'été, il n\'y a aucun frais d\'inscription. Le cartable pédagogique de 21,50 $ est requis à la première session seulement.',
   },
   {
     q: 'Quels modes de paiement acceptez-vous ?',
@@ -26,8 +26,8 @@ const faqItems = [
     a: 'En cas d\'absence de l\'élève, le cours ne pourra être ni reporté ni remboursé. Les minutes de retard ne sont pas récupérables. Si l\'élève présente des symptômes mineurs et souhaite suivre son cours en ligne, il peut le faire sur préavis.',
   },
   {
-    q: 'Le premier cours est-il satisfait ou remboursé ?',
-    a: 'Oui ! Si le 1er cours ne répondait pas à vos attentes, vous serez entièrement remboursé. Nous voulons que chaque élève se sente à l\'aise et motivé.',
+    q: 'L\'inscription se fait-elle pour la session complète ?',
+    a: 'Oui, l\'inscription se fait pour la session complète. Si le premier cours ne répond pas à vos attentes et que l\'inscription est interrompue après ce premier cours, seuls le premier cours et les frais d\'inscription sont facturés.',
   },
 ]
 
@@ -71,7 +71,7 @@ export default function Inscription() {
     <>
       <SEO
         title="Inscription en ligne | École le Studio — Cours de musique à Laval"
-        description="Inscrivez-vous aux cours de musique de l'École le Studio à Sainte-Rose, Laval. Piano, guitare, chant, batterie, violon — formulaire rapide et premier cours satisfait ou remboursé."
+        description="Inscrivez-vous aux cours de musique de l'École le Studio à Sainte-Rose, Laval. Piano, guitare, basse, chant, batterie, violon et ukulélé — formulaire d'inscription rapide."
         path="/inscription"
       />
 
@@ -124,8 +124,8 @@ export default function Inscription() {
                 <h3 className="font-display font-bold text-marine text-lg mb-5">Pourquoi le Studio ?</h3>
                 <ul className="space-y-4">
                   {[
-                    { icon: '🎵', text: '1er cours satisfait ou remboursé' },
-                    { icon: '👨‍🏫', text: 'Plus de 25 professeurs qualifiés' },
+                    { icon: '🎵', text: 'Inscription pour la session complète' },
+                    { icon: '👨‍🏫', text: 'Plus de 30 professeurs qualifiés' },
                     { icon: '📅', text: 'Inscription possible en tout temps' },
                     { icon: '🎯', text: 'Cours personnalisés pour tous les niveaux' },
                     { icon: '🏠', text: 'À Sainte-Rose depuis plus de 20 ans' },

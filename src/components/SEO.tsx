@@ -62,7 +62,7 @@ export function LocalBusinessSchema() {
     '@id': `${BASE_URL}/#organization`,
     name: 'École le Studio',
     alternateName: 'École de Guitare Benoit Girard',
-    description: "École de musique à Sainte-Rose, Laval offrant des cours de piano, guitare, chant, batterie et violon pour tous les âges depuis plus de 20 ans. Plus de 25 professeurs qualifiés et 425 élèves actifs.",
+    description: "École de musique à Sainte-Rose, Laval offrant des cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour tous les âges depuis plus de 20 ans. Plus de 30 professeurs qualifiés et 425 élèves actifs.",
     url: BASE_URL,
     telephone: PHONE,
     email: 'info@ecolelestudio.com',
@@ -97,12 +97,12 @@ export function LocalBusinessSchema() {
     ],
     openingHoursSpecification: [
       { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '21:00' },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '09:00', closes: '17:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday', 'Sunday'], opens: '09:00', closes: '18:00' },
     ],
     priceRange: '$$',
     paymentAccepted: 'Cash, Credit Card, Debit Card, Interac',
     currenciesAccepted: 'CAD',
-    numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 25 },
+    numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 30 },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',

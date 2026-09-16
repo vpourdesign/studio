@@ -67,7 +67,7 @@ const approachFeatures = [
   },
   {
     title: 'Préparation aux spectacles',
-    description: 'Deux spectacles par année permettent à chaque élève de monter sur scène dans un environnement encourageant. Une expérience formatrice qui développe la confiance et la discipline.',
+    description: 'Un spectacle par année permet aux élèves de monter sur scène dans un environnement encourageant. Une expérience formatrice qui développe la confiance et le plaisir de jouer devant public.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
@@ -93,7 +93,7 @@ const faqQuestions = [
   },
   {
     question: 'Comment est choisi le professeur pour mon enfant ?',
-    answer: 'Lors de l\'inscription, nous prenons en compte l\'instrument choisi, l\'âge de l\'élève, son niveau et ses objectifs musicaux. Nous jumelons ensuite l\'élève avec le professeur dont l\'expertise et la personnalité correspondent le mieux. Le premier cours est satisfait ou remboursé pour garantir un bon jumelage.',
+    answer: 'Lors de l\'inscription, nous prenons en compte l\'instrument choisi, l\'âge de l\'élève, son niveau et ses objectifs musicaux. Nous jumelons ensuite l\'élève avec le professeur dont l\'expertise et la personnalité correspondent le mieux. Le premier cours permet de confirmer que le jumelage est réussi.',
   },
   {
     question: 'Est-il possible de changer de professeur en cours de session ?',
@@ -143,7 +143,7 @@ export default function Professeurs() {
     <>
       <SEO
         title="Nos professeurs de musique à Laval | École le Studio — Sainte-Rose"
-        description="Découvrez l'équipe de plus de 25 professeurs qualifiés de l'École le Studio à Sainte-Rose, Laval. Piano, guitare, chant, batterie, violon — des musiciens passionnés au service de votre apprentissage."
+        description="Découvrez l'équipe de plus de 30 professeurs qualifiés de l'École le Studio à Sainte-Rose, Laval. Piano, guitare, basse, chant, batterie, violon, ukulélé — des musiciens passionnés au service de votre apprentissage."
         path="/nos-professeurs"
       />
       <FAQSchema questions={faqQuestions} />
@@ -163,14 +163,14 @@ export default function Professeurs() {
             className="mt-4 text-slate max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)' }}
           >
-            Plus de 25 musiciens passionnés et pédagogues qualifiés, dédiés à l'apprentissage de la musique à Sainte-Rose, Laval.
+            Plus de 30 musiciens passionnés et pédagogues qualifiés, dédiés à l'apprentissage de la musique à Sainte-Rose, Laval.
           </p>
         </section>
 
         {/* ─── Short intro (SEO part 1) — before the grid so users see profs fast ─── */}
         <section className="max-w-[1400px] mx-auto px-6 md:px-12 xl:px-16 mt-8 md:mt-10">
           <p className="text-slate leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>
-            Depuis plus de 20 ans, l'<strong className="text-marine">École le Studio</strong> rassemble une équipe de plus de 25 professeurs de musique qualifiés au coeur de <strong className="text-marine">Sainte-Rose, Laval</strong>. Chaque membre de notre corps professoral a été soigneusement sélectionné pour son excellence musicale et ses compétences pédagogiques. Nos enseignants sont des musiciens actifs — concertistes, compositeurs, arrangeurs — qui partagent leur passion avec chaque élève.
+            Depuis plus de 20 ans, l'<strong className="text-marine">École le Studio</strong> rassemble une équipe de plus de 30 professeurs de musique qualifiés au coeur de <strong className="text-marine">Sainte-Rose, Laval</strong>. Chaque membre de notre corps professoral a été soigneusement sélectionné pour son excellence musicale et ses compétences pédagogiques. Nos enseignants sont des musiciens actifs — concertistes, compositeurs, arrangeurs — qui partagent leur passion avec chaque élève.
           </p>
         </section>
 

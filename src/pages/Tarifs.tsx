@@ -16,9 +16,9 @@ const plans = [
   {
     duration: '45 minutes',
     price: '44',
-    label: 'Le plus populaire',
-    badge: 'Recommandé',
-    highlighted: true,
+    label: 'Pour approfondir sa pratique',
+    badge: null,
+    highlighted: false,
   },
   {
     duration: '60 minutes',
@@ -33,7 +33,7 @@ const inclusions = [
   'Cours privé avec un professeur qualifié',
   'Approche personnalisée selon votre niveau',
   'Suivi de progression continu',
-  'Accès aux spectacles et événements',
+  'Salles équipées et matériel sur place',
 ]
 
 const sessions = [
@@ -63,24 +63,20 @@ const advantages = [
     description: 'Une école établie et reconnue à Laval depuis 2004.',
   },
   {
-    label: '25+ professeurs qualifiés',
+    label: 'plus de 30 professeurs qualifiés',
     description: 'Une équipe diversifiée de musiciens professionnels passionnés.',
   },
   {
-    label: 'Spectacles inclus',
-    description: 'Concerts et récitals pour tous les élèves, sans frais supplémentaires.',
+    label: 'Un spectacle par année',
+    description: 'Une occasion de monter sur scène devant famille et amis.',
   },
   {
     label: 'Horaire flexible',
-    description: 'Cours offerts du lundi au samedi, matin et soir.',
+    description: 'Cours offerts 7 jours sur 7, avec des plages horaires variées.',
   },
   {
     label: 'Inscription en tout temps',
     description: 'Pas besoin d\u2019attendre le début de la session pour commencer.',
-  },
-  {
-    label: '1er cours satisfait ou remboursé',
-    description: 'Essayez sans risque — si le premier cours ne convient pas, on vous rembourse.',
   },
 ]
 
@@ -93,7 +89,7 @@ const faqItems = [
   {
     question: 'Y a-t-il des frais supplémentaires?',
     answer:
-      'Les frais d\u2019inscription sont de 18,50\u00A0$ par famille par session (aucuns frais pour la session d\u2019été). Un cahier de l\u2019élève à 21,50\u00A0$ est requis à la première inscription seulement. Il n\u2019y a aucun autre frais caché.',
+      'Les frais d\u2019inscription sont de 18,50\u00A0$ par famille (aucuns frais pour la session d\u2019été). Le cartable pédagogique à 21,50\u00A0$ est requis à la première session seulement. Il n\u2019y a aucun autre frais caché.',
   },
   {
     question: 'Puis-je changer la durée de mon cours?',
@@ -104,11 +100,6 @@ const faqItems = [
     question: 'Quelle est votre politique d\u2019annulation?',
     answer:
       'Le contrat peut être annulé en tout temps. Les frais d\u2019inscription et le matériel ne sont pas remboursables. Les leçons non suivies sont remboursées, sauf celles des deux dernières semaines de la session.',
-  },
-  {
-    question: 'Les frais incluent-ils les spectacles?',
-    answer:
-      'Oui, la participation aux spectacles et récitals organisés par l\u2019école est incluse dans vos frais de cours. C\u2019est une occasion unique pour les élèves de se produire sur scène devant famille et amis.',
   },
 ]
 
@@ -152,7 +143,7 @@ export default function Tarifs() {
     <div className="bg-cream min-h-screen pt-28 pb-20">
       <SEO
         title="Tarifs des cours de musique à Laval | École le Studio — Sainte-Rose"
-        description="Consultez les tarifs des cours de musique à l'École le Studio, Sainte-Rose, Laval. Cours de piano, guitare, chant, batterie et violon dès 34$/cours. Inscription ouverte toute l'année."
+        description="Consultez les tarifs des cours de musique à l'École le Studio, Sainte-Rose, Laval. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé dès 34$/cours. Inscription ouverte toute l'année."
         path="/tarifs"
       />
       <FAQSchema questions={faqItems} />
@@ -181,13 +172,13 @@ export default function Tarifs() {
           <p className="text-marine/70 leading-[1.7] mb-4" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
             À l'École le Studio, nous croyons que l'apprentissage de la musique devrait être accessible à tous.
             Installée au coeur de Sainte-Rose à Laval depuis plus de 20 ans, notre école offre des cours privés de
-            piano, guitare, chant, batterie et violon à des tarifs compétitifs pour la région de Laval. Chaque leçon
+            piano, guitare, basse, chant, batterie, violon et ukulélé à des tarifs compétitifs pour la région de Laval. Chaque leçon
             est personnalisée selon le rythme, les objectifs et les goûts musicaux de l'élève — qu'il soit débutant
             complet ou musicien avancé.
           </p>
           <p className="text-marine/70 leading-[1.7] mb-4" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
-            Nos tarifs incluent un enseignement individuel avec l'un de nos 25+ professeurs qualifiés, un suivi de
-            progression personnalisé, ainsi que l'accès aux spectacles et récitals organisés tout au long de l'année.
+            Nos tarifs incluent un enseignement individuel avec l'un de nos professeurs qualifiés ainsi qu'un suivi de
+            progression personnalisé.
             Contrairement à d'autres écoles de musique, nous n'exigeons pas de contrat à long terme : vous pouvez
             vous inscrire en tout temps et annuler selon nos conditions flexibles. La session d'été est même offerte
             sans frais d'inscription, pour permettre aux curieux de découvrir la musique sans engagement.
@@ -278,6 +269,14 @@ export default function Tarifs() {
               </div>
             ))}
           </div>
+
+          <p
+            className="mt-8 bg-white border border-marine/8 rounded-2xl px-6 py-5 text-marine/70 leading-relaxed max-w-3xl"
+            style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}
+          >
+            Pour les enfants de 8&nbsp;ans et moins, nous recommandons généralement les cours de 30&nbsp;minutes afin
+            de favoriser la concentration et de maintenir leur intérêt tout au long de la leçon.
+          </p>
         </section>
 
         {/* ─── Frais supplémentaires ─── */}
@@ -305,7 +304,7 @@ export default function Tarifs() {
                 </div>
                 <div>
                   <p className="font-display font-bold text-marine text-sm mb-0.5">Frais d'inscription</p>
-                  <p className="text-marine/60 text-sm leading-relaxed">18,50&nbsp;$ par famille, par session</p>
+                  <p className="text-marine/60 text-sm leading-relaxed">18,50&nbsp;$ par famille</p>
                 </div>
               </div>
 
@@ -316,8 +315,8 @@ export default function Tarifs() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-display font-bold text-marine text-sm mb-0.5">Cahier de l'élève</p>
-                  <p className="text-marine/60 text-sm leading-relaxed">21,50&nbsp;$ (première inscription seulement)</p>
+                  <p className="font-display font-bold text-marine text-sm mb-0.5">Cartable pédagogique</p>
+                  <p className="text-marine/60 text-sm leading-relaxed">21,50&nbsp;$ (première session seulement)</p>
                 </div>
               </div>
 
@@ -347,7 +346,7 @@ export default function Tarifs() {
             </div>
 
             <p className="text-marine/50 text-xs leading-relaxed border-t border-marine/8 pt-5">
-              * Le premier paiement doit être effectué lors de la première semaine de cours. Premier cours satisfait ou remboursé.
+              * Le premier paiement doit être effectué lors de la première semaine de cours. L'inscription se fait pour la session complète.
             </p>
           </div>
         </section>
@@ -461,7 +460,7 @@ export default function Tarifs() {
                 className="text-white/60 max-w-xl mx-auto mb-8 leading-relaxed"
                 style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
               >
-                L'inscription est ouverte toute l'année. Premier cours satisfait ou remboursé — essayez sans risque.
+                L'inscription est ouverte toute l'année — vous pouvez commencer en cours de session.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link

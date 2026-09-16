@@ -46,7 +46,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     longDescription: [
       'Les cours de piano à Laval de l\u2019École le Studio sont conçus pour accompagner chaque élève dans son parcours musical, qu\u2019il s\u2019agisse d\u2019un enfant qui découvre ses premières notes ou d\u2019un adulte qui souhaite apprendre le piano à Laval pour réaliser un rêve de longue date. Depuis plus de 20 ans, notre école située au coeur de Sainte-Rose offre un enseignement du piano de qualité supérieure, dispensé par des professeurs diplômés et passionnés qui maîtrisent autant le répertoire classique que les styles contemporains.',
       'Nos cours de piano pour enfant à Laval débutent dès l\u2019âge de 4 ans, avec une approche ludique et progressive qui développe la coordination, la lecture musicale et la créativité. Pour les cours de piano débutant à Laval, nous utilisons des méthodes éprouvées qui permettent de jouer rapidement des pièces motivantes tout en posant des bases techniques solides. Les élèves intermédiaires et avancés approfondissent le répertoire, l\u2019interprétation et la théorie musicale avec un suivi personnalisé.',
-      'Ce qui distingue l\u2019École le Studio des autres écoles de musique de la région, c\u2019est notre approche véritablement individualisée. Chaque professeur de piano adapte son enseignement aux goûts, au rythme d\u2019apprentissage et aux objectifs de l\u2019élève. Que vous souhaitiez préparer un examen du Conservatoire, jouer vos chansons préférées ou simplement apprendre le piano à Laval pour le plaisir, nous avons le professeur qu\u2019il vous faut parmi nos 25+ enseignants qualifiés. Nos 425+ élèves actifs et notre note de 4,9 étoiles témoignent de la qualité de notre enseignement à Sainte-Rose et dans les quartiers environnants de Laval.',
+      'Ce qui distingue l\u2019École le Studio des autres écoles de musique de la région, c\u2019est notre approche véritablement individualisée. Chaque professeur de piano adapte son enseignement aux goûts, au rythme d\u2019apprentissage et aux objectifs de l\u2019élève. Que vous souhaitiez préparer une audition, jouer vos chansons préférées ou simplement apprendre le piano à Laval pour le plaisir, nous avons le professeur qu\u2019il vous faut parmi nos plus de 30 enseignants qualifiés. Nos 425+ élèves actifs et notre note de 4,9 étoiles témoignent de la qualité de notre enseignement à Sainte-Rose et dans les quartiers environnants de Laval.',
     ],
     levels: [
       {
@@ -62,7 +62,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         name: 'Avancé',
         description:
-          'Perfectionnez votre jeu avec des oeuvres exigeantes, la préparation aux examens du Conservatoire, l\u2019improvisation jazz et l\u2019analyse harmonique avancée. Un accompagnement sur mesure pour les pianistes sérieux.',
+          'Perfectionnez votre jeu avec des oeuvres exigeantes, la préparation aux auditions, l\u2019improvisation jazz et l\u2019analyse harmonique avancée. Un accompagnement sur mesure pour les pianistes sérieux.',
       },
     ],
     styles: ['Classique', 'Jazz', 'Pop', 'Blues', 'Accompagnement', 'Improvisation'],
@@ -127,7 +127,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     longDescription: [
       'Les cours de guitare à Laval de l\u2019École le Studio accueillent les musiciens de tous niveaux dans un environnement stimulant et convivial à Sainte-Rose. Que vous rêviez de jouer vos accords préférés autour d\u2019un feu de camp ou de maîtriser des solos de rock enflammés, notre équipe de professeurs qualifiés vous accompagne pas à pas. Depuis plus de 20 ans, l\u2019école fondée par Benoit Girard — lui-même guitariste professionnel — est devenue la référence pour apprendre la guitare à Laval.',
       'Un des choix les plus fréquents de nos nouveaux élèves concerne la guitare acoustique vs électrique. Nos professeurs prennent le temps d\u2019expliquer les différences et vous aident à choisir l\u2019instrument qui correspond le mieux à vos goûts musicaux et vos objectifs. Beaucoup d\u2019élèves commencent avec la guitare acoustique pour développer la force des doigts et les bases d\u2019accords, avant d\u2019explorer la guitare électrique et ses effets. Nous offrons aussi des cours de guitare classique pour ceux qui souhaitent explorer le répertoire du nylon.',
-      'Ce qui rend nos cours de guitare à Laval uniques, c\u2019est notre approche centrée sur les goûts de l\u2019élève. Dès le premier cours, votre professeur identifie les chansons et les styles qui vous motivent pour construire un parcours d\u2019apprentissage personnalisé. Nos 25+ professeurs couvrent le rock, le blues, le folk, le jazz, le fingerpicking, le metal et la musique populaire québécoise. Avec 425+ élèves actifs et une communauté musicale dynamique à Sainte-Rose, l\u2019École le Studio est l\u2019endroit idéal pour apprendre la guitare à Laval, que vous ayez 6 ou 66 ans.',
+      'Ce qui rend nos cours de guitare à Laval uniques, c\u2019est notre approche centrée sur les goûts de l\u2019élève. Dès le premier cours, votre professeur identifie les chansons et les styles qui vous motivent pour construire un parcours d\u2019apprentissage personnalisé. Nos plus de 30 professeurs couvrent le rock, le blues, le folk, le jazz, le fingerpicking, le metal et la musique populaire québécoise. Avec 425+ élèves actifs et une communauté musicale dynamique à Sainte-Rose, l\u2019École le Studio est l\u2019endroit idéal pour apprendre la guitare à Laval, que vous ayez 6 ou 66 ans.',
     ],
     levels: [
       {
@@ -183,7 +183,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Renforce la confiance en soi',
         description:
-          'Maîtriser un morceau à la guitare procure un sentiment d\u2019accomplissement unique. Nos spectacles et récitals à Sainte-Rose permettent aux élèves de se produire sur scène et de gagner en assurance.',
+          'Maîtriser un morceau à la guitare procure un sentiment d\u2019accomplissement unique. Notre spectacle annuel à Sainte-Rose permet aux élèves de se produire sur scène et de gagner en assurance.',
       },
       {
         title: 'Accessible et abordable',
@@ -207,8 +207,8 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       'Libérez votre voix et développez votre technique vocale avec des professeurs qui vous aident à trouver votre son unique et votre confiance artistique.',
     longDescription: [
       'Les cours de chant à Laval de l\u2019École le Studio offrent un espace bienveillant et professionnel pour développer votre voix, que vous soyez un débutant timide ou un chanteur expérimenté cherchant à perfectionner sa technique vocale à Laval. Depuis plus de 20 ans, notre école à Sainte-Rose forme des chanteurs de tous âges et de tous niveaux, avec une approche qui respecte l\u2019unicité de chaque voix et les aspirations musicales de chaque élève.',
-      'Nos leçons de chant à Laval sont bien plus qu\u2019un simple cours de musique : c\u2019est un parcours de découverte de soi à travers la voix. Nos professeurs de technique vocale à Laval enseignent la respiration diaphragmatique, le placement vocal, l\u2019extension de la tessiture, la justesse, la projection et l\u2019interprétation émotionnelle. Chaque leçon de chant à Laval est adaptée à votre niveau et à vos objectifs : certains élèves souhaitent chanter pour le plaisir personnel, d\u2019autres préparent des auditions ou des prestations publiques.',
-      'L\u2019École le Studio se distingue par la diversité des styles enseignés dans nos cours de chant à Laval. Pop, jazz, classique, comédie musicale, soul, R&B — nos professeurs maîtrisent les techniques spécifiques à chaque genre. La technique vocale à Laval que nous enseignons s\u2019appuie sur des principes physiologiques solides pour protéger votre voix tout en l\u2019aidant à s\u2019épanouir. Avec 25+ professeurs et 425+ élèves actifs, notre communauté musicale à Sainte-Rose est l\u2019endroit idéal pour libérer votre potentiel vocal dans la grande région de Laval.',
+      'Nos leçons de chant à Laval sont bien plus qu\u2019un simple cours de musique : c\u2019est un parcours de découverte de soi à travers la voix. Nos professeurs de technique vocale à Laval enseignent différentes techniques de respiration, le placement de la voix, le développement de la tessiture, la justesse, la projection et l\u2019interprétation. Chaque leçon de chant à Laval est adaptée à votre niveau et à vos objectifs : certains élèves souhaitent chanter pour le plaisir personnel, d\u2019autres préparent des auditions ou des prestations publiques.',
+      'L\u2019École le Studio se distingue par la diversité des styles enseignés dans nos cours de chant à Laval. Pop, jazz, classique, comédie musicale, soul, R&B — nos professeurs maîtrisent les techniques spécifiques à chaque genre. La technique vocale à Laval que nous enseignons s\u2019appuie sur des principes physiologiques solides pour protéger votre voix tout en l\u2019aidant à s\u2019épanouir. Avec plus de 30 professeurs et 425+ élèves actifs, notre communauté musicale à Sainte-Rose est l\u2019endroit idéal pour libérer votre potentiel vocal dans la grande région de Laval.',
     ],
     levels: [
       {
@@ -237,7 +237,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'À quel âge peut-on commencer les cours de chant à Laval?',
         answer:
-          'Nos leçons de chant à Laval sont offertes dès l\u2019âge de 7 ans. À cet âge, la voix est suffisamment développée pour travailler la justesse et la technique de base. Pour les adultes, il n\u2019est jamais trop tard — plusieurs de nos élèves de technique vocale à Laval ont commencé après 50 ans.',
+          'Nos cours de chant sont offerts dès l\u2019âge de 5 ans. L\u2019enseignement est adapté à l\u2019âge, au niveau et au développement de chaque enfant, avec une approche progressive qui permet de découvrir sa voix et les bases du chant dans le plaisir. Pour les adultes, il n\u2019est jamais trop tard — plusieurs de nos élèves de technique vocale à Laval ont commencé après 50 ans.',
       },
       {
         question: 'Quelle est la différence entre les cours de chant et de technique vocale?',
@@ -247,7 +247,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Faut-il chanter devant d\u2019autres élèves?',
         answer:
-          'Non, nos cours de chant à Laval sont des cours privés individuels. Vous chantez uniquement devant votre professeur dans un espace intime et sécurisant. Les spectacles et récitals sont facultatifs mais fortement encouragés pour développer la confiance scénique.',
+          'Non, nos cours de chant à Laval sont des cours privés individuels. Vous chantez uniquement devant votre professeur dans un espace intime et sécurisant. Le spectacle annuel est facultatif mais fortement encouragé pour développer la confiance scénique.',
       },
     ],
     benefits: [
@@ -289,7 +289,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     longDescription: [
       'Les cours de batterie à Laval de l\u2019École le Studio sont conçus pour les passionnés de rythme de tous âges et de tous niveaux. Que vous souhaitiez apprendre la batterie pour la première fois ou perfectionner vos compétences de batteur expérimenté, notre école à Sainte-Rose offre un enseignement de qualité depuis plus de 20 ans. Nos leçons de batterie à Laval combinent la technique fondamentale avec le plaisir de jouer sur des morceaux réels dès le premier cours.',
       'Apprendre la batterie développe des compétences uniques que peu d\u2019instruments offrent : la coordination des quatre membres, le sens du tempo, l\u2019écoute musicale globale et la capacité à maintenir l\u2019énergie d\u2019un groupe. Nos leçons de batterie à Laval sont dispensées par des batteurs professionnels qui jouent activement sur la scène musicale québécoise. Ils transmettent non seulement la technique, mais aussi la musicalité, le groove et l\u2019art de servir la chanson — des compétences essentielles pour tout batteur.',
-      'L\u2019École le Studio dispose de batteries acoustiques et électroniques dans ses studios à Sainte-Rose, permettant un enseignement varié et adapté. Nos cours de batterie à Laval couvrent le rock, le jazz, le funk, la musique latine, le hip-hop et les percussions world. Nous accueillons les enfants dès 5 ans avec des configurations adaptées à leur taille. Avec 25+ professeurs et une communauté de 425+ élèves actifs, notre école est le choix de confiance pour apprendre la batterie dans la grande région de Laval et les environs de Sainte-Rose.',
+      'L\u2019École le Studio a équipé ses studios de Sainte-Rose de batteries hybrides électroniques qui reprennent les dimensions et la configuration d\u2019une batterie acoustique : l\u2019élève retrouve exactement les mêmes repères de jeu, avec un contrôle du volume en prime. Nos cours de batterie à Laval couvrent le rock, le jazz, le funk, la musique latine, le hip-hop et les percussions world. Nous accueillons les enfants dès 5 ans avec des configurations adaptées à leur taille. Avec plus de 30 professeurs et une communauté de 425+ élèves actifs, notre école est le choix de confiance pour apprendre la batterie dans la grande région de Laval et les environs de Sainte-Rose.',
     ],
     levels: [
       {
@@ -323,7 +323,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Est-ce que la batterie est un instrument bruyant?',
         answer:
-          'La batterie acoustique est effectivement un instrument sonore. C\u2019est pourquoi nous recommandons souvent une batterie électronique pour la pratique à la maison — on peut jouer avec des écouteurs à tout moment. En cours à l\u2019école, nos studios à Sainte-Rose sont équipés pour offrir un environnement de jeu optimal.',
+          'La batterie acoustique est effectivement un instrument sonore. C\u2019est pourquoi nous recommandons souvent une batterie hybride électronique pour la pratique à la maison — on peut jouer avec des écouteurs à tout moment. En cours à l\u2019école, nos studios à Sainte-Rose sont équipés de batteries hybrides électroniques aux dimensions et à la configuration d\u2019une batterie acoustique.',
       },
       {
         question: 'Les cours de batterie aident-ils la concentration des enfants?',
@@ -370,7 +370,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     longDescription: [
       'Les cours de violon à Laval de l\u2019École le Studio offrent un enseignement rigoureux et passionnant de cet instrument d\u2019une richesse expressive incomparable. Depuis plus de 20 ans, notre école à Sainte-Rose forme des violonistes de tous âges, en commençant dès 4 ans avec la méthode Suzuki et en accompagnant les adultes débutants ou avancés dans leur parcours musical. Nos professeurs de violon classique à Laval sont des musiciens diplômés qui partagent leur amour de l\u2019instrument avec chaque élève.',
       'Apprendre le violon est un engagement qui développe la discipline, la patience et la sensibilité musicale comme aucun autre instrument. Nos cours de violon à Laval couvrent la posture, la tenue de l\u2019archet, l\u2019intonation, la lecture musicale, le vibrato et les techniques d\u2019archet avancées. Le violon classique à Laval reste notre spécialité, mais nous enseignons aussi le violon fiddle, le violon jazz et le répertoire de musique de chambre pour les élèves qui souhaitent explorer d\u2019autres horizons.',
-      'Ce qui rend nos cours de violon à Laval exceptionnels, c\u2019est l\u2019attention portée à la qualité du son dès les premières leçons. Nos professeurs guident chaque élève dans la production d\u2019un son beau et expressif, plutôt que de simplement jouer les bonnes notes. Cette philosophie d\u2019enseignement, combinée à notre approche personnalisée et nos 25+ professeurs qualifiés, fait de l\u2019École le Studio la destination de choix pour apprendre le violon dans la grande région de Laval et les quartiers avoisinants de Sainte-Rose, incluant Fabreville, Auteuil et Rosemère.',
+      'Ce qui rend nos cours de violon à Laval exceptionnels, c\u2019est l\u2019attention portée à la qualité du son dès les premières leçons. Nos professeurs guident chaque élève dans la production d\u2019un son beau et expressif, plutôt que de simplement jouer les bonnes notes. Cette philosophie d\u2019enseignement, combinée à notre approche personnalisée et nos professeurs qualifiés, fait de l\u2019École le Studio la destination de choix pour apprendre le violon dans la grande région de Laval et les quartiers avoisinants de Sainte-Rose, incluant Fabreville, Auteuil et Rosemère.',
     ],
     levels: [
       {
@@ -386,7 +386,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         name: 'Avancé',
         description:
-          'Perfectionnez votre art : concertos, sonates, musique de chambre, techniques d\u2019archet avancées (spiccato, ricochet, col legno). Préparation aux examens du Conservatoire et aux auditions.',
+          'Perfectionnez votre art : concertos, sonates, musique de chambre, techniques d\u2019archet avancées (spiccato, ricochet, col legno). Préparation aux auditions et aux prestations publiques.',
       },
     ],
     styles: ['Classique', 'Fiddle / Traditionnel', 'Jazz', 'Musique de chambre', 'Contemporain'],
@@ -407,9 +407,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
           'La taille du violon dépend de la longueur du bras de l\u2019enfant. Nos professeurs de violon classique à Laval mesurent l\u2019enfant lors du premier cours et recommandent la taille appropriée (1/16 à 4/4). Il est important de ne pas utiliser un violon trop grand, car cela peut nuire à la posture et à la progression.',
       },
       {
-        question: 'Offrez-vous la préparation aux examens du Conservatoire?',
+        question: 'Peut-on se préparer à une audition avec vos professeurs?',
         answer:
-          'Oui, nos cours de violon à Laval incluent la préparation aux examens du Conservatoire de musique pour les élèves qui le souhaitent. Nos professeurs connaissent les exigences de chaque niveau et préparent les élèves en conséquence : répertoire imposé, gammes, déchiffrage et théorie musicale.',
+          'Oui. Nos professeurs peuvent accompagner les élèves qui souhaitent se préparer à différents types d\u2019auditions, de prestations ou de projets musicaux. Le travail peut être adapté aux exigences de l\u2019audition : choix et préparation du répertoire, technique, interprétation et mise en confiance.',
       },
     ],
     benefits: [
@@ -524,6 +524,12 @@ export default function CoursInstrument({ slug }: { slug: string }) {
 
   const otherInstruments = Object.values(INSTRUMENTS).filter((i) => i.slug !== slug)
 
+  // Guitare et batterie sont féminins, les autres masculins.
+  const feminin = ['guitare', 'batterie'].includes(data.slug)
+  const nomBas = data.name.toLowerCase()
+  const leNom = `${feminin ? 'la' : 'le'} ${nomBas}`
+  const duNom = `${feminin ? 'de la' : 'du'} ${nomBas}`
+
   return (
     <div className="bg-cream min-h-screen pt-28 pb-20">
       <SEO title={data.metaTitle} description={data.metaDescription} path={`/cours/${data.slug}`} />
@@ -626,13 +632,13 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
           >
-            Pourquoi apprendre le {data.name.toLowerCase()}?
+            Pourquoi apprendre {leNom}?
           </h2>
           <p
             className="text-marine/60 mb-10 max-w-2xl"
             style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}
           >
-            Découvrez les bienfaits uniques de l'apprentissage du {data.name.toLowerCase()} à l'École le Studio de
+            Découvrez les bienfaits uniques de l'apprentissage {duNom} à l'École le Studio de
             Sainte-Rose, Laval.
           </p>
 
@@ -813,7 +819,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                     'Cours privé avec un professeur qualifié',
                     'Approche personnalisée selon votre niveau',
                     'Suivi de progression continu',
-                    'Accès aux spectacles et événements',
+                    'Salles équipées et matériel sur place',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-marine/70 text-sm leading-relaxed">
                       <svg
@@ -894,14 +900,13 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                 className="font-display font-extrabold text-white leading-[1.1] tracking-[-0.02em] mb-4"
                 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
               >
-                Prêt à commencer le {data.name.toLowerCase()}?
+                Prêt à commencer {leNom}?
               </h2>
               <p
                 className="text-white/60 max-w-xl mx-auto mb-8 leading-relaxed"
                 style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
               >
-                L'inscription est ouverte toute l'année à l'École le Studio de Sainte-Rose, Laval. Premier cours
-                satisfait ou remboursé.
+                L'inscription est ouverte toute l'année à l'École le Studio de Sainte-Rose, Laval.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link

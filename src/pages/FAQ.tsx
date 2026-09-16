@@ -14,12 +14,12 @@ const faqCategories = [
         answer: 'Les inscriptions sont ouvertes en continu tout au long de l\'année, sous réserve des disponibilités. Cependant, les périodes principales d\'inscription sont en août pour la session d\'automne (septembre à décembre) et en décembre pour la session d\'hiver (janvier à mai). Nous offrons également une session d\'été intensive de 8 semaines. Nous vous recommandons de nous contacter tôt pour réserver votre place, car certains créneaux sont très populaires.',
       },
       {
-        question: 'Offrez-vous un cours d\'essai ?',
-        answer: 'Oui ! Nous offrons un premier cours satisfait ou remboursé. Cela vous permet de rencontrer votre professeur, d\'évaluer l\'ambiance de l\'école et de confirmer que le cours vous convient. Si vous n\'êtes pas entièrement satisfait après ce premier cours, nous vous remboursons intégralement, sans question. C\'est notre façon de vous garantir une expérience positive dès le départ.',
+        question: 'Comment fonctionne l\'inscription ?',
+        answer: 'L\'inscription se fait pour la session complète. Le premier cours vous permet de rencontrer votre professeur, d\'évaluer l\'ambiance de l\'école et de confirmer que le cours vous convient. Si le premier cours ne répond pas à vos attentes et que l\'inscription est interrompue après ce premier cours, seuls le premier cours et les frais d\'inscription sont facturés.',
       },
       {
         question: 'Comment se fait le jumelage professeur-élève ?',
-        answer: 'Lors de votre inscription, nous prenons le temps de comprendre vos objectifs, vos préférences musicales, votre niveau et votre personnalité. Nous jumelons ensuite chaque élève avec le professeur dont l\'expertise, le style d\'enseignement et la disponibilité correspondent le mieux. Le premier cours satisfait ou remboursé confirme que le jumelage est réussi. Si la chimie n\'est pas au rendez-vous, nous proposons un autre professeur.',
+        answer: 'Lors de votre inscription, nous prenons le temps de comprendre vos objectifs, vos préférences musicales, votre niveau et votre personnalité. Nous jumelons ensuite chaque élève avec le professeur dont l\'expertise, le style d\'enseignement et la disponibilité correspondent le mieux. Le premier cours confirme que le jumelage est réussi. Si la chimie n\'est pas au rendez-vous, nous proposons un autre professeur.',
       },
       {
         question: 'Puis-je changer de professeur en cours de session ?',
@@ -41,7 +41,7 @@ const faqCategories = [
       },
       {
         question: 'Les cours sont-ils privés ou en groupe ?',
-        answer: 'Tous nos cours instrumentaux et de chant sont des cours privés (un élève, un professeur). Cette formule permet un enseignement véritablement personnalisé et une progression optimale. Chaque leçon est adaptée au niveau, aux objectifs et aux goûts de l\'élève. Les spectacles de fin de session offrent par contre une belle occasion de jouer en ensemble et de développer des compétences musicales collectives.',
+        answer: 'Tous nos cours instrumentaux et de chant sont des cours privés (un élève, un professeur). Cette formule permet un enseignement véritablement personnalisé et une progression optimale. Chaque leçon est adaptée au niveau, aux objectifs et aux goûts de l\'élève. Le spectacle annuel offre par contre une belle occasion de jouer devant public et de développer des compétences musicales collectives.',
       },
       {
         question: 'Dois-je avoir mon propre instrument pour suivre des cours ?',
@@ -63,7 +63,7 @@ const faqCategories = [
     questions: [
       {
         question: 'Combien coûtent les cours de musique à l\'École le Studio ?',
-        answer: 'Nos tarifs sont de 34 $ par cours de 30 minutes, 44 $ par cours de 45 minutes, et 54 $ par cours de 60 minutes. Les frais d\'inscription de 45 $ (payables une fois par année) incluent le cartable scolaire et l\'accès aux spectacles. Les cours de 30 minutes sont idéaux pour les jeunes débutants, les 45 minutes sont les plus populaires, et les 60 minutes conviennent aux élèves avancés ou passionnés. Consultez notre page tarifs pour tous les détails.',
+        answer: 'Nos tarifs sont de 34 $ par cours de 30 minutes, 44 $ par cours de 45 minutes, et 54 $ par cours de 60 minutes. S\'ajoutent des frais d\'inscription de 18,50 $ par famille et un cartable pédagogique de 21,50 $, à la première session seulement. Les trois durées sont offertes à tous : pour les enfants de 8 ans et moins, nous recommandons généralement les cours de 30 minutes afin de favoriser la concentration. Consultez notre page tarifs pour tous les détails.',
       },
       {
         question: 'Les frais incluent-ils le matériel pédagogique ?',
@@ -85,11 +85,11 @@ const faqCategories = [
     questions: [
       {
         question: 'Y a-t-il des spectacles pour les élèves ?',
-        answer: 'Oui ! Nous organisons deux spectacles par année — un en décembre et un en mai/juin. Ces spectacles ont lieu dans une vraie salle de spectacle et sont ouverts à la famille et aux amis. C\'est une occasion unique pour chaque élève de monter sur scène, de vivre le trac positif de la performance et de célébrer ses progrès. La participation est volontaire mais fortement encouragée — c\'est un moment magique pour tous.',
+        answer: 'Oui ! Nous organisons un spectacle par année. Il a lieu dans une vraie salle de spectacle et est ouvert à la famille et aux amis. C\'est une occasion unique pour chaque élève de monter sur scène, de vivre le trac positif de la performance et de célébrer ses progrès. La participation est volontaire mais fortement encouragée — c\'est un moment magique pour tous.',
       },
       {
         question: 'Quelles sont les sessions de cours ?',
-        answer: 'L\'année scolaire est divisée en deux sessions principales : la session d\'automne (septembre à décembre, environ 14 semaines) et la session d\'hiver (janvier à mai, environ 22 semaines). Chaque session se termine par un spectacle de fin de session. Nous offrons également une session d\'été intensive de 8 semaines (juin à août) pour les élèves qui souhaitent maintenir leur pratique ou rattraper du terrain pendant les vacances.',
+        answer: 'L\'année scolaire est divisée en deux sessions principales : la session d\'automne (septembre à décembre, environ 14 semaines) et la session d\'hiver (janvier à mai, environ 22 semaines). Nous offrons également une session d\'été intensive de 8 semaines (juin à août) pour les élèves qui souhaitent maintenir leur pratique ou rattraper du terrain pendant les vacances.',
       },
       {
         question: 'Desservez-vous d\'autres quartiers que Sainte-Rose ?',
@@ -188,7 +188,7 @@ export default function FAQ() {
           >
             <div className="space-y-4 text-slate leading-relaxed max-w-[65ch]" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>
               <p>
-                L'<strong className="text-marine">École le Studio</strong> offre des <strong className="text-marine">cours de musique à Sainte-Rose, Laval</strong> depuis plus de 20 ans. Que vous soyez un parent cherchant le meilleur cours de piano pour votre enfant, un adolescent rêvant de jouer de la guitare électrique, ou un adulte souhaitant découvrir le chant, nous avons les réponses à vos questions. Notre équipe de plus de 25 professeurs qualifiés accompagne plus de 425 élèves actifs avec une approche personnalisée et bienveillante.
+                L'<strong className="text-marine">École le Studio</strong> offre des <strong className="text-marine">cours de musique à Sainte-Rose, Laval</strong> depuis plus de 20 ans. Que vous soyez un parent cherchant le meilleur cours de piano pour votre enfant, un adolescent rêvant de jouer de la guitare électrique, ou un adulte souhaitant découvrir le chant, nous avons les réponses à vos questions. Notre équipe de plus de 30 professeurs qualifiés accompagne plus de 425 élèves actifs avec une approche personnalisée et bienveillante.
               </p>
               <p>
                 Parcourez les catégories ci-dessous pour trouver les informations dont vous avez besoin, ou <Link to="/nous-joindre" className="text-violet hover:text-violet-dark underline underline-offset-2 transition-colors duration-200">contactez-nous directement</Link> au <a href="tel:5146777713" className="text-violet hover:text-violet-dark underline underline-offset-2 transition-colors duration-200">514-677-7713</a> pour une réponse personnalisée.
@@ -342,7 +342,7 @@ export default function FAQ() {
               Prêt à commencer ?
             </h2>
             <p className="text-white/70 max-w-lg mx-auto mb-8" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-              Inscrivez-vous dès aujourd'hui et bénéficiez d'un premier cours satisfait ou remboursé. Plus de 425 élèves nous font déjà confiance à Sainte-Rose, Laval.
+              Inscrivez-vous dès aujourd'hui. Plus de 425 élèves nous font déjà confiance à Sainte-Rose, Laval.
             </p>
             <Link
               to="/inscription"
