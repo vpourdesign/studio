@@ -186,7 +186,12 @@ export default function NosLocaux() {
 
         {/* ─── Galerie en maçonnerie ─── */}
         <section className="max-w-[1400px] mx-auto px-6 md:px-12 xl:px-16 mt-12 md:mt-16">
-          <h2 className="sr-only">Galerie des locaux de l'École le Studio</h2>
+          <h2
+            className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-6 md:mb-8"
+            style={{ fontSize: 'clamp(1.35rem, 2.6vw, 2rem)' }}
+          >
+            Galerie – Nos locaux
+          </h2>
 
           <div className="columns-1 sm:columns-2 xl:columns-3 gap-4 md:gap-5">
             {photos.map((photo) => (
@@ -216,6 +221,31 @@ export default function NosLocaux() {
                 </figcaption>
               </figure>
             ))}
+          </div>
+        </section>
+
+        {/* ─── Galerie – Spectacles ─── */}
+        <section className="max-w-[1400px] mx-auto px-6 md:px-12 xl:px-16 mt-14 md:mt-20">
+          <h2
+            className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
+            style={{ fontSize: 'clamp(1.35rem, 2.6vw, 2rem)' }}
+          >
+            Galerie – Spectacles
+          </h2>
+          <p className="text-slate max-w-2xl leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>
+            Chaque année, les élèves de l'École le Studio montent sur scène devant leur famille et leurs amis.
+            Les photos du dernier spectacle s'en viennent ici.
+          </p>
+
+          <div className="mt-8 rounded-2xl border border-dashed border-marine/20 bg-white/60 px-6 py-14 text-center">
+            <span className="inline-flex w-12 h-12 rounded-full bg-marine/5 items-center justify-center mb-4">
+              <svg className="w-6 h-6 text-marine/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 9a2 2 0 012-2h1.6a2 2 0 001.7-.9l.8-1.2a2 2 0 011.7-.9h2.4a2 2 0 011.7.9l.8 1.2a2 2 0 001.7.9H19a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <circle cx="12" cy="13" r="3.25" />
+              </svg>
+            </span>
+            <p className="font-display font-bold text-marine text-base">Photos à venir</p>
+            <p className="mt-1.5 text-slate text-sm">On ajoute les images dès qu'elles sont prêtes.</p>
           </div>
         </section>
 

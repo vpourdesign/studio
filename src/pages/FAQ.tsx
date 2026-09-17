@@ -89,7 +89,7 @@ const faqCategories = [
       },
       {
         question: 'Quelles sont les sessions de cours ?',
-        answer: 'L\'année scolaire est divisée en deux sessions principales : la session d\'automne (septembre à décembre, environ 14 semaines) et la session d\'hiver (janvier à mai, environ 22 semaines). Nous offrons également une session d\'été intensive de 8 semaines (juin à août) pour les élèves qui souhaitent maintenir leur pratique ou rattraper du terrain pendant les vacances.',
+        answer: 'L\'année scolaire est divisée en deux sessions principales : la session d\'automne (septembre à décembre, environ 14 semaines) et la session d\'hiver (janvier à mai, environ 22 semaines). Nous offrons également une session d\'été intensive de 8 semaines (juin à août) pour les élèves qui souhaitent maintenir leur pratique ou rattraper du terrain pendant les vacances. Des cours à la carte sont disponibles durant la session d\'été.',
       },
       {
         question: 'Desservez-vous d\'autres quartiers que Sainte-Rose ?',

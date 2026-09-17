@@ -8,6 +8,8 @@ import imgGuitare from '../assets/guitare.png'
 import imgChant from '../assets/chant.png'
 import imgBatterie from '../assets/batterie.png'
 import imgViolon from '../assets/violon.png'
+import imgBasse from '../assets/photos/cours-basse.webp'
+import imgUkulele from '../assets/photos/cours-ukulele.webp'
 
 /* ─── Types ─── */
 
@@ -435,6 +437,168 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       },
     ],
   },
+
+  basse: {
+    slug: 'basse',
+    name: 'Basse',
+    color: '#5C5F52',
+    colorLight: '#E3E5DA',
+    image: imgBasse,
+    metaTitle: 'Cours de basse à Laval | École le Studio — Sainte-Rose',
+    metaDescription:
+      'Cours de basse électrique à Laval pour enfants et adultes, débutants et avancés. Groove, lecture, jeu en groupe avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
+    h1: 'Cours de basse à Laval',
+    heroSubtitle:
+      'L’instrument qui tient la chanson debout. Apprenez la basse électrique avec des professeurs qui jouent sur scène, dans un local équipé d’amplis et de basses.',
+    longDescription: [
+      'Les cours de basse à Laval de l’École le Studio s’adressent autant au débutant complet qu’au bassiste qui veut sortir de ses habitudes. La basse est l’instrument le plus rapide à rendre utile : après quelques semaines, vous tenez déjà une ligne simple sur une vraie chanson, et vous pouvez jouer avec d’autres musiciens. C’est ce qui rend l’apprentissage aussi motivant, et c’est pour ça que plusieurs de nos élèves de basse arrivent sans jamais avoir touché à un instrument.',
+      'Nos professeurs sont des bassistes actifs sur la scène québécoise. Ils enseignent la main droite et la main gauche, oui, mais surtout ce qui fait un bon bassiste : le placement rythmique avec la grosse caisse, le choix des notes dans l’accord, la retenue. Selon vos goûts, on travaille le rock, le funk, le blues, le jazz, le gospel, la pop québécoise ou le slap. La lecture de partitions et de tablatures s’ajoute au rythme qui vous convient, jamais comme un préalable.',
+      'Le local de basse de Sainte-Rose est équipé d’amplis et d’instruments sur place, alors vous pouvez venir les mains vides pour votre premier cours. Vous n’avez pas de basse à la maison? Nous en louons (voir la section Location d’instruments dans nos tarifs), ce qui permet de commencer sans acheter tout de suite. Les cours sont privés, d’une durée de 30, 45 ou 60 minutes, offerts 7 jours sur 7 au 191B boulevard Sainte-Rose, à quelques minutes de Fabreville, Auteuil, Vimont et Rosemère.',
+    ],
+    levels: [
+      {
+        name: 'Débutant',
+        description:
+          'Tenue de l’instrument, jeu aux doigts et au médiator, notes sur le manche, premières lignes de basse sur des chansons connues. Dès les premiers cours, vous jouez sur de la vraie musique plutôt que des exercices isolés.',
+      },
+      {
+        name: 'Intermédiaire',
+        description:
+          'Gammes et arpèges appliqués aux lignes de basse, lecture de tablatures et de partitions, groove et placement avec la batterie, premiers pas en slap et en jeu en ensemble.',
+      },
+      {
+        name: 'Avancé',
+        description:
+          'Walking bass, improvisation, harmonie appliquée, slap avancé, repiquage à l’oreille et préparation de répertoire pour jouer en groupe ou sur scène.',
+      },
+    ],
+    styles: ['Rock', 'Funk', 'Blues', 'Jazz', 'Pop', 'Slap'],
+    faq: [
+      {
+        question: 'Faut-il savoir jouer de la guitare avant d’apprendre la basse?',
+        answer:
+          'Non. La basse s’apprend très bien comme premier instrument, et c’est même un excellent point de départ : quatre cordes, des lignes simples au début, et le plaisir de jouer avec d’autres musiciens rapidement. Plusieurs de nos élèves de basse à Laval n’avaient jamais touché à un instrument avant leur premier cours.',
+      },
+      {
+        question: 'À quel âge peut-on commencer les cours de basse?',
+        answer:
+          'Dès 8 ans environ, le temps que la main soit assez grande pour couvrir le manche confortablement. Il existe aussi des basses au manche court qui permettent de commencer plus tôt. Chez les adultes, il n’y a aucune limite : nous enseignons à des débutants de tous les âges.',
+      },
+      {
+        question: 'Dois-je avoir ma propre basse et un ampli?',
+        answer:
+          'Pas pour le premier cours : le local est équipé. Pour pratiquer à la maison, il faut cependant un instrument. Nous offrons la location de guitares et de basses à partir de 30 $ par mois, ampli inclus dans la formule électrique, ce qui évite un achat avant d’être certain de votre choix.',
+      },
+      {
+        question: 'Vais-je pouvoir jouer avec d’autres musiciens?',
+        answer:
+          'Oui, et c’est tout l’intérêt de la basse. Votre professeur vous accompagne dès les premiers mois, et le spectacle annuel de l’école permet de monter sur scène avec d’autres élèves. Plusieurs de nos bassistes se joignent ensuite à un groupe, tout simplement parce que les bassistes sont toujours en demande.',
+      },
+    ],
+    benefits: [
+      {
+        title: 'Des résultats audibles rapidement',
+        description:
+          'Une ligne de basse simple suffit à faire tenir une chanson. En quelques semaines, vous jouez sur de la vraie musique plutôt que des exercices, et la progression s’entend.',
+      },
+      {
+        title: 'La porte d’entrée vers le jeu en groupe',
+        description:
+          'Les bassistes sont recherchés partout, dans les groupes d’école comme dans les formations d’adultes. Apprendre la basse, c’est apprendre à jouer avec les autres, pas seulement dans son salon.',
+      },
+      {
+        title: 'Le sens du rythme et de l’harmonie',
+        description:
+          'Assise entre la batterie et les accords, la basse développe à la fois le placement rythmique et la compréhension de l’harmonie. C’est une formation musicale complète, sans en avoir l’air.',
+      },
+      {
+        title: 'Un instrument accessible',
+        description:
+          'Quatre cordes, des positions confortables et un répertoire immense dès le début : la basse demande moins de gymnastique que la guitare pour arriver à jouer de la musique qui vous plaît.',
+      },
+    ],
+  },
+
+  ukulele: {
+    slug: 'ukulele',
+    name: 'Ukulélé',
+    color: '#6E7A64',
+    colorLight: '#E6EADF',
+    image: imgUkulele,
+    metaTitle: 'Cours de ukulélé à Laval | École le Studio — Sainte-Rose',
+    metaDescription:
+      'Cours de ukulélé à Laval pour enfants et adultes. Un instrument facile d’approche, des chansons dès le premier cours, avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
+    h1: 'Cours de ukulélé à Laval',
+    heroSubtitle:
+      'Quatre cordes, une chanson complète dès le premier cours. Le ukulélé est l’instrument le plus accueillant pour commencer la musique, à 6 ans comme à 70 ans.',
+    longDescription: [
+      'Les cours de ukulélé à Laval de l’École le Studio attirent deux types d’élèves : les enfants qui commencent la musique et les adultes qui veulent enfin s’y mettre sans passer six mois à se faire mal aux doigts. Le ukulélé répond aux deux. Ses cordes de nylon sont douces, son manche est court, et trois accords suffisent à accompagner des dizaines de chansons. C’est l’instrument qui donne le plus de musique pour le moins d’effort au départ.',
+      'Nos professeurs enseignent le ukulélé comme un vrai instrument, pas comme un jouet. On y travaille les accords et les enchaînements, les patrons de grattage, le jeu aux doigts, le chant accompagné et, pour ceux qui veulent aller plus loin, la mélodie en solo et les arrangements. Le répertoire vient de vous : pop, folk, chanson québécoise, Beatles, musique hawaïenne ou les pièces du moment. Les enfants dès 6 ans y trouvent un premier instrument à leur taille, et plusieurs passent ensuite à la guitare avec des bases déjà solides.',
+      'Les cours sont privés, de 30, 45 ou 60 minutes, offerts 7 jours sur 7 au 191B boulevard Sainte-Rose. Un ukulélé d’entrée de gamme se trouve à petit prix, et votre professeur vous conseillera sur le modèle (soprano, concert ou ténor) qui convient à votre main et à vos objectifs avant que vous achetiez quoi que ce soit. Comme pour tous nos cours, l’inscription se fait en tout temps dans l’année, et des cours à la carte sont offerts durant la session d’été.',
+    ],
+    levels: [
+      {
+        name: 'Débutant',
+        description:
+          'Tenue de l’instrument, premiers accords, patrons de grattage simples et une chanson complète dès les premières semaines. Idéal pour les enfants dès 6 ans et pour les adultes qui n’ont jamais fait de musique.',
+      },
+      {
+        name: 'Intermédiaire',
+        description:
+          'Accords barrés, rythmiques plus riches, jeu aux doigts, transposition et accompagnement du chant. Vous construisez un répertoire que vous pouvez jouer devant les autres.',
+      },
+      {
+        name: 'Avancé',
+        description:
+          'Jeu mélodique en solo (chord melody), arrangements personnels, improvisation et exploration du répertoire hawaïen traditionnel comme des adaptations contemporaines.',
+      },
+    ],
+    styles: ['Pop', 'Folk', 'Chanson québécoise', 'Hawaïen', 'Accompagnement', 'Chord melody'],
+    faq: [
+      {
+        question: 'Le ukulélé est-il vraiment plus facile que la guitare?',
+        answer:
+          'Pour commencer, oui. Quatre cordes de nylon au lieu de six cordes d’acier, un manche plus court et des accords qui demandent souvent un ou deux doigts : on joue une chanson complète beaucoup plus vite. Cela dit, le ukulélé a aussi son répertoire avancé, et on peut y progresser pendant des années.',
+      },
+      {
+        question: 'À quel âge un enfant peut-il commencer le ukulélé?',
+        answer:
+          'Dès 6 ans. La taille de l’instrument et la douceur des cordes en font le premier instrument à cordes idéal. Beaucoup d’enfants commencent au ukulélé, puis passent à la guitare vers 9 ou 10 ans avec un sens du rythme et des accords déjà acquis.',
+      },
+      {
+        question: 'Quel ukulélé acheter pour débuter?',
+        answer:
+          'Un soprano ou un concert d’entrée de gamme suffit largement pour commencer. Attendez votre premier cours avant d’acheter : votre professeur regardera la taille de votre main et vos objectifs, et vous orientera vers un modèle et un budget réalistes.',
+      },
+      {
+        question: 'Est-ce que je peux apprendre à chanter en même temps?',
+        answer:
+          'Oui, et c’est l’usage le plus naturel de l’instrument. L’accompagnement du chant fait partie des cours de ukulélé dès le niveau débutant. Si la voix devient votre priorité, nos professeurs de chant prennent le relais.',
+      },
+    ],
+    benefits: [
+      {
+        title: 'Une chanson dès le premier cours',
+        description:
+          'Trois accords ouvrent déjà un répertoire immense. Cette gratification immédiate est ce qui fait qu’un enfant, comme un adulte, continue au-delà des premières semaines.',
+      },
+      {
+        title: 'Doux pour les doigts',
+        description:
+          'Les cordes de nylon ne font pas mal, contrairement aux cordes d’acier. C’est un avantage réel pour les jeunes mains et pour les adultes qui ont abandonné la guitare pour cette raison.',
+      },
+      {
+        title: 'Léger et transportable',
+        description:
+          'Un ukulélé se glisse dans un sac à dos et se joue au chalet, au camp ou en voyage. Un instrument qui suit l’élève est un instrument qu’on pratique.',
+      },
+      {
+        title: 'Une excellente porte d’entrée',
+        description:
+          'Rythme, accords, oreille, accompagnement : tout ce qui s’apprend au ukulélé se transpose ensuite à la guitare, à la basse ou au chant. Rien n’est perdu si l’élève change d’instrument.',
+      },
+    ],
+  },
 }
 
 /* ─── FAQ Accordion Item ─── */
@@ -496,7 +660,7 @@ function FaqItem({ item }: { item: { question: string; answer: string } }) {
 
 const plans = [
   { duration: '30 minutes', price: '34', label: 'Idéal pour les jeunes débutants', badge: null, highlighted: false },
-  { duration: '45 minutes', price: '44', label: 'Le plus populaire', badge: 'Recommandé', highlighted: true },
+  { duration: '45 minutes', price: '44', label: 'Pour approfondir sa pratique', badge: null, highlighted: false },
   { duration: '60 minutes', price: '54', label: 'Pour les passionnés et avancés', badge: null, highlighted: false },
 ]
 
@@ -525,7 +689,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
   const otherInstruments = Object.values(INSTRUMENTS).filter((i) => i.slug !== slug)
 
   // Guitare et batterie sont féminins, les autres masculins.
-  const feminin = ['guitare', 'batterie'].includes(data.slug)
+  const feminin = ['guitare', 'batterie', 'basse'].includes(data.slug)
   const nomBas = data.name.toLowerCase()
   const leNom = `${feminin ? 'la' : 'le'} ${nomBas}`
   const duNom = `${feminin ? 'de la' : 'du'} ${nomBas}`

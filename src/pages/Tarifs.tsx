@@ -29,6 +29,19 @@ const plans = [
   },
 ]
 
+const locations = [
+  {
+    nom: 'Guitare acoustique ou classique',
+    prix: '30',
+    detail: 'Instrument prêt à jouer, avec housse. Idéal pour un premier cours de guitare.',
+  },
+  {
+    nom: 'Guitare électrique avec amplificateur',
+    prix: '40',
+    detail: 'Guitare, amplificateur et câble inclus. Tout ce qu\u2019il faut pour pratiquer à la maison.',
+  },
+]
+
 const inclusions = [
   'Cours privé avec un professeur qualifié',
   'Approche personnalisée selon votre niveau',
@@ -42,18 +55,21 @@ const sessions = [
     period: 'Septembre – Décembre',
     weeks: '14 semaines',
     icon: '🍂',
+    note: null,
   },
   {
     name: 'Hiver',
     period: 'Janvier – Mai',
     weeks: '22 semaines',
     icon: '❄️',
+    note: null,
   },
   {
     name: 'Été',
     period: 'Juin – Août',
     weeks: '8 semaines',
     icon: '☀️',
+    note: 'Cours à la carte disponibles durant la session d\u2019été.',
   },
 ]
 
@@ -89,7 +105,7 @@ const faqItems = [
   {
     question: 'Y a-t-il des frais supplémentaires?',
     answer:
-      'Les frais d\u2019inscription sont de 18,50\u00A0$ par famille (aucuns frais pour la session d\u2019été). Le cartable pédagogique à 21,50\u00A0$ est requis à la première session seulement. Il n\u2019y a aucun autre frais caché.',
+      'Les frais d\u2019inscription / frais administratifs sont de 18,50\u00A0$ par session, par famille (aucuns frais pour la session d\u2019été). Le cartable pédagogique à 21,50\u00A0$ est requis à la première session seulement. Il n\u2019y a aucun autre frais caché.',
   },
   {
     question: 'Puis-je changer la durée de mon cours?',
@@ -304,7 +320,9 @@ export default function Tarifs() {
                 </div>
                 <div>
                   <p className="font-display font-bold text-marine text-sm mb-0.5">Frais d'inscription</p>
-                  <p className="text-marine/60 text-sm leading-relaxed">18,50&nbsp;$ par famille</p>
+                  <p className="text-marine/60 text-sm leading-relaxed">
+                    18,50&nbsp;$ — frais d'inscription / frais administratifs par session, par famille
+                  </p>
                 </div>
               </div>
 
@@ -328,7 +346,9 @@ export default function Tarifs() {
                 </div>
                 <div>
                   <p className="font-display font-bold text-marine text-sm mb-0.5">Session d'été</p>
-                  <p className="text-marine/60 text-sm leading-relaxed">Aucun frais d'inscription</p>
+                  <p className="text-marine/60 text-sm leading-relaxed">
+                    Aucun frais d'inscription. Cours à la carte disponibles durant la session d'été.
+                  </p>
                 </div>
               </div>
 
@@ -349,6 +369,50 @@ export default function Tarifs() {
               * Le premier paiement doit être effectué lors de la première semaine de cours. L'inscription se fait pour la session complète.
             </p>
           </div>
+        </section>
+
+        {/* ─── Location d'instruments ─── */}
+        <section className="mb-16 md:mb-24">
+          <h2
+            className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
+            style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+          >
+            Location d'instruments
+          </h2>
+          <p className="text-marine/60 mb-8 max-w-2xl leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
+            Pas encore d'instrument à la maison? On loue des guitares au mois, alors l'élève peut commencer
+            tout de suite et pratiquer entre les cours sans avoir à acheter. C'est souvent la meilleure façon
+            de vérifier que l'instrument lui plaît avant d'y mettre le prix.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {locations.map((item) => (
+              <div
+                key={item.nom}
+                className="bg-white rounded-2xl p-7 md:p-8 border border-marine/8 flex flex-col"
+                style={{
+                  boxShadow:
+                    '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',
+                }}
+              >
+                <h3 className="font-display font-extrabold text-marine text-lg leading-snug mb-2">
+                  {item.nom}
+                </h3>
+                <p className="text-marine/60 text-sm leading-relaxed mb-5 max-w-[42ch]">{item.detail}</p>
+                <p className="mt-auto flex items-baseline gap-1.5">
+                  <span className="font-display font-extrabold text-marine tabular-nums" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)' }}>
+                    {item.prix}&nbsp;$
+                  </span>
+                  <span className="text-marine/50 text-sm font-medium">/ mois</span>
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-marine/50 text-xs leading-relaxed max-w-2xl">
+            Location offerte aux élèves inscrits, selon la disponibilité des instruments. Informez-vous à
+            l'accueil ou au 514-677-7713 pour réserver le vôtre.
+          </p>
         </section>
 
         {/* ─── Sessions Calendar — Keylime bg ─── */}
@@ -379,6 +443,9 @@ export default function Tarifs() {
                 </h3>
                 <p className="text-marine/60 text-sm font-medium mb-1">{session.period}</p>
                 <p className="text-violet font-bold text-sm">{session.weeks}</p>
+                {session.note && (
+                  <p className="mt-3 text-marine/60 text-sm leading-snug">{session.note}</p>
+                )}
               </div>
             ))}
           </div>

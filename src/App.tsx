@@ -9,6 +9,8 @@ import imgChant from './assets/chant.png'
 import imgGuitare from './assets/guitare.png'
 import imgViolon from './assets/violon.png'
 import imgBatterie from './assets/batterie.png'
+import imgBasse from './assets/photos/cours-basse.webp'
+import imgUkulele from './assets/photos/cours-ukulele.webp'
 import megaBg from './assets/photos/megamenu-studio-clair.webp'
 import HeroCanvas from './HeroCanvas'
 import imgVieux from './assets/vieux.webp'
@@ -93,6 +95,25 @@ function IconDrums({ className = '' }: { className?: string }) {
   )
 }
 
+function IconBass({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 5l-5 5-2-2-9 9c-4 4-4 10 0 14s10 4 14 0l9-9-2-2 5-5-2-2-5 5-1-1 5-5-2-2-5 5z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="17" cy="23" r="3" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M33 3l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  )
+}
+function IconUkulele({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 20c-3 3-3 8 0 11s8 3 11 0 3-8 0-11-8-3-11 0z" stroke="currentColor" strokeWidth="2"/>
+      <circle cx="19.5" cy="25.5" r="2.5" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M23 21l9-9M30 6l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
 /* ─── Mega Menu Content ─── */
 function MegaMenu() {
   const instruments = [
@@ -101,6 +122,8 @@ function MegaMenu() {
     { name: 'Chant', Icon: IconMic, to: '/cours-de-chant' },
     { name: 'Violon', Icon: IconViolin, to: '/cours-de-violon' },
     { name: 'Batterie', Icon: IconDrums, to: '/cours-de-batterie' },
+    { name: 'Basse', Icon: IconBass, to: '/cours-de-basse' },
+    { name: 'Ukulélé', Icon: IconUkulele, to: '/cours-de-ukulele' },
   ]
   return (
     <div className="absolute top-full left-0 right-0 z-50" style={{ marginTop: 0 }}>
@@ -312,6 +335,8 @@ function Navigation() {
             { label: 'Cours de chant', to: '/cours-de-chant' },
             { label: 'Cours de batterie', to: '/cours-de-batterie' },
             { label: 'Cours de violon', to: '/cours-de-violon' },
+            { label: 'Cours de basse', to: '/cours-de-basse' },
+            { label: 'Cours de ukulélé', to: '/cours-de-ukulele' },
             { label: 'Nos professeurs', to: '/nos-professeurs' },
             { label: 'Nos locaux', to: '/nos-locaux' },
             { label: 'Tarifs', to: '/tarifs' },
@@ -415,7 +440,7 @@ function Hero() {
       <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-20">
         <Link
           to="/inscription"
-          className="inline-flex items-center gap-2 bg-coral text-white font-semibold text-sm px-6 py-3 rounded-full transition-all duration-300 hover:bg-coral-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow/30"
+          className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-6 py-3 rounded-full transition-all duration-300 hover:bg-violet-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-marine/30"
           style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
         >
           Inscription
@@ -452,6 +477,8 @@ const courses = [
   { name: 'Guitare', img: imgGuitare, color: '#4D5C60', slug: 'guitare' },
   { name: 'Chant', img: imgChant, color: '#8A8A6E', slug: 'chant' },
   { name: 'Piano', img: imgPiano, color: '#525266', slug: 'piano' },
+  { name: 'Basse', img: imgBasse, color: '#5C5F52', slug: 'basse' },
+  { name: 'Ukulélé', img: imgUkulele, color: '#6E7A64', slug: 'ukulele' },
 ]
 
 function CoursesGrid() {
@@ -807,6 +834,8 @@ function App() {
           <Route path="/cours-de-chant" element={<CoursInstrument slug="chant" />} />
           <Route path="/cours-de-batterie" element={<CoursInstrument slug="batterie" />} />
           <Route path="/cours-de-violon" element={<CoursInstrument slug="violon" />} />
+          <Route path="/cours-de-basse" element={<CoursInstrument slug="basse" />} />
+          <Route path="/cours-de-ukulele" element={<CoursInstrument slug="ukulele" />} />
           <Route path="/nos-professeurs" element={<Professeurs />} />
           <Route path="/tarifs" element={<Tarifs />} />
           <Route path="/nous-joindre" element={<NousJoindre />} />
