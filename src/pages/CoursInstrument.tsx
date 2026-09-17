@@ -19,6 +19,12 @@ interface InstrumentData {
   color: string
   colorLight: string
   image: string
+  /* Point de mise au point de la photo dans le hero, qui est beaucoup plus large
+     que haut : sans ça, le cadrage centré coupe l'instrument. */
+  imagePosition: string
+  /* Miroir horizontal : place l'instrument du côté droit, là où le texte
+     du hero ne le recouvre pas. */
+  imageFlip?: boolean
   metaTitle: string
   metaDescription: string
   h1: string
@@ -39,6 +45,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#525266',
     colorLight: '#E8E8ED',
     image: imgPiano,
+    imagePosition: '75% 68%',
     metaTitle: 'Cours de piano à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de piano à Laval pour enfants et adultes, débutants et avancés. Apprenez le piano avec nos professeurs qualifiés à Sainte-Rose. Classique, jazz, pop, blues. Dès 34$/cours.',
@@ -120,6 +127,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#4D5C60',
     colorLight: '#D1E0DE',
     image: imgGuitare,
+    imagePosition: '50% 62%',
     metaTitle: 'Cours de guitare à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de guitare à Laval pour tous les niveaux. Guitare acoustique, électrique, classique. Apprenez la guitare avec nos professeurs qualifiés à Sainte-Rose. Dès 34$/cours.',
@@ -201,6 +209,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#8A8A6E',
     colorLight: '#EEF4CE',
     image: imgChant,
+    imagePosition: '62% 38%',
     metaTitle: 'Cours de chant à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de chant et technique vocale à Laval pour tous les niveaux. Développez votre voix avec nos professeurs qualifiés à Sainte-Rose. Pop, jazz, classique, comédie musicale. Dès 34$/cours.',
@@ -282,6 +291,8 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#383838',
     colorLight: '#E0E0E0',
     image: imgBatterie,
+    imagePosition: '50% 25%',
+    imageFlip: true,
     metaTitle: 'Cours de batterie à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de batterie à Laval pour enfants et adultes. Apprenez la batterie avec nos professeurs qualifiés à Sainte-Rose. Rock, jazz, funk, latin. Dès 34$/cours.',
@@ -363,6 +374,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#6B7F82',
     colorLight: '#D1E0DE',
     image: imgViolon,
+    imagePosition: '62% 52%',
     metaTitle: 'Cours de violon à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de violon à Laval pour enfants et adultes. Violon classique et contemporain avec nos professeurs qualifiés à Sainte-Rose. Méthode Suzuki disponible. Dès 34$/cours.',
@@ -444,6 +456,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#5C5F52',
     colorLight: '#E3E5DA',
     image: imgBasse,
+    imagePosition: '55% 48%',
     metaTitle: 'Cours de basse à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de basse électrique à Laval pour enfants et adultes, débutants et avancés. Groove, lecture, jeu en groupe avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
@@ -525,6 +538,8 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     color: '#6E7A64',
     colorLight: '#E6EADF',
     image: imgUkulele,
+    imagePosition: '50% 55%',
+    imageFlip: true,
     metaTitle: 'Cours de ukulélé à Laval | École le Studio — Sainte-Rose',
     metaDescription:
       'Cours de ukulélé à Laval pour enfants et adultes. Un instrument facile d’approche, des chansons dès le premier cours, avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
@@ -726,9 +741,11 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         >
           {/* Background image at 30% opacity */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover"
             style={{
               backgroundImage: `url(${data.image})`,
+              backgroundPosition: data.imagePosition,
+              transform: data.imageFlip ? 'scaleX(-1)' : undefined,
               opacity: 0.3,
               mixBlendMode: 'overlay',
             }}
