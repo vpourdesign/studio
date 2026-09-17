@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
 import heroPiano from './assets/photos/hero-piano-queue-1920w.webp'
 import heroPianoSmall from './assets/photos/hero-piano-queue-1280w.webp'
-import heroGuitares from './assets/photos/hero-guitares-1920w.webp'
-import heroGuitaresSmall from './assets/photos/hero-guitares-1280w.webp'
+import heroGuitaristes from './assets/photos/hero-guitaristes-1920w.webp'
+import heroGuitaristesSmall from './assets/photos/hero-guitaristes-1280w.webp'
 import imgPiano from './assets/piano.png'
 import imgChant from './assets/chant.png'
 import imgGuitare from './assets/guitare.png'
@@ -338,9 +338,9 @@ const heroSlides = [
     alt: "Studio de piano à queue de l'École le Studio, à Sainte-Rose, Laval",
   },
   {
-    src: heroGuitares,
-    srcSmall: heroGuitaresSmall,
-    alt: "Local de guitare et de basse de l'École le Studio, à Sainte-Rose, Laval",
+    src: heroGuitaristes,
+    srcSmall: heroGuitaristesSmall,
+    alt: "Deux guitaristes en cours à l'École le Studio, à Sainte-Rose, Laval",
   },
 ]
 
