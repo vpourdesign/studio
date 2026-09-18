@@ -45,7 +45,7 @@ const faqCategories = [
       },
       {
         question: 'Dois-je avoir mon propre instrument pour suivre des cours ?',
-        answer: 'Pour progresser efficacement, il est recommandé d\'avoir accès à un instrument pour pratiquer à la maison. Cependant, si vous débutez et que vous n\'êtes pas encore sûr de votre choix, nos professeurs peuvent vous guider dans le choix et l\'achat d\'un instrument adapté à votre budget. Pour la batterie, un pad de pratique peut suffire au début. Des options de location d\'instruments existent également chez nos partenaires locaux.',
+        answer: 'Pour progresser efficacement, il est recommandé d\'avoir accès à un instrument pour pratiquer à la maison. Cependant, si vous débutez et que vous n\'êtes pas encore sûr de votre choix, nos professeurs peuvent vous guider dans le choix et l\'achat d\'un instrument adapté à votre budget. Pour la batterie, un pad de pratique peut suffire au début. Nous offrons aussi la location de guitares et de basses à partir de 30 $ par mois : voyez la section Location d\'instruments de notre page tarifs.',
       },
       {
         question: 'Comment choisir le bon instrument de musique ?',

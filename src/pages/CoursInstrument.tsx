@@ -711,13 +711,13 @@ export default function CoursInstrument({ slug }: { slug: string }) {
 
   return (
     <div className="bg-cream min-h-screen pt-28 pb-20">
-      <SEO title={data.metaTitle} description={data.metaDescription} path={`/cours/${data.slug}`} />
+      <SEO title={data.metaTitle} description={data.metaDescription} path={`/cours-de-${data.slug}`} />
       <CourseSchema
         name={`Cours de ${data.name.toLowerCase()}`}
         instrument={data.name}
         description={data.metaDescription}
         price="34"
-        path={`/cours/${data.slug}`}
+        path={`/cours-de-${data.slug}`}
       />
       <FAQSchema questions={data.faq} />
 
@@ -725,8 +725,8 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         {/* ─── Breadcrumbs ─── */}
         <Breadcrumbs
           items={[
-            { name: 'Nos cours', url: '/cours' },
-            { name: `Cours de ${data.name.toLowerCase()}`, url: `/cours/${data.slug}` },
+            { name: 'Nos cours', url: '/#cours' },
+            { name: `Cours de ${data.name.toLowerCase()}`, url: `/cours-de-${data.slug}` },
           ]}
         />
 
@@ -1131,7 +1131,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             {otherInstruments.map((inst) => (
               <Link
                 key={inst.slug}
-                to={`/cours/${inst.slug}`}
+                to={`/cours-de-${inst.slug}`}
                 className="group bg-white rounded-2xl p-6 border border-marine/8 hover:border-violet/30 transition-all duration-300 hover:-translate-y-1"
                 style={{
                   boxShadow: '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',

@@ -31,10 +31,13 @@ const NosLocaux = lazy(() => import('./pages/NosLocaux'))
 
 /* ─── Scroll to top on route change ─── */
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    // Un lien comme /#cours vise une section : on y défile au lieu de remonter en haut.
+    const target = hash ? document.getElementById(hash.slice(1)) : null
+    if (target) target.scrollIntoView()
+    else window.scrollTo(0, 0)
+  }, [pathname, hash])
   return null
 }
 

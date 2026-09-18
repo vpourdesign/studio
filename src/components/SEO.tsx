@@ -11,6 +11,16 @@ const ADDRESS = {
   country: 'CA',
 }
 
+const COURSES = [
+  { name: 'Cours de piano', path: '/cours-de-piano', description: 'Cours de piano privés pour enfants dès 4 ans et adultes à Laval' },
+  { name: 'Cours de chant', path: '/cours-de-chant', description: 'Cours de chant et technique vocale dès 5 ans à Laval' },
+  { name: 'Cours de guitare', path: '/cours-de-guitare', description: 'Cours de guitare acoustique, électrique et classique dès 6 ans à Laval' },
+  { name: 'Cours de batterie', path: '/cours-de-batterie', description: 'Cours de batterie dès 5 ans à Laval' },
+  { name: 'Cours de violon', path: '/cours-de-violon', description: 'Cours de violon classique et contemporain dès 4 ans à Laval' },
+  { name: 'Cours de ukulélé', path: '/cours-de-ukulele', description: 'Cours de ukulélé pour enfants et adultes à Laval' },
+  { name: 'Cours de basse', path: '/cours-de-basse', description: 'Cours de basse électrique pour enfants et adultes à Laval' },
+]
+
 interface SEOProps {
   title: string
   description: string
@@ -61,7 +71,13 @@ export function LocalBusinessSchema() {
     '@type': ['MusicSchool', 'LocalBusiness'],
     '@id': `${BASE_URL}/#organization`,
     name: 'École le Studio',
-    alternateName: 'École de Guitare Benoit Girard',
+    // « Le Studio École de musique » est le nom exact de la fiche Google : le déclarer aide Google
+    // et les IA à relier le site et la fiche à la même entité.
+    alternateName: ['Le Studio École de musique', 'École de Guitare Benoit Girard'],
+    image: `${BASE_URL}/og-default.jpg`,
+    logo: `${BASE_URL}/favicon.svg`,
+    hasMap: 'https://www.google.com/maps/search/?api=1&query=Le+Studio+%C3%89cole+de+musique+191B+boulevard+Sainte-Rose+Laval',
+    knowsLanguage: ['fr', 'en'],
     description: "École de musique à Sainte-Rose, Laval offrant des cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour tous les âges depuis plus de 20 ans. Plus de 30 professeurs qualifiés et 425 élèves actifs.",
     url: BASE_URL,
     telephone: PHONE,
@@ -92,6 +108,9 @@ export function LocalBusinessSchema() {
       { '@type': 'Place', name: 'Vimont' },
       { '@type': 'Place', name: 'Chomedey' },
       { '@type': 'Place', name: 'Rosemère' },
+      { '@type': 'Place', name: 'Lorraine' },
+      { '@type': 'Place', name: 'Bois-des-Filion' },
+      { '@type': 'Place', name: 'Boisbriand' },
       { '@type': 'Place', name: 'Sainte-Thérèse' },
       { '@type': 'Place', name: 'Sainte-Dorothée' },
     ],
@@ -106,7 +125,7 @@ export function LocalBusinessSchema() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '47',
+      reviewCount: '43',
       bestRating: '5',
     },
     sameAs: [
@@ -116,13 +135,12 @@ export function LocalBusinessSchema() {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Cours de musique',
-      itemListElement: [
-        { '@type': 'Offer', itemOffered: { '@type': 'Course', name: 'Cours de piano', description: 'Cours de piano pour enfants et adultes à Laval' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Course', name: 'Cours de guitare', description: 'Cours de guitare pour débutants et avancés à Laval' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Course', name: 'Cours de chant', description: 'Cours de chant et technique vocale à Laval' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Course', name: 'Cours de batterie', description: 'Cours de batterie et percussion à Laval' } },
-        { '@type': 'Offer', itemOffered: { '@type': 'Course', name: 'Cours de violon', description: 'Cours de violon classique et contemporain à Laval' } },
-      ],
+      itemListElement: COURSES.map((c) => ({
+        '@type': 'Offer',
+        price: '34',
+        priceCurrency: 'CAD',
+        itemOffered: { '@type': 'Course', name: c.name, description: c.description, url: `${BASE_URL}${c.path}` },
+      })),
     },
   }
 

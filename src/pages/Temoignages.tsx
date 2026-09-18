@@ -106,7 +106,7 @@ function ReviewSchema() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '4.9',
-      reviewCount: '47',
+      reviewCount: '43',
       bestRating: '5',
       worstRating: '1',
     },
@@ -187,7 +187,7 @@ export default function Temoignages() {
                 className="font-display font-bold text-coral"
                 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
               >
-                47+
+                43
               </p>
               <p className="text-marine font-semibold text-sm mt-1 mb-1">Avis Google</p>
               <p className="text-slate text-sm">Tous vérifiés</p>
