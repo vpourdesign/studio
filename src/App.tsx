@@ -117,13 +117,13 @@ function IconUkulele({ className = '' }: { className?: string }) {
 /* ─── Mega Menu Content ─── */
 function MegaMenu() {
   const instruments = [
-    { name: 'Guitare', Icon: IconGuitar, to: '/cours-de-guitare' },
     { name: 'Piano', Icon: IconPiano, to: '/cours-de-piano' },
     { name: 'Chant', Icon: IconMic, to: '/cours-de-chant' },
-    { name: 'Violon', Icon: IconViolin, to: '/cours-de-violon' },
+    { name: 'Guitare', Icon: IconGuitar, to: '/cours-de-guitare' },
     { name: 'Batterie', Icon: IconDrums, to: '/cours-de-batterie' },
-    { name: 'Basse', Icon: IconBass, to: '/cours-de-basse' },
+    { name: 'Violon', Icon: IconViolin, to: '/cours-de-violon' },
     { name: 'Ukulélé', Icon: IconUkulele, to: '/cours-de-ukulele' },
+    { name: 'Basse', Icon: IconBass, to: '/cours-de-basse' },
   ]
   return (
     <div className="absolute top-full left-0 right-0 z-50" style={{ marginTop: 0 }}>
@@ -331,12 +331,12 @@ function Navigation() {
         <div className="md:hidden bg-white border-t border-lavender/50 px-6 py-6 space-y-4">
           {[
             { label: 'Cours de piano', to: '/cours-de-piano' },
-            { label: 'Cours de guitare', to: '/cours-de-guitare' },
             { label: 'Cours de chant', to: '/cours-de-chant' },
+            { label: 'Cours de guitare', to: '/cours-de-guitare' },
             { label: 'Cours de batterie', to: '/cours-de-batterie' },
             { label: 'Cours de violon', to: '/cours-de-violon' },
-            { label: 'Cours de basse', to: '/cours-de-basse' },
             { label: 'Cours de ukulélé', to: '/cours-de-ukulele' },
+            { label: 'Cours de basse', to: '/cours-de-basse' },
             { label: 'Nos professeurs', to: '/nos-professeurs' },
             { label: 'Nos locaux', to: '/nos-locaux' },
             { label: 'Tarifs', to: '/tarifs' },
@@ -472,13 +472,13 @@ function Hero() {
 
 /* ─── Course Cards ─── */
 const courses = [
+  { name: 'Piano', img: imgPiano, color: '#525266', slug: 'piano' },
+  { name: 'Chant', img: imgChant, color: '#8A8A6E', slug: 'chant' },
+  { name: 'Guitare', img: imgGuitare, color: '#4D5C60', slug: 'guitare' },
   { name: 'Batterie', img: imgBatterie, color: '#383838', slug: 'batterie' },
   { name: 'Violon', img: imgViolon, color: '#6B7F82', slug: 'violon' },
-  { name: 'Guitare', img: imgGuitare, color: '#4D5C60', slug: 'guitare' },
-  { name: 'Chant', img: imgChant, color: '#8A8A6E', slug: 'chant' },
-  { name: 'Piano', img: imgPiano, color: '#525266', slug: 'piano' },
-  { name: 'Basse', img: imgBasse, color: '#5C5F52', slug: 'basse' },
   { name: 'Ukulélé', img: imgUkulele, color: '#6E7A64', slug: 'ukulele' },
+  { name: 'Basse', img: imgBasse, color: '#5C5F52', slug: 'basse' },
 ]
 
 function CoursesGrid() {

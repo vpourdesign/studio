@@ -46,12 +46,12 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: 'Cours de piano', to: '/cours-de-piano' },
-                { label: 'Cours de guitare', to: '/cours-de-guitare' },
                 { label: 'Cours de chant', to: '/cours-de-chant' },
+                { label: 'Cours de guitare', to: '/cours-de-guitare' },
                 { label: 'Cours de batterie', to: '/cours-de-batterie' },
                 { label: 'Cours de violon', to: '/cours-de-violon' },
-                { label: 'Cours de basse', to: '/cours-de-basse' },
                 { label: 'Cours de ukulélé', to: '/cours-de-ukulele' },
+                { label: 'Cours de basse', to: '/cours-de-basse' },
               ].map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="text-sm hover:text-yellow transition-colors duration-300">{link.label}</Link>
