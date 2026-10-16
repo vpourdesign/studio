@@ -71,7 +71,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '75% 68%',
     metaTitle: 'Cours de piano à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de piano à Laval pour enfants et adultes, débutants et avancés. Apprenez le piano avec nos professeurs qualifiés à Sainte-Rose. Classique, jazz, pop, blues. Dès 34$/cours.',
+      'Cours de piano à Laval pour enfants et adultes, débutants et avancés. Apprenez le piano avec nos professeurs qualifiés à Sainte-Rose. Classique, jazz, pop, blues.',
     h1: 'Cours de piano à Laval',
     heroSubtitle:
       'Apprenez le piano dans un environnement chaleureux et personnalisé, avec des professeurs passionnés qui s\u2019adaptent à votre rythme et vos objectifs musicaux.',
@@ -155,7 +155,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '50% 62%',
     metaTitle: 'Cours de guitare à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de guitare à Laval pour tous les niveaux. Guitare acoustique, électrique, classique. Apprenez la guitare avec nos professeurs qualifiés à Sainte-Rose. Dès 34$/cours.',
+      'Cours de guitare à Laval pour tous les niveaux. Guitare acoustique, électrique, classique. Apprenez la guitare avec nos professeurs qualifiés à Sainte-Rose.',
     h1: 'Cours de guitare à Laval',
     heroSubtitle:
       'Acoustique, électrique ou classique : apprenez la guitare avec des professeurs passionnés qui vous guident vers le style qui vous fait vibrer.',
@@ -239,7 +239,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '62% 38%',
     metaTitle: 'Cours de chant à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de chant et technique vocale à Laval pour tous les niveaux. Développez votre voix avec nos professeurs qualifiés à Sainte-Rose. Pop, jazz, classique, comédie musicale. Dès 34$/cours.',
+      'Cours de chant et technique vocale à Laval pour tous les niveaux. Développez votre voix avec nos professeurs qualifiés à Sainte-Rose. Pop, jazz, classique, comédie musicale.',
     h1: 'Cours de chant à Laval',
     heroSubtitle:
       'Libérez votre voix et développez votre technique vocale avec des professeurs qui vous aident à trouver votre son unique et votre confiance artistique.',
@@ -324,7 +324,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imageFlip: true,
     metaTitle: 'Cours de batterie à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de batterie à Laval pour enfants et adultes. Apprenez la batterie avec nos professeurs qualifiés à Sainte-Rose. Rock, jazz, funk, latin. Dès 34$/cours.',
+      'Cours de batterie à Laval pour enfants et adultes. Apprenez la batterie avec nos professeurs qualifiés à Sainte-Rose. Rock, jazz, funk, latin.',
     h1: 'Cours de batterie à Laval',
     heroSubtitle:
       'Développez votre sens du rythme et votre coordination avec des professeurs passionnés qui vous initient à la batterie dans une ambiance dynamique et motivante.',
@@ -408,7 +408,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '62% 52%',
     metaTitle: 'Cours de violon à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de violon à Laval pour enfants et adultes. Violon classique et contemporain avec nos professeurs qualifiés à Sainte-Rose. Méthode Suzuki disponible. Dès 34$/cours.',
+      'Cours de violon à Laval pour enfants et adultes. Violon classique et contemporain avec nos professeurs qualifiés à Sainte-Rose. Méthode Suzuki disponible.',
     h1: 'Cours de violon à Laval',
     heroSubtitle:
       'Découvrez la beauté et l\u2019expressivité du violon avec des professeurs dévoués qui vous accompagnent dans la maîtrise de cet instrument noble et exigeant.',
@@ -492,7 +492,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '55% 48%',
     metaTitle: 'Cours de basse à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de basse électrique à Laval pour enfants et adultes, débutants et avancés. Groove, lecture, jeu en groupe avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
+      'Cours de basse électrique à Laval pour enfants et adultes, débutants et avancés. Groove, lecture, jeu en groupe avec nos professeurs à Sainte-Rose.',
     h1: 'Cours de basse à Laval',
     heroSubtitle:
       'L’instrument qui tient la chanson debout. Apprenez la basse électrique avec des professeurs qui jouent sur scène, dans un local équipé d’amplis et de basses.',
@@ -577,7 +577,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imageFlip: true,
     metaTitle: 'Cours de ukulélé à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de ukulélé à Laval pour enfants et adultes. Un instrument facile d’approche, des chansons dès le premier cours, avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
+      'Cours de ukulélé à Laval pour enfants et adultes. Un instrument facile d’approche, des chansons dès le premier cours, avec nos professeurs à Sainte-Rose.',
     h1: 'Cours de ukulélé à Laval',
     heroSubtitle:
       'Quatre cordes, une chanson complète dès le premier cours. Le ukulélé est l’instrument le plus accueillant pour commencer la musique, à 6 ans comme à 70 ans.',
@@ -861,7 +861,6 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         ['Âge', `${data.age}, adultes bienvenus`],
         ['Format', 'Cours privés, un élève et un prof'],
         ['Durée', '30, 45 ou 60 minutes'],
-        ['Tarif', 'Dès 34 $ par cours'],
         ['Horaire', '7 jours sur 7'],
         ['Lieu', '191B boul. Sainte-Rose, Laval'],
       ]
@@ -1404,7 +1403,8 @@ export default function CoursInstrument({ slug }: { slug: string }) {
           </div>
         </section>
 
-        {/* ─── Internal Links to Other Instruments ─── */}
+        {/* ─── Les autres cours : cartes photo. Défilement horizontal sur
+             mobile et tablette, une rangée de 7 sur grand écran. ─── */}
         <section>
           <h2
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-8"
@@ -1413,38 +1413,39 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             Découvrez aussi nos autres cours
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <ul className="-mx-5 md:-mx-8 lg:mx-0 px-5 md:px-8 lg:px-0 flex lg:grid lg:grid-cols-7 gap-3 md:gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory scroll-px-5 md:scroll-px-8 pb-2 lg:pb-0 [scrollbar-width:none]">
             {otherInstruments.map((inst) => (
-              <Link
-                key={inst.slug}
-                to={coursePath(inst)}
-                className="group bg-white rounded-2xl p-6 border border-marine/8 hover:border-violet/30 transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  boxShadow: '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',
-                  transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-                }}
-              >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 overflow-hidden"
-                  style={{ backgroundColor: `${inst.color}12` }}
+              <li key={inst.slug} className="snap-start shrink-0 w-[42vw] sm:w-[28vw] md:w-[22vw] lg:w-auto">
+                <Link
+                  to={coursePath(inst)}
+                  className="group relative block overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                  style={{ aspectRatio: '3 / 4', backgroundColor: inst.color }}
                 >
-                  <img
-                    src={inst.image}
-                    alt=""
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <h3 className="font-display font-bold text-marine text-sm mb-1 group-hover:text-violet transition-colors duration-300">
-                  {inst.courseLabel ?? `Cours de ${inst.name.toLowerCase()}`}
-                </h3>
-                <p className="text-marine/50 text-xs leading-relaxed">
-                  {inst.cardMeta ?? 'Dès 34$/cours · Tous niveaux'}
-                </p>
-              </Link>
+                  {/* Le miroir est sur l'enveloppe pour laisser le zoom au survol sur l'image. */}
+                  <div className="absolute inset-0" style={{ transform: inst.imageFlip ? 'scaleX(-1)' : undefined }}>
+                    <img
+                      src={inst.image}
+                      alt=""
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: inst.imagePosition, transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-4">
+                    <h3
+                      className="font-display font-extrabold text-white leading-[1.1] tracking-[-0.01em]"
+                      style={{ fontSize: 'clamp(1rem, 1.4vw, 1.125rem)' }}
+                    >
+                      {inst.name}
+                    </h3>
+                    <p className="text-white/75 text-xs mt-1">{inst.age}</p>
+                  </div>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </div>
     </div>

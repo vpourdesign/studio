@@ -159,7 +159,7 @@ export default function Tarifs() {
     <div className="bg-cream min-h-screen pt-28 pb-20">
       <SEO
         title="Tarifs des cours de musique à Laval | École le Studio — Sainte-Rose"
-        description="Consultez les tarifs des cours de musique à l'École le Studio, Sainte-Rose, Laval. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé dès 34$/cours. Inscription ouverte toute l'année."
+        description="Consultez les tarifs des cours de musique à l'École le Studio, Sainte-Rose, Laval. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé. Inscription ouverte toute l'année."
         path="/tarifs"
       />
       <FAQSchema questions={faqItems} />
