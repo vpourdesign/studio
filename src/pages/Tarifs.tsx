@@ -54,21 +54,18 @@ const sessions = [
     name: 'Automne',
     period: 'Septembre – Décembre',
     weeks: '14 semaines',
-    icon: '🍂',
     note: null,
   },
   {
     name: 'Hiver',
     period: 'Janvier – Mai',
     weeks: '22 semaines',
-    icon: '❄️',
     note: null,
   },
   {
     name: 'Été',
     period: 'Juin – Août',
     weeks: '8 semaines',
-    icon: '☀️',
     note: 'Cours à la carte disponibles durant la session d\u2019été.',
   },
 ]
@@ -416,7 +413,7 @@ export default function Tarifs() {
         </section>
 
         {/* ─── Sessions Calendar — Keylime bg ─── */}
-        <section className="mb-16 md:mb-24 -mx-6 md:-mx-12 xl:-mx-16 px-6 md:px-12 xl:px-16 py-16 md:py-24 bg-yellow rounded-3xl">
+        <section className="mb-16 md:mb-24 -mx-5 md:-mx-8 px-5 md:px-8 py-14 md:py-24 bg-yellow md:rounded-3xl">
           <h2
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
@@ -424,27 +421,26 @@ export default function Tarifs() {
             Calendrier des sessions
           </h2>
           <p className="text-marine/60 mb-8 max-w-2xl" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
-            L'inscription est ouverte toute l'année. Vous pouvez commencer en cours de session — vous ne serez facturé que pour les leçons suivies.
+            L'inscription est ouverte toute l'année. Vous pouvez commencer en cours de session : vous ne serez facturé que pour les leçons suivies.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {sessions.map((session) => (
               <div
                 key={session.name}
-                className="bg-white rounded-2xl p-6 md:p-7 border border-marine/8 text-center"
+                className="bg-white rounded-2xl p-5 md:p-7 border border-marine/8 sm:text-center grid grid-cols-[1fr_auto] sm:block items-baseline gap-x-4"
                 style={{
                   boxShadow:
                     '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',
                 }}
               >
-                <span className="text-3xl mb-3 block">{session.icon}</span>
                 <h3 className="font-display font-extrabold text-marine text-lg mb-1">
                   {session.name}
                 </h3>
                 <p className="text-marine/60 text-sm font-medium mb-1">{session.period}</p>
-                <p className="text-violet font-bold text-sm">{session.weeks}</p>
+                <p className="text-violet font-bold text-sm row-start-1 col-start-2 sm:row-auto" style={{ fontVariantNumeric: 'tabular-nums' }}>{session.weeks}</p>
                 {session.note && (
-                  <p className="mt-3 text-marine/60 text-sm leading-snug">{session.note}</p>
+                  <p className="col-span-2 mt-3 text-marine/60 text-sm leading-snug">{session.note}</p>
                 )}
               </div>
             ))}

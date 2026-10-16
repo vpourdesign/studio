@@ -38,7 +38,7 @@ function FaqItem({ item }: { item: typeof faqItems[0] }) {
     <div className="border-b border-lavender/50 py-5">
       <button
         onClick={() => setOpen(!open)}
-        className="group w-full flex items-center justify-between gap-4 text-left"
+        className="group w-full min-h-[44px] flex items-center justify-between gap-4 text-left"
       >
         <span className="font-display font-semibold text-marine text-base md:text-lg transition-colors duration-200 group-hover:text-violet">
           {item.q}
@@ -83,7 +83,7 @@ export default function Inscription() {
           <div className="absolute bottom-0 left-1/4 w-48 h-48 rounded-full bg-coral/10 blur-3xl" />
 
           <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12 xl:px-16 pt-28 pb-16 md:pt-36 md:pb-20">
-            <Breadcrumbs items={[{ name: 'Inscription', url: '/inscription' }]} />
+            <Breadcrumbs tone="light" items={[{ name: 'Inscription', url: '/inscription' }]} />
             <h1
               className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.03em]"
               style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
@@ -103,10 +103,7 @@ export default function Inscription() {
             {/* ─── Left Column: Form ─── */}
             <div className="lg:col-span-2">
               <div
-                className="bg-white rounded-2xl p-4 md:p-6 lg:p-8"
-                style={{
-                  boxShadow: '0 1px 2px oklch(30% 0.2 250 / 0.05), 0 4px 12px oklch(30% 0.2 250 / 0.06), 0 16px 40px oklch(30% 0.2 250 / 0.04)',
-                }}
+                className="-mx-2 sm:mx-0 md:bg-white rounded-2xl md:p-6 lg:p-8 md:[box-shadow:0_1px_2px_oklch(30%_0.2_250/0.05),0_4px_12px_oklch(30%_0.2_250/0.06),0_16px_40px_oklch(30%_0.2_250/0.04)]"
               >
                 <MyMusicStaffForm />
               </div>
@@ -124,14 +121,14 @@ export default function Inscription() {
                 <h3 className="font-display font-bold text-marine text-lg mb-5">Pourquoi le Studio ?</h3>
                 <ul className="space-y-4">
                   {[
-                    { icon: '🎵', text: 'Inscription pour la session complète' },
-                    { icon: '👨‍🏫', text: 'Plus de 30 professeurs qualifiés' },
-                    { icon: '📅', text: 'Inscription possible en tout temps' },
-                    { icon: '🎯', text: 'Cours personnalisés pour tous les niveaux' },
-                    { icon: '🏠', text: 'À Sainte-Rose depuis plus de 20 ans' },
+                    { text: 'Inscription pour la session complète' },
+                    { text: 'Plus de 30 professeurs qualifiés' },
+                    { text: 'Inscription possible en tout temps' },
+                    { text: 'Cours personnalisés pour tous les niveaux' },
+                    { text: 'À Sainte-Rose depuis plus de 20 ans' },
                   ].map((item) => (
                     <li key={item.text} className="flex items-start gap-3">
-                      <span className="text-lg">{item.icon}</span>
+                      <svg className="w-5 h-5 shrink-0 mt-px text-marine" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                       <span className="text-sm text-slate leading-relaxed">{item.text}</span>
                     </li>
                   ))}

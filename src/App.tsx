@@ -228,8 +228,16 @@ function Navigation() {
     return () => document.removeEventListener('click', handleClickOutside)
   }, [])
 
-  // On non-home pages, nav is always solid
-  const isTransparent = isHome && !scrolled
+  // Menu mobile ouvert : la page dessous ne défile plus.
+  useEffect(() => {
+    if (!mobileOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = prev }
+  }, [mobileOpen])
+
+  // On non-home pages, nav is always solid. Menu mobile ouvert : solide aussi.
+  const isTransparent = isHome && !scrolled && !mobileOpen
 
   return (
     <nav
@@ -245,7 +253,7 @@ function Navigation() {
     >
       {/* Utility info bar — visible only when scrolled or on inner pages */}
       <div
-        className={`overflow-hidden transition-all duration-500 ${
+        className={`hidden md:block overflow-hidden transition-all duration-500 ${
           !isTransparent ? 'max-h-10 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -272,7 +280,7 @@ function Navigation() {
           <span className={`font-display font-bold text-xl md:text-2xl tracking-tight transition-colors duration-500 ${isTransparent ? 'text-white' : 'text-marine'}`}>
             Le Studio
           </span>
-          <span className="w-2 h-2 rounded-full bg-coral" />
+          <span className={`w-2 h-2 rounded-full transition-colors duration-500 ${isTransparent ? 'bg-coral' : 'bg-teal'}`} />
         </Link>
 
         {/* Desktop Nav Links */}
@@ -326,11 +334,12 @@ function Navigation() {
 
         {/* Mobile Toggle */}
         <button
-          className={`md:hidden p-2 rounded-full transition-all duration-300 ${
+          className={`md:hidden w-11 h-11 flex items-center justify-center rounded-full transition-colors duration-300 ${
             isTransparent ? 'bg-white/15 backdrop-blur-sm text-white border border-white/20' : 'text-marine'
           }`}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
+          aria-label={mobileOpen ? 'Fermer le menu' : 'Menu'}
+          aria-expanded={mobileOpen}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             {mobileOpen ? (
@@ -342,30 +351,59 @@ function Navigation() {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer : les cours en grille compacte, l'école en deux colonnes,
+          l'inscription et l'appel toujours atteignables (le tiroir défile s'il le faut). */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-t border-lavender/50 px-6 py-6 space-y-4">
-          {[
-            { label: 'Cours de piano', to: '/cours-de-piano' },
-            { label: 'Cours de chant', to: '/cours-de-chant' },
-            { label: 'Cours de guitare', to: '/cours-de-guitare' },
-            { label: 'Cours de batterie', to: '/cours-de-batterie' },
-            { label: 'Cours de violon', to: '/cours-de-violon' },
-            { label: 'Cours de ukulélé', to: '/cours-de-ukulele' },
-            { label: 'Cours de basse', to: '/cours-de-basse' },
-            { label: 'Éveil musical', to: '/eveil-musical' },
-            { label: 'Nos professeurs', to: '/nos-professeurs' },
-            { label: 'Nos locaux', to: '/nos-locaux' },
-            { label: 'Tarifs', to: '/tarifs' },
-            { label: 'Témoignages', to: '/temoignages' },
-            { label: 'FAQ', to: '/faq' },
-            { label: 'Nous joindre', to: '/nous-joindre' },
-          ].map((item) => (
-            <Link key={item.label} to={item.to} className="block font-inter font-medium text-marine text-base py-2 border-b border-lavender/30 transition-colors duration-200 hover:text-violet">{item.label}</Link>
-          ))}
-          <Link to="/inscription" className="block bg-marine text-white font-medium text-center py-3 rounded-md mt-4 transition-colors duration-200 hover:bg-violet">
-            Inscription
-          </Link>
+        <div className="md:hidden bg-white border-t border-marine/10 h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain px-6 pt-5 pb-8">
+          <p className="text-slate font-semibold uppercase tracking-[0.14em] text-xs mb-3">Nos cours</p>
+          <ul className="grid grid-cols-2 gap-2">
+            {courses.map((c) => (
+              <li key={c.slug}>
+                <Link
+                  to={courseTo(c)}
+                  className="flex items-center min-h-[48px] px-4 rounded-xl bg-cream text-marine font-semibold text-[0.9375rem] transition-colors duration-200 active:bg-lavender focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                >
+                  {c.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="text-slate font-semibold uppercase tracking-[0.14em] text-xs mt-7 mb-1">L’école</p>
+          <ul className="grid grid-cols-2 gap-x-5">
+            {[
+              { label: 'Nos professeurs', to: '/nos-professeurs' },
+              { label: 'Nos locaux', to: '/nos-locaux' },
+              { label: 'Tarifs', to: '/tarifs' },
+              { label: 'Témoignages', to: '/temoignages' },
+              { label: 'FAQ', to: '/faq' },
+              { label: 'Nous joindre', to: '/nous-joindre' },
+            ].map((item) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  className="flex items-center min-h-[48px] text-marine font-medium text-[0.9375rem] border-b border-marine/8 transition-colors duration-200 active:text-violet focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-7 grid grid-cols-[1fr_auto] gap-3">
+            <Link
+              to="/inscription"
+              className="flex items-center justify-center gap-2 min-h-[52px] bg-marine text-white font-semibold rounded-xl transition-colors duration-200 active:bg-violet focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+            >
+              S’inscrire
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+            </Link>
+            <a
+              href="tel:5146777713"
+              aria-label="Appeler l’école au 514-677-7713"
+              className="flex items-center justify-center w-[52px] rounded-xl border border-marine/20 text-marine transition-colors duration-200 active:bg-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+            </a>
+          </div>
         </div>
       )}
     </nav>
@@ -431,7 +469,7 @@ function Hero() {
       {/* Bottom-left white cutout */}
       <div className="absolute bottom-0 left-0 z-20">
         <div className="relative">
-          <div className="bg-cream px-5 md:px-8 pt-5 pb-6 md:pt-6 md:pb-7 max-w-[19rem] md:max-w-sm lg:max-w-md rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <div className="bg-cream px-5 md:px-8 pt-5 pb-6 md:pt-6 md:pb-7 max-w-[21rem] md:max-w-sm lg:max-w-md rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <h2
               className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-2"
               style={{ fontSize: 'clamp(1.25rem, 2.6vw, 1.85rem)' }}
@@ -454,7 +492,7 @@ function Hero() {
       </div>
 
       {/* Bottom-right floating CTA pill */}
-      <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-20">
+      <div className="hidden md:block absolute bottom-8 right-8 z-20">
         <Link
           to="/inscription"
           className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-6 py-3 rounded-full transition-all duration-300 hover:bg-violet-dark hover:-translate-y-0.5 hover:shadow-lg hover:shadow-marine/30"
@@ -480,9 +518,6 @@ function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-white/40 text-xs font-inter italic">
-        scroll down
-      </div>
     </section>
   )
 }
@@ -517,24 +552,12 @@ function CoursesGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-4 md:mb-5">
-          {courses.slice(0, 3).map((course) => (
-            <CourseCard key={course.name} course={course} tall />
-          ))}
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-5">
-          {courses.slice(3).map((course, i, rest) => (
-            <div
-              key={course.name}
-              className={
-                i < 3
-                  ? 'lg:col-span-2'
-                  : i === rest.length - 1 && rest.length % 2 === 1
-                    ? 'sm:col-span-2 lg:col-span-3'
-                    : 'lg:col-span-3'
-              }
-            >
-              <CourseCard course={course} tall={false} />
+        {/* Une seule grille : 2 colonnes sur mobile et tablette (4 rangées), et sur grand
+            écran 3 grandes cartes, puis 3, puis 2 en demi-largeur. */}
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5">
+          {courses.map((course, i) => (
+            <div key={course.name} className={i < 6 ? 'lg:col-span-2' : 'lg:col-span-3'}>
+              <CourseCard course={course} tall={i < 3} />
             </div>
           ))}
         </div>
@@ -548,7 +571,7 @@ function CourseCard({ course, tall }: { course: typeof courses[0]; tall: boolean
     <Link
       to={courseTo(course)}
       className="group relative block overflow-hidden rounded-2xl"
-      style={{ height: tall ? 'clamp(280px, 30vw, 380px)' : 'clamp(240px, 25vw, 320px)', backgroundColor: course.color }}
+      style={{ height: tall ? 'clamp(200px, 30vw, 380px)' : 'clamp(200px, 25vw, 320px)', backgroundColor: course.color }}
     >
       <img
         src={course.img}
@@ -561,10 +584,10 @@ function CourseCard({ course, tall }: { course: typeof courses[0]; tall: boolean
         height={601}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-      <div className="absolute bottom-0 left-0 p-6 md:p-8 z-10">
+      <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8 z-10">
         <h3
           className="font-display font-extrabold text-white leading-[1.05] tracking-[-0.02em]"
-          style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)' }}
+          style={{ fontSize: 'clamp(1.2rem, 3vw, 2.5rem)' }}
         >
           {course.name}
         </h3>
@@ -611,8 +634,8 @@ function HomeSEOContent() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-16">
           <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
-            <p className="text-slate font-semibold uppercase tracking-[0.14em] mb-5" style={{ fontSize: 'clamp(0.75rem, 1vw, 0.8125rem)' }}>
-              Sainte-Rose, Laval · depuis plus de 20 ans
+            <p className="text-slate font-semibold uppercase tracking-[0.14em] mb-5 text-balance" style={{ fontSize: 'clamp(0.75rem, 1vw, 0.8125rem)' }}>
+              Sainte-Rose, Laval · depuis plus de 20&nbsp;ans
             </p>
             <h2
               className="font-display font-extrabold text-marine tracking-[-0.03em] leading-[1.05]"
@@ -629,7 +652,7 @@ function HomeSEOContent() {
             <div className="flex flex-wrap gap-3 mt-8">
               <Link
                 to="/inscription"
-                className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-6 py-3 rounded-lg transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-marine text-white font-semibold text-sm px-6 py-3.5 rounded-lg transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
                 style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
               >
                 S'inscrire maintenant
@@ -637,7 +660,7 @@ function HomeSEOContent() {
               </Link>
               <Link
                 to="/tarifs"
-                className="inline-flex items-center gap-2 text-marine font-semibold text-sm px-6 py-3 rounded-lg border border-marine/25 transition-[background-color,border-color] duration-300 hover:bg-marine/5 hover:border-marine/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                className="inline-flex items-center justify-center gap-2 w-full sm:w-auto text-marine font-semibold text-sm px-6 py-3.5 rounded-lg border border-marine/25 transition-[background-color,border-color] duration-300 hover:bg-marine/5 hover:border-marine/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
               >
                 Voir nos tarifs
               </Link>
@@ -653,7 +676,7 @@ function HomeSEOContent() {
                     <li key={c.slug}>
                       <Link
                         to={courseTo(c)}
-                        className="inline-flex items-center bg-white/70 text-marine font-medium text-sm px-3.5 py-1.5 rounded-full border border-marine/10 transition-[background-color,color,border-color] duration-200 hover:bg-marine hover:text-white hover:border-marine focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                        className="inline-flex items-center bg-white/70 text-marine font-medium text-sm px-4 py-2.5 rounded-full border border-marine/10 transition-[background-color,color,border-color] duration-200 hover:bg-marine hover:text-white hover:border-marine focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
                       >
                         {c.name}
                       </Link>

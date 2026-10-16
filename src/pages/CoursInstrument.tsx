@@ -807,6 +807,11 @@ const plans = [
 
 export default function CoursInstrument({ slug }: { slug: string }) {
   const data = INSTRUMENTS[slug]
+  // Mobile : seul le premier paragraphe est visible, le reste se déplie.
+  // Le texte complet reste dans le HTML prérendu (masqué en CSS seulement).
+  // L'état retient le cours déplié, pour se refermer quand on change de cours.
+  const [deplie, setDeplie] = useState<string | null>(null)
+  const lireSuite = deplie === slug
 
   if (!data) {
     return (
@@ -847,7 +852,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
       ]
     : [
         ['Âge', `${data.age}, adultes bienvenus`],
-        ['Format', 'Cours privés, un élève et un prof'],
+        ['Format', 'Cours privés'],
         ['Durée', '30, 45 ou 60 minutes'],
         ['Horaire', '7 jours sur 7'],
         ['Lieu', '191B boul. Sainte-Rose, Laval'],
@@ -923,7 +928,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
               </Link>
               <a
                 href="tel:5146777713"
-                className="inline-flex items-center justify-center gap-2 text-white/80 font-medium text-sm hover:text-white transition-colors duration-300"
+                className="inline-flex items-center justify-center gap-2 min-h-[44px] text-white/80 font-medium text-sm hover:text-white transition-colors duration-300"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path
@@ -950,7 +955,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             {data.longDescription.map((paragraph, i) => (
               <p
                 key={i}
-                className={i === 0 ? 'text-marine mb-6' : 'text-marine/70 mb-5 last:mb-0'}
+                className={i === 0 ? 'text-marine mb-6' : `text-marine/70 mb-5 last:mb-0 ${lireSuite ? '' : 'hidden lg:block'}`}
                 style={
                   i === 0
                     ? { fontSize: 'clamp(1.0625rem, 1.6vw, 1.25rem)', lineHeight: 1.65 }
@@ -960,11 +965,24 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                 {paragraph}
               </p>
             ))}
+            {data.longDescription.length > 1 && !lireSuite && (
+              <button
+                type="button"
+                onClick={() => setDeplie(slug)}
+                className="lg:hidden inline-flex items-center gap-2 min-h-[44px] text-marine font-display font-bold text-sm underline underline-offset-4 decoration-marine/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+              >
+                Lire la suite
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            )}
           </div>
 
-          <aside className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+          <aside className="order-first lg:order-none lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
             <div className="bg-white rounded-2xl overflow-hidden border border-marine/8">
-              <div className="relative overflow-hidden" style={{ aspectRatio: '16 / 10', backgroundColor: data.color }}>
+              {/* Sur mobile, la fiche suit le hero qui montre déjà cette photo. */}
+              <div className="hidden lg:block relative overflow-hidden" style={{ aspectRatio: '16 / 10', backgroundColor: data.color }}>
                 <img
                   src={data.image}
                   alt={`${courseLabel} à Laval, École le Studio`}
@@ -1017,10 +1035,10 @@ export default function CoursInstrument({ slug }: { slug: string }) {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {data.benefits.map((benefit) => (
+            {data.benefits.map((benefit, i) => (
               <div
                 key={benefit.title}
-                className="bg-white rounded-2xl p-7 border border-marine/8 group hover:border-violet/30 transition-colors duration-300"
+                className="bg-white rounded-2xl p-5 sm:p-7 border border-marine/8 group hover:border-violet/30 transition-colors duration-300"
                 style={{
                   boxShadow:
                     '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',
@@ -1033,16 +1051,9 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                     transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                   }}
                 >
-                  <svg
-                    className="w-5 h-5"
-                    style={{ color: data.color }}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
+                  <span className="font-display font-extrabold text-sm" style={{ color: data.color, fontVariantNumeric: 'tabular-nums' }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                 </div>
                 <h3 className="font-display font-bold text-marine text-sm mb-2">{benefit.title}</h3>
                 <p className="text-marine/55 text-sm leading-relaxed">{benefit.description}</p>
@@ -1189,79 +1200,59 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             l'année.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-5 items-stretch">
-            {plans.map((plan) => (
-              <div
-                key={plan.duration}
-                className={`relative rounded-2xl p-7 md:p-8 transition-transform duration-300 ${
-                  plan.highlighted
-                    ? 'bg-white border-2 border-coral md:scale-105 md:-my-2 z-10'
-                    : 'bg-white border border-marine/8'
-                }`}
-                style={{
-                  boxShadow: plan.highlighted
-                    ? '0 1px 2px oklch(30% 0.2 250 / 0.06), 0 8px 24px oklch(30% 0.15 20 / 0.12), 0 20px 48px oklch(30% 0.15 20 / 0.08)'
-                    : '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',
-                }}
+          {/* Un bloc : les trois durées côte à côte (même sur mobile), et ce qui est
+              inclus, écrit une seule fois au lieu de trois. */}
+          <div className="bg-white rounded-2xl border border-marine/8 overflow-hidden grid grid-cols-1 lg:grid-cols-[1.35fr_1fr]">
+            <div className="p-5 sm:p-7 md:p-8">
+              <ul className="grid grid-cols-3 gap-2 sm:gap-4">
+                {plans.map((plan) => (
+                  <li key={plan.duration} className="rounded-xl bg-cream px-2 py-4 sm:p-5 text-center sm:text-left">
+                    <p className="text-marine/55 text-xs sm:text-sm font-semibold uppercase tracking-[0.08em]">
+                      {plan.duration.replace(' minutes', ' min')}
+                    </p>
+                    <p
+                      className="font-display font-extrabold text-marine leading-none mt-2"
+                      style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontVariantNumeric: 'tabular-nums' }}
+                    >
+                      {plan.price}
+                      <span className="text-base font-bold"> $</span>
+                    </p>
+                    <p className="text-marine/45 text-xs mt-1.5">par cours</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-marine/60 text-sm mt-4 leading-relaxed">
+                Pour les enfants de 8 ans et moins, on recommande généralement le cours de 30 minutes.
+              </p>
+            </div>
+            <div className="p-5 sm:p-7 md:p-8 bg-cream/60 border-t lg:border-t-0 lg:border-l border-marine/8">
+              <p className="font-display font-bold text-marine text-sm mb-4">Inclus dans chaque cours</p>
+              <ul className="space-y-3">
+                {[
+                  'Cours privé avec un professeur qualifié',
+                  'Approche personnalisée selon votre niveau',
+                  'Suivi de progression continu',
+                  'Salles équipées et matériel sur place',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-marine/70 text-sm leading-relaxed">
+                    <svg className="w-5 h-5 shrink-0 mt-0.5 text-marine" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/inscription"
+                className="mt-6 flex items-center justify-center gap-2 w-full bg-marine text-white font-display font-bold text-sm px-6 py-4 rounded-xl transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
               >
-                {plan.badge && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-yellow text-marine text-xs font-bold font-display uppercase tracking-wider px-4 py-1.5 rounded-full">
-                    {plan.badge}
-                  </span>
-                )}
-
-                <p className="font-display font-bold text-marine/50 text-sm uppercase tracking-[0.1em] mb-1">
-                  {plan.duration}
-                </p>
-
-                <div className="flex items-baseline gap-1 mb-3">
-                  <span
-                    className="font-display font-extrabold text-marine leading-none"
-                    style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)' }}
-                  >
-                    {plan.price}
-                    <span className="text-lg font-bold">$</span>
-                  </span>
-                  <span className="text-marine/40 text-sm font-medium">/ cours</span>
-                </div>
-
-                <p className="text-marine/60 text-sm mb-6 font-medium">{plan.label}</p>
-
-                <ul className="space-y-3 mb-8">
-                  {[
-                    'Cours privé avec un professeur qualifié',
-                    'Approche personnalisée selon votre niveau',
-                    'Suivi de progression continu',
-                    'Salles équipées et matériel sur place',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-marine/70 text-sm leading-relaxed">
-                      <svg
-                        className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-marine' : 'text-violet'}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  to="/inscription"
-                  className={`block text-center font-display font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-300 ${
-                    plan.highlighted
-                      ? 'bg-marine text-white hover:bg-violet hover:-translate-y-px'
-                      : 'bg-marine text-yellow hover:bg-violet hover:text-white hover:-translate-y-px'
-                  }`}
-                  style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
-                >
-                  S'inscrire
-                </Link>
-              </div>
-            ))}
+                S'inscrire
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
           <p className="text-center mt-8">
@@ -1335,7 +1326,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                 </Link>
                 <a
                   href="tel:5146777713"
-                  className="inline-flex items-center gap-2 text-white/70 font-medium text-sm hover:text-white transition-colors duration-300"
+                  className="inline-flex items-center gap-2 min-h-[44px] text-white/70 font-medium text-sm hover:text-white transition-colors duration-300"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path
