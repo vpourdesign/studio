@@ -232,7 +232,7 @@ export default function Tarifs() {
                 }}
               >
                 {plan.badge && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-coral text-white text-xs font-bold font-display uppercase tracking-wider px-4 py-1.5 rounded-full">
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-yellow text-marine text-xs font-bold font-display uppercase tracking-wider px-4 py-1.5 rounded-full">
                     {plan.badge}
                   </span>
                 )}
@@ -258,7 +258,7 @@ export default function Tarifs() {
                   {inclusions.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-marine/70 text-sm leading-relaxed">
                       <svg
-                        className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-coral' : 'text-violet'}`}
+                        className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-marine' : 'text-violet'}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -275,7 +275,7 @@ export default function Tarifs() {
                   to="/inscription"
                   className={`block text-center font-display font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-300 ${
                     plan.highlighted
-                      ? 'bg-coral text-white hover:bg-coral-dark hover:-translate-y-px'
+                      ? 'bg-marine text-white hover:bg-violet hover:-translate-y-px'
                       : 'bg-marine text-yellow hover:bg-violet hover:text-white hover:-translate-y-px'
                   }`}
                   style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
@@ -339,8 +339,8 @@ export default function Tarifs() {
               </div>
 
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-xl bg-coral/10 flex items-center justify-center shrink-0">
-                  <svg className="w-5 h-5 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <div className="w-10 h-10 rounded-xl bg-yellow flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-marine" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>

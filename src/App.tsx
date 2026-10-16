@@ -303,7 +303,7 @@ function Navigation() {
             className={`ml-2 flex items-center gap-2 px-5 py-2.5 rounded-full font-inter font-medium text-sm transition-all duration-300 ${
               isTransparent
                 ? 'bg-white/15 backdrop-blur-sm text-white border border-white/20 hover:bg-white/25'
-                : 'bg-coral text-white hover:bg-coral-dark'
+                : 'bg-marine text-white hover:bg-violet'
             }`}
           >
             Inscription
@@ -349,7 +349,7 @@ function Navigation() {
           ].map((item) => (
             <Link key={item.label} to={item.to} className="block font-inter font-medium text-marine text-base py-2 border-b border-lavender/30 transition-colors duration-200 hover:text-violet">{item.label}</Link>
           ))}
-          <Link to="/inscription" className="block bg-coral text-white font-medium text-center py-3 rounded-md mt-4 transition-colors duration-200 hover:bg-coral-dark">
+          <Link to="/inscription" className="block bg-marine text-white font-medium text-center py-3 rounded-md mt-4 transition-colors duration-200 hover:bg-violet">
             Inscription
           </Link>
         </div>
@@ -549,41 +549,101 @@ function CourseCard({ course, tall }: { course: typeof courses[0]; tall: boolean
   )
 }
 
-/* ─── SEO Content Block (hidden visual but crawlable) ─── */
+/* ─── Présentation de l'école (contenu SEO structuré) ─── */
+const ecoleFacts: { label: string; body: React.ReactNode }[] = [
+  {
+    label: 'Pour qui',
+    body: <>Les enfants dès 4 ans, les adolescents et les adultes. Des cours de musique pour enfants à Laval comme pour adultes, à leur rythme.</>,
+  },
+  {
+    label: 'Styles',
+    body: <>Classique, jazz, pop, rock ou blues : chaque élève apprend selon ses goûts, avec une approche personnalisée.</>,
+  },
+  {
+    label: "L'équipe",
+    body: <>Plus de 30 professeurs qualifiés et plus de 5 000 cours donnés chaque année. L'école a été fondée par le musicien Benoit Girard.</>,
+  },
+  {
+    label: 'Adresse',
+    body: <>191B boulevard Sainte-Rose, Laval. Stationnement gratuit sur place.</>,
+  },
+  {
+    label: 'Secteurs',
+    body: <>À quelques minutes de Fabreville, Auteuil, Vimont, Chomedey, Rosemère et Sainte-Thérèse.</>,
+  },
+  {
+    label: 'Spectacle',
+    body: <>Une fois par année, les élèves montent sur scène devant leur famille et leurs amis.</>,
+  },
+]
+
 function HomeSEOContent() {
   return (
-    <section className="bg-yellow py-16 md:py-20">
+    <section className="bg-yellow py-16 md:py-24 xl:py-28">
       <div className="mx-auto max-w-[1400px] px-6 md:px-12 xl:px-16">
-        <div className="max-w-3xl">
-          <h2
-            className="font-display font-bold text-marine tracking-[-0.03em] mb-6"
-            style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
-          >
-            École de musique à Laval — Cours pour tous les âges à Sainte-Rose
-          </h2>
-          <div className="text-slate leading-relaxed space-y-4" style={{ fontSize: 'clamp(0.9375rem, 1.4vw, 1.0625rem)' }}>
-            <p>
-              L'École le Studio est une <strong>école de musique à Sainte-Rose, Laval</strong>, offrant des <strong>cours de piano, guitare, basse, chant, batterie, violon et ukulélé</strong> depuis plus de 20 ans. Fondée par le musicien Benoit Girard, notre école accueille des élèves de tous les âges — des enfants dès 4 ans aux adultes — dans un environnement chaleureux et professionnel.
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-16">
+          <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
+            <p className="text-slate font-semibold uppercase tracking-[0.14em] mb-5" style={{ fontSize: 'clamp(0.75rem, 1vw, 0.8125rem)' }}>
+              Sainte-Rose, Laval · depuis plus de 20 ans
             </p>
-            <p>
-              Avec plus de <strong>30 professeurs qualifiés</strong> et plus de <strong>5 000 cours dispensés chaque année</strong>, l'École le Studio est la référence en matière de <strong>cours de musique à Laval</strong>. Notre approche pédagogique personnalisée permet à chaque élève d'apprendre la musique selon ses goûts — que ce soit le classique, le jazz, le pop, le rock ou le blues.
+            <h2
+              className="font-display font-extrabold text-marine tracking-[-0.03em] leading-[1.05]"
+              style={{ fontSize: 'clamp(2rem, 4.2vw, 3.5rem)' }}
+            >
+              École de musique à Laval
+              <span className="block font-semibold text-slate mt-3 text-balance" style={{ fontSize: '0.5em', letterSpacing: '-0.02em', lineHeight: 1.25 }}>
+                Des cours pour tous les âges, à&nbsp;Sainte-Rose.
+              </span>
+            </h2>
+            <p className="text-marine/80 mt-6 max-w-[46ch]" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', lineHeight: 1.65 }}>
+              L'École le Studio offre des cours de piano, guitare, basse, chant, batterie, violon et ukulélé dans un environnement chaleureux et professionnel.
             </p>
-            <p>
-              Située au 191B boulevard Sainte-Rose, notre école est facilement accessible depuis <strong>Fabreville, Auteuil, Vimont, Chomedey, Rosemère, Sainte-Thérèse</strong> et les quartiers avoisinants. Un stationnement gratuit est disponible sur place. Nous offrons des <strong>cours de musique pour enfants à Laval</strong>, des cours pour adolescents et des <strong>cours de musique pour adultes</strong>.
-            </p>
-            <p>
-              Que vous cherchiez des <strong>cours de piano à Laval</strong>, des <strong>cours de guitare pour débutants</strong>, des <strong>leçons de chant</strong>, des <strong>cours de batterie</strong> ou des <strong>cours de violon</strong>, notre équipe de professeurs passionnés vous accompagnera dans votre parcours musical. Un spectacle annuel permet aux élèves de se produire devant leur famille et leurs amis.
-            </p>
+            <div className="flex flex-wrap gap-3 mt-8">
+              <Link
+                to="/inscription"
+                className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-6 py-3 rounded-lg transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px active:translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+              >
+                S'inscrire maintenant
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              </Link>
+              <Link
+                to="/tarifs"
+                className="inline-flex items-center gap-2 text-marine font-semibold text-sm px-6 py-3 rounded-lg border border-marine/25 transition-[background-color,border-color] duration-300 hover:bg-marine/5 hover:border-marine/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+              >
+                Voir nos tarifs
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3 mt-8">
-            <Link to="/inscription" className="inline-flex items-center gap-2 bg-coral text-white font-semibold text-sm px-6 py-3 rounded-lg transition-all duration-300 hover:bg-coral-dark">
-              S'inscrire maintenant
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-            </Link>
-            <Link to="/tarifs" className="inline-flex items-center gap-2 text-violet font-semibold text-sm px-6 py-3 rounded-lg border border-violet/20 transition-all duration-300 hover:bg-violet hover:text-white">
-              Voir nos tarifs
-            </Link>
-          </div>
+
+          <dl className="lg:col-span-7 border-t border-marine/15">
+            <div className="grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-x-8 gap-y-3 py-6 border-b border-marine/15">
+              <dt className="font-display font-bold text-marine" style={{ fontSize: 'clamp(0.9375rem, 1.3vw, 1rem)' }}>Instruments</dt>
+              <dd>
+                <ul className="flex flex-wrap gap-2">
+                  {courses.map((c) => (
+                    <li key={c.slug}>
+                      <Link
+                        to={`/cours-de-${c.slug}`}
+                        className="inline-flex items-center bg-white/70 text-marine font-medium text-sm px-3.5 py-1.5 rounded-full border border-marine/10 transition-[background-color,color,border-color] duration-200 hover:bg-marine hover:text-white hover:border-marine focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                      >
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-slate mt-3" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 0.9375rem)' }}>
+                  Cours de piano à Laval, cours de guitare pour débutants, leçons de chant, cours de batterie et de violon.
+                </p>
+              </dd>
+            </div>
+            {ecoleFacts.map((f) => (
+              <div key={f.label} className="grid grid-cols-1 sm:grid-cols-[9rem_1fr] gap-x-8 gap-y-1 py-6 border-b border-marine/15">
+                <dt className="font-display font-bold text-marine" style={{ fontSize: 'clamp(0.9375rem, 1.3vw, 1rem)' }}>{f.label}</dt>
+                <dd className="text-slate max-w-[60ch]" style={{ fontSize: 'clamp(0.9375rem, 1.4vw, 1.0625rem)' }}>{f.body}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
@@ -678,7 +738,7 @@ function VieuxSteRose() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               <div className="absolute top-6 left-6 inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-marine text-sm font-semibold px-4 py-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-marine" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 Laval, Québec
               </div>
               <div className="absolute bottom-6 left-6 right-6 z-10">

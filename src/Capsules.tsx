@@ -137,7 +137,7 @@ export default function Capsules() {
         </p>
         <Link
           to="/inscription"
-          className="inline-block bg-coral text-white font-display font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:bg-coral-dark hover:scale-105"
+          className="inline-block bg-marine text-white font-display font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:bg-violet hover:scale-105"
           style={{ fontSize: 'clamp(0.95rem, 1.4vw, 1.05rem)' }}
         >
           S'inscrire maintenant

@@ -973,7 +973,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                 }}
               >
                 {plan.badge && (
-                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-coral text-white text-xs font-bold font-display uppercase tracking-wider px-4 py-1.5 rounded-full">
+                  <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-yellow text-marine text-xs font-bold font-display uppercase tracking-wider px-4 py-1.5 rounded-full">
                     {plan.badge}
                   </span>
                 )}
@@ -1004,7 +1004,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-marine/70 text-sm leading-relaxed">
                       <svg
-                        className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-coral' : 'text-violet'}`}
+                        className={`w-5 h-5 shrink-0 mt-0.5 ${plan.highlighted ? 'text-marine' : 'text-violet'}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -1021,7 +1021,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                   to="/inscription"
                   className={`block text-center font-display font-bold text-sm px-6 py-3.5 rounded-xl transition-all duration-300 ${
                     plan.highlighted
-                      ? 'bg-coral text-white hover:bg-coral-dark hover:-translate-y-px'
+                      ? 'bg-marine text-white hover:bg-violet hover:-translate-y-px'
                       : 'bg-marine text-yellow hover:bg-violet hover:text-white hover:-translate-y-px'
                   }`}
                   style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}

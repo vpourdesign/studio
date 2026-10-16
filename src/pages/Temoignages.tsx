@@ -184,7 +184,7 @@ export default function Temoignages() {
             </div>
             <div className="sm:border-x sm:border-lavender">
               <p
-                className="font-display font-bold text-coral"
+                className="font-display font-bold text-marine"
                 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}
               >
                 43
