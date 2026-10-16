@@ -155,7 +155,7 @@ export function CourseSchema({ name, instrument, description, price, path }: {
   name: string
   instrument: string
   description: string
-  price: string
+  price?: string
   path: string
 }) {
   const schema = {
@@ -185,14 +185,24 @@ export function CourseSchema({ name, instrument, description, price, path }: {
       '@type': 'Thing',
       name: instrument,
     },
-    offers: [
-      { '@type': 'Offer', name: '30 minutes', price, priceCurrency: 'CAD', eligibleDuration: 'PT30M' },
-      { '@type': 'Offer', name: '45 minutes', price: '44', priceCurrency: 'CAD', eligibleDuration: 'PT45M' },
-      { '@type': 'Offer', name: '60 minutes', price: '54', priceCurrency: 'CAD', eligibleDuration: 'PT60M' },
-    ],
-    hasCourseInstance: [
-      { '@type': 'CourseInstance', courseMode: 'Onsite', courseWorkload: 'PT30M', instructor: { '@type': 'Person', name: 'Professeurs qualifiés' } },
-    ],
+    /* Sans prix (cours de groupe dont le tarif est donné sur demande), on
+       n'annonce ni offres ni durée plutôt que des valeurs inventées. */
+    ...(price
+      ? {
+          offers: [
+            { '@type': 'Offer', name: '30 minutes', price, priceCurrency: 'CAD', eligibleDuration: 'PT30M' },
+            { '@type': 'Offer', name: '45 minutes', price: '44', priceCurrency: 'CAD', eligibleDuration: 'PT45M' },
+            { '@type': 'Offer', name: '60 minutes', price: '54', priceCurrency: 'CAD', eligibleDuration: 'PT60M' },
+          ],
+          hasCourseInstance: [
+            { '@type': 'CourseInstance', courseMode: 'Onsite', courseWorkload: 'PT30M', instructor: { '@type': 'Person', name: 'Professeurs qualifiés' } },
+          ],
+        }
+      : {
+          hasCourseInstance: [
+            { '@type': 'CourseInstance', courseMode: 'Onsite', instructor: { '@type': 'Person', name: 'Professeurs qualifiés' } },
+          ],
+        }),
   }
 
   return (

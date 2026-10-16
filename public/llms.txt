@@ -12,6 +12,7 @@ Nom de la fiche Google : « Le Studio École de musique ». Ancien nom : École 
 - Stationnement : gratuit sur place
 - Secteurs desservis : Sainte-Rose, Fabreville, Auteuil, Vimont, Chomedey, Sainte-Dorothée, Rosemère, Lorraine, Bois-des-Filion, Boisbriand, Sainte-Thérèse
 - Format : cours privés (un élève, un professeur), 30, 45 ou 60 minutes, offerts 7 jours sur 7
+- Éveil musical : cours en petits groupes pour les enfants de 3 à 6 ans (comptines, activités ludiques, paramètres du son, familles d'instruments, initiation au langage musical). Horaire et tarif sur demande.
 - Langue d'enseignement : français
 
 ## Tarifs
@@ -53,6 +54,7 @@ Nom de la fiche Google : « Le Studio École de musique ». Ancien nom : École 
 - [Cours de violon](https://ecolelestudio.com/cours-de-violon)
 - [Cours de ukulélé](https://ecolelestudio.com/cours-de-ukulele)
 - [Cours de basse](https://ecolelestudio.com/cours-de-basse)
+- [Éveil musical (3 à 6 ans)](https://ecolelestudio.com/eveil-musical)
 - [Tarifs](https://ecolelestudio.com/tarifs)
 - [Nos professeurs](https://ecolelestudio.com/nos-professeurs)
 - [Nos locaux](https://ecolelestudio.com/nos-locaux)

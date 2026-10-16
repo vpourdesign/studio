@@ -10,6 +10,7 @@ import imgBatterie from '../assets/batterie.png'
 import imgViolon from '../assets/violon.png'
 import imgBasse from '../assets/photos/cours-basse.webp'
 import imgUkulele from '../assets/photos/cours-ukulele.webp'
+import imgEveil from '../assets/photos/cours-eveil-musical.webp'
 
 /* ─── Types ─── */
 
@@ -34,7 +35,22 @@ interface InstrumentData {
   styles: string[]
   faq: { question: string; answer: string }[]
   benefits: { title: string; description: string }[]
+  /* Les champs suivants servent aux cours qui ne sont pas des cours privés
+     d'instrument, comme l'éveil musical : URL, libellés et format propres. */
+  path?: string
+  courseLabel?: string
+  leNom?: string
+  duNom?: string
+  format?: 'prive' | 'groupe'
+  cardMeta?: string
+  benefitsTitle?: string
+  benefitsIntro?: string
+  levelsTitle?: string
+  levelsIntro?: string
+  stylesTitle?: string
 }
+
+const coursePath = (i: { slug: string; path?: string }) => i.path ?? `/cours-de-${i.slug}`
 
 /* ─── Instrument Data ─── */
 
@@ -614,6 +630,104 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       },
     ],
   },
+  'eveil-musical': {
+    slug: 'eveil-musical',
+    path: '/eveil-musical',
+    name: 'Éveil musical',
+    courseLabel: 'Éveil musical',
+    leNom: 'l’éveil musical',
+    duNom: 'de l’éveil musical',
+    format: 'groupe',
+    cardMeta: '3 à 6 ans · En petits groupes',
+    color: '#7A6A58',
+    colorLight: '#EEE9E2',
+    image: imgEveil,
+    imagePosition: '50% 30%',
+    metaTitle: 'Éveil musical à Laval pour les 3 à 6 ans | École le Studio, Sainte-Rose',
+    metaDescription:
+      'Cours d’éveil musical à Laval pour les enfants de 3 à 6 ans : comptines, jeux, découverte des sons et des instruments, en petits groupes. École le Studio, Sainte-Rose.',
+    h1: 'Éveil musical à Laval',
+    heroSubtitle:
+      'Un premier contact avec la musique pour les enfants de 3 à 6 ans. Comptines, jeux et découvertes en petits groupes, pour développer l’oreille, le rythme et le goût de jouer.',
+    longDescription: [
+      'Le cours d’éveil musical de l’École le Studio s’adresse aux enfants de 3 à 6 ans qui n’ont pas encore choisi d’instrument, ou qui sont encore un peu jeunes pour un cours privé. Par le biais de comptines, de chansons et d’activités ludiques, votre enfant se familiarise avec le monde de la musique à son rythme, sans pression de performance. Il chante, il bouge, il écoute : la musique se vit avant de s’expliquer.',
+      'Au fil des activités, votre enfant apprend à distinguer les grands paramètres du son. La hauteur, pour entendre le grave et l’aigu. La durée, pour sentir le long et le court. L’intensité, pour jouer fort ou doux. Et le timbre, cette couleur qui permet de reconnaître une voix ou un instrument les yeux fermés. Il découvre aussi les familles d’instruments, des cordes aux percussions en passant par les vents et les claviers. Ces découvertes l’aident à repérer l’instrument qui l’attire et guident ensuite son choix, s’il souhaite poursuivre sa formation vers un instrument en particulier.',
+      'Qu’est-ce qu’une portée, une gamme, le nom des notes ou une figure rythmique? Le cours initie aussi l’enfant au langage musical, par le jeu et à la mesure de son âge. Ces premiers repères rendent ses débuts sur un instrument beaucoup plus faciles. Et parce que le cours se vit en petits groupes, il favorise la socialisation : écouter les autres, attendre son tour, faire de la musique ensemble. Les cours se donnent à nos locaux du 191B boulevard Sainte-Rose, à Laval.',
+    ],
+    levelsTitle: 'Ce que votre enfant découvre',
+    levelsIntro:
+      'Trois volets qui se vivent en même temps, au fil des comptines et des jeux, sans jamais ressembler à une leçon magistrale.',
+    levels: [
+      {
+        name: 'Le son',
+        description:
+          'Hauteur, durée, intensité et timbre. L’enfant apprend à entendre la différence entre le grave et l’aigu, le long et le court, le fort et le doux, et à reconnaître la couleur propre à chaque voix et à chaque instrument.',
+      },
+      {
+        name: 'Les instruments',
+        description:
+          'Cordes, vents, percussions et claviers. Votre enfant découvre comment chaque famille produit le son, ce qui l’aide à repérer l’instrument qui l’attire pour la suite de sa formation.',
+      },
+      {
+        name: 'Le langage musical',
+        description:
+          'La portée, les gammes, le nom des notes et les figures rythmiques, présentés par le jeu. Des bases concrètes qui faciliteront l’apprentissage d’un instrument, le moment venu.',
+      },
+    ],
+    stylesTitle: 'Au programme',
+    styles: ['Comptines', 'Activités ludiques', 'Rythme et pulsation', 'Grave et aigu', 'Fort et doux', 'Familles d’instruments', 'Langage musical', 'Musique en groupe'],
+    faq: [
+      {
+        question: 'À quel âge mon enfant peut-il s’inscrire à l’éveil musical?',
+        answer:
+          'Le cours d’éveil musical s’adresse aux enfants de 3 à 6 ans. Aucune expérience musicale n’est nécessaire : le cours est justement conçu comme un premier contact avec la musique.',
+      },
+      {
+        question: 'Est-ce un cours privé ou un cours de groupe?',
+        answer:
+          'L’éveil musical se donne en petits groupes. C’est la grande différence avec nos cours d’instrument, qui sont privés. Ici, le groupe fait partie de l’apprentissage : les enfants chantent, jouent et écoutent ensemble.',
+      },
+      {
+        question: 'Mon enfant est timide. Est-ce que le cours lui convient?',
+        answer:
+          'Oui. Les activités sont pensées pour que chaque enfant participe à sa façon, et le petit groupe permet au professeur de laisser à chacun le temps de prendre sa place.',
+      },
+      {
+        question: 'Et après l’éveil musical?',
+        answer:
+          'Le cours aide votre enfant à découvrir l’instrument qui l’attire. Il peut ensuite poursuivre en cours privé : le piano est offert dès 4 ans, le chant dès 5 ans et le ukulélé dès 6 ans. Nos professeurs peuvent vous conseiller selon ce qu’ils observent en classe.',
+      },
+      {
+        question: 'Quels sont l’horaire et le tarif de l’éveil musical?',
+        answer:
+          'Les places sont limitées puisque le cours se donne en petits groupes. Communiquez avec nous au 514-677-7713 ou par notre page Nous joindre pour connaître l’horaire et le tarif de la prochaine session.',
+      },
+    ],
+    benefitsTitle: 'Pourquoi l’éveil musical?',
+    benefitsIntro: 'Ce qu’un enfant de 3 à 6 ans retire d’un cours d’éveil musical à l’École le Studio de Sainte-Rose, Laval.',
+    benefits: [
+      {
+        title: 'Une oreille qui s’affine tôt',
+        description:
+          'Entre 3 et 6 ans, l’enfant apprend à écouter avec une grande curiosité. Distinguer les sons, suivre une pulsation, reprendre une mélodie : ces habiletés deviennent naturelles quand on les cultive tôt.',
+      },
+      {
+        title: 'Un choix d’instrument éclairé',
+        description:
+          'En découvrant les familles d’instruments, votre enfant sait mieux ce qui l’attire. Le passage vers un cours privé de piano, de violon ou de chant se fait ensuite plus naturellement.',
+      },
+      {
+        title: 'Apprendre avec les autres',
+        description:
+          'Le cours se vit en petits groupes. L’enfant apprend à écouter, à attendre son tour et à faire de la musique avec d’autres enfants de son âge.',
+      },
+      {
+        title: 'Le plaisir avant tout',
+        description:
+          'Comptines, jeux et mouvement : l’apprentissage passe par le plaisir. Un enfant qui associe la musique à de bons moments a envie de continuer.',
+      },
+    ],
+  },
 }
 
 /* ─── FAQ Accordion Item ─── */
@@ -706,18 +820,21 @@ export default function CoursInstrument({ slug }: { slug: string }) {
   // Guitare et batterie sont féminins, les autres masculins.
   const feminin = ['guitare', 'batterie', 'basse'].includes(data.slug)
   const nomBas = data.name.toLowerCase()
-  const leNom = `${feminin ? 'la' : 'le'} ${nomBas}`
-  const duNom = `${feminin ? 'de la' : 'du'} ${nomBas}`
+  const leNom = data.leNom ?? `${feminin ? 'la' : 'le'} ${nomBas}`
+  const duNom = data.duNom ?? `${feminin ? 'de la' : 'du'} ${nomBas}`
+  const courseLabel = data.courseLabel ?? `Cours de ${nomBas}`
+  const path = coursePath(data)
+  const enGroupe = data.format === 'groupe'
 
   return (
     <div className="bg-cream min-h-screen pt-28 pb-20">
-      <SEO title={data.metaTitle} description={data.metaDescription} path={`/cours-de-${data.slug}`} />
+      <SEO title={data.metaTitle} description={data.metaDescription} path={path} />
       <CourseSchema
-        name={`Cours de ${data.name.toLowerCase()}`}
+        name={courseLabel}
         instrument={data.name}
         description={data.metaDescription}
-        price="34"
-        path={`/cours-de-${data.slug}`}
+        price={enGroupe ? undefined : '34'}
+        path={path}
       />
       <FAQSchema questions={data.faq} />
 
@@ -726,7 +843,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         <Breadcrumbs
           items={[
             { name: 'Nos cours', url: '/#cours' },
-            { name: `Cours de ${data.name.toLowerCase()}`, url: `/cours-de-${data.slug}` },
+            { name: courseLabel, url: path },
           ]}
         />
 
@@ -813,14 +930,14 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
           >
-            Pourquoi apprendre {leNom}?
+            {data.benefitsTitle ?? `Pourquoi apprendre ${leNom}?`}
           </h2>
           <p
             className="text-marine/60 mb-10 max-w-2xl"
             style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}
           >
-            Découvrez les bienfaits uniques de l'apprentissage {duNom} à l'École le Studio de
-            Sainte-Rose, Laval.
+            {data.benefitsIntro ??
+              `Découvrez les bienfaits uniques de l'apprentissage ${duNom} à l'École le Studio de Sainte-Rose, Laval.`}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -864,14 +981,14 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
           >
-            Niveaux offerts
+            {data.levelsTitle ?? 'Niveaux offerts'}
           </h2>
           <p
             className="text-marine/60 mb-10 max-w-2xl"
             style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}
           >
-            Nos cours de {data.name.toLowerCase()} s'adaptent à votre niveau, du tout premier contact avec l'instrument
-            jusqu'à la maîtrise avancée.
+            {data.levelsIntro ??
+              `Nos cours de ${nomBas} s'adaptent à votre niveau, du tout premier contact avec l'instrument jusqu'à la maîtrise avancée.`}
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -913,7 +1030,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
           >
-            Styles enseignés
+            {data.stylesTitle ?? 'Styles enseignés'}
           </h2>
 
           <div className="flex flex-wrap gap-3">
@@ -942,6 +1059,45 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         </section>
 
         {/* ─── Pricing Section ─── */}
+        {enGroupe ? (
+        <section className="mb-16 md:mb-24">
+          <div
+            className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 items-center rounded-2xl p-8 md:p-12"
+            style={{ backgroundColor: data.colorLight }}
+          >
+            <div>
+              <h2
+                className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+              >
+                Horaire et tarifs
+              </h2>
+              <p className="text-marine/70 max-w-[52ch]" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)', lineHeight: 1.7 }}>
+                L’éveil musical se donne en petits groupes, par session. Les places sont limitées : communiquez avec nous
+                pour connaître l’horaire et le tarif de la prochaine session, et réserver la place de votre enfant.
+              </p>
+            </div>
+            <div className="flex flex-col gap-3 md:items-start">
+              <Link
+                to="/nous-joindre"
+                className="inline-flex items-center justify-center gap-2 md:w-60 bg-marine text-white font-display font-bold text-sm px-8 py-4 rounded-xl transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+              >
+                Nous joindre
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <a
+                href="tel:5146777713"
+                className="inline-flex items-center justify-center gap-2 md:w-60 text-marine font-display font-bold text-sm px-8 py-4 rounded-xl border border-marine/25 transition-[background-color,border-color] duration-300 hover:bg-marine/5 hover:border-marine/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+              >
+                514-677-7713
+              </a>
+            </div>
+          </div>
+        </section>
+        ) : (
         <section className="mb-16 md:mb-24">
           <h2
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
@@ -1041,6 +1197,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             </Link>
           </p>
         </section>
+        )}
 
         {/* ─── FAQ Section ─── */}
         <section className="mb-16 md:mb-24">
@@ -1048,7 +1205,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-8"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
           >
-            Questions fréquentes — Cours de {data.name.toLowerCase()}
+            Questions fréquentes : {courseLabel.toLowerCase()}
           </h2>
 
           <div
@@ -1131,7 +1288,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             {otherInstruments.map((inst) => (
               <Link
                 key={inst.slug}
-                to={`/cours-de-${inst.slug}`}
+                to={coursePath(inst)}
                 className="group bg-white rounded-2xl p-6 border border-marine/8 hover:border-violet/30 transition-all duration-300 hover:-translate-y-1"
                 style={{
                   boxShadow: '0 1px 2px oklch(30% 0.2 250 / 0.04), 0 4px 12px oklch(30% 0.2 250 / 0.06)',
@@ -1151,10 +1308,10 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                   />
                 </div>
                 <h3 className="font-display font-bold text-marine text-sm mb-1 group-hover:text-violet transition-colors duration-300">
-                  Cours de {inst.name.toLowerCase()}
+                  {inst.courseLabel ?? `Cours de ${inst.name.toLowerCase()}`}
                 </h3>
                 <p className="text-marine/50 text-xs leading-relaxed">
-                  Dès 34$/cours &middot; Tous niveaux
+                  {inst.cardMeta ?? 'Dès 34$/cours · Tous niveaux'}
                 </p>
               </Link>
             ))}

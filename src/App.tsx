@@ -11,6 +11,7 @@ import imgViolon from './assets/violon.png'
 import imgBatterie from './assets/batterie.png'
 import imgBasse from './assets/photos/cours-basse.webp'
 import imgUkulele from './assets/photos/cours-ukulele.webp'
+import imgEveil from './assets/photos/cours-eveil-musical.webp'
 import megaBg from './assets/photos/megamenu-studio-clair.webp'
 import HeroCanvas from './HeroCanvas'
 import imgVieux from './assets/vieux.webp'
@@ -117,6 +118,17 @@ function IconUkulele({ className = '' }: { className?: string }) {
   )
 }
 
+function IconEveil({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 28V10l16-4v18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <circle cx="11" cy="28" r="4" stroke="currentColor" strokeWidth="2"/>
+      <circle cx="27" cy="24" r="4" stroke="currentColor" strokeWidth="2"/>
+      <path d="M15 15l16-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
 /* ─── Mega Menu Content ─── */
 function MegaMenu() {
   const instruments = [
@@ -127,6 +139,7 @@ function MegaMenu() {
     { name: 'Violon', Icon: IconViolin, to: '/cours-de-violon' },
     { name: 'Ukulélé', Icon: IconUkulele, to: '/cours-de-ukulele' },
     { name: 'Basse', Icon: IconBass, to: '/cours-de-basse' },
+    { name: 'Éveil musical', Icon: IconEveil, to: '/eveil-musical' },
   ]
   return (
     <div className="absolute top-full left-0 right-0 z-50" style={{ marginTop: 0 }}>
@@ -340,6 +353,7 @@ function Navigation() {
             { label: 'Cours de violon', to: '/cours-de-violon' },
             { label: 'Cours de ukulélé', to: '/cours-de-ukulele' },
             { label: 'Cours de basse', to: '/cours-de-basse' },
+            { label: 'Éveil musical', to: '/eveil-musical' },
             { label: 'Nos professeurs', to: '/nos-professeurs' },
             { label: 'Nos locaux', to: '/nos-locaux' },
             { label: 'Tarifs', to: '/tarifs' },
@@ -482,7 +496,10 @@ const courses = [
   { name: 'Violon', img: imgViolon, color: '#6B7F82', slug: 'violon' },
   { name: 'Ukulélé', img: imgUkulele, color: '#6E7A64', slug: 'ukulele' },
   { name: 'Basse', img: imgBasse, color: '#5C5F52', slug: 'basse' },
+  { name: 'Éveil musical', img: imgEveil, color: '#7A6A58', slug: 'eveil-musical', to: '/eveil-musical' },
 ]
+
+const courseTo = (c: { slug: string; to?: string }) => c.to ?? `/cours-de-${c.slug}`
 
 function CoursesGrid() {
   return (
@@ -505,9 +522,20 @@ function CoursesGrid() {
             <CourseCard key={course.name} course={course} tall />
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-          {courses.slice(3).map((course) => (
-            <CourseCard key={course.name} course={course} tall={false} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-5">
+          {courses.slice(3).map((course, i, rest) => (
+            <div
+              key={course.name}
+              className={
+                i < 3
+                  ? 'lg:col-span-2'
+                  : i === rest.length - 1 && rest.length % 2 === 1
+                    ? 'sm:col-span-2 lg:col-span-3'
+                    : 'lg:col-span-3'
+              }
+            >
+              <CourseCard course={course} tall={false} />
+            </div>
           ))}
         </div>
       </div>
@@ -518,13 +546,13 @@ function CoursesGrid() {
 function CourseCard({ course, tall }: { course: typeof courses[0]; tall: boolean }) {
   return (
     <Link
-      to={`/cours-de-${course.slug}`}
+      to={courseTo(course)}
       className="group relative block overflow-hidden rounded-2xl"
       style={{ height: tall ? 'clamp(280px, 30vw, 380px)' : 'clamp(240px, 25vw, 320px)', backgroundColor: course.color }}
     >
       <img
         src={course.img}
-        alt={`Cours de ${course.name.toLowerCase()} à Laval — École le Studio`}
+        alt={course.to ? `${course.name} à Laval, École le Studio` : `Cours de ${course.name.toLowerCase()} à Laval, École le Studio`}
         className="absolute inset-0 w-full h-full object-cover opacity-30 transition-all duration-700 group-hover:opacity-40 group-hover:scale-105"
         style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
         loading="lazy"
@@ -553,7 +581,7 @@ function CourseCard({ course, tall }: { course: typeof courses[0]; tall: boolean
 const ecoleFacts: { label: string; body: React.ReactNode }[] = [
   {
     label: 'Pour qui',
-    body: <>Les enfants dès 4 ans, les adolescents et les adultes. Des cours de musique pour enfants à Laval comme pour adultes, à leur rythme.</>,
+    body: <>Les enfants dès 3 ans avec l'<Link to="/eveil-musical" className="text-marine underline underline-offset-4 decoration-marine/30 transition-colors duration-200 hover:decoration-marine">éveil musical</Link>, puis dès 4 ans en cours d'instrument, les adolescents et les adultes. Des cours de musique pour enfants à Laval comme pour adultes, à leur rythme.</>,
   },
   {
     label: 'Styles',
@@ -624,7 +652,7 @@ function HomeSEOContent() {
                   {courses.map((c) => (
                     <li key={c.slug}>
                       <Link
-                        to={`/cours-de-${c.slug}`}
+                        to={courseTo(c)}
                         className="inline-flex items-center bg-white/70 text-marine font-medium text-sm px-3.5 py-1.5 rounded-full border border-marine/10 transition-[background-color,color,border-color] duration-200 hover:bg-marine hover:text-white hover:border-marine focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
                       >
                         {c.name}
@@ -899,6 +927,7 @@ function App() {
           <Route path="/cours-de-violon" element={<CoursInstrument slug="violon" />} />
           <Route path="/cours-de-basse" element={<CoursInstrument slug="basse" />} />
           <Route path="/cours-de-ukulele" element={<CoursInstrument slug="ukulele" />} />
+          <Route path="/eveil-musical" element={<CoursInstrument slug="eveil-musical" />} />
           <Route path="/nos-professeurs" element={<Professeurs />} />
           <Route path="/tarifs" element={<Tarifs />} />
           <Route path="/nous-joindre" element={<NousJoindre />} />

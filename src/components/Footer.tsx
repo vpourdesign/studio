@@ -52,6 +52,7 @@ export default function Footer() {
                 { label: 'Cours de violon', to: '/cours-de-violon' },
                 { label: 'Cours de ukulélé', to: '/cours-de-ukulele' },
                 { label: 'Cours de basse', to: '/cours-de-basse' },
+                { label: 'Éveil musical', to: '/eveil-musical' },
               ].map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="text-sm hover:text-yellow transition-colors duration-300">{link.label}</Link>
