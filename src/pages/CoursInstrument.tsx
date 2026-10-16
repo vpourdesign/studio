@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO, { CourseSchema, FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
-import { teachers } from '../data/professeurs'
 
 import imgPiano from '../assets/piano.png'
 import imgGuitare from '../assets/guitare.png'
@@ -19,8 +18,6 @@ interface InstrumentData {
   slug: string
   /* Âge d'entrée, affiché dans la fiche du cours. */
   age: string
-  /* Mot cherché dans le champ role de l'équipe pour afficher les profs du cours. */
-  teacherRole: string
   name: string
   color: string
   colorLight: string
@@ -63,7 +60,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   piano: {
     slug: 'piano',
     age: 'Dès 4 ans',
-    teacherRole: 'Piano',
     name: 'Piano',
     color: '#525266',
     colorLight: '#E8E8ED',
@@ -147,7 +143,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   guitare: {
     slug: 'guitare',
     age: 'Dès 6 ans',
-    teacherRole: 'Guitare',
     name: 'Guitare',
     color: '#4D5C60',
     colorLight: '#D1E0DE',
@@ -231,7 +226,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   chant: {
     slug: 'chant',
     age: 'Dès 5 ans',
-    teacherRole: 'Chant',
     name: 'Chant',
     color: '#8A8A6E',
     colorLight: '#EEF4CE',
@@ -315,7 +309,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   batterie: {
     slug: 'batterie',
     age: 'Dès 5 ans',
-    teacherRole: 'Batterie',
     name: 'Batterie',
     color: '#383838',
     colorLight: '#E0E0E0',
@@ -400,7 +393,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   violon: {
     slug: 'violon',
     age: 'Dès 4 ans',
-    teacherRole: 'Violon',
     name: 'Violon',
     color: '#6B7F82',
     colorLight: '#D1E0DE',
@@ -484,7 +476,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   basse: {
     slug: 'basse',
     age: 'Dès 8 ans',
-    teacherRole: 'Basse',
     name: 'Basse',
     color: '#5C5F52',
     colorLight: '#E3E5DA',
@@ -568,7 +559,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   ukulele: {
     slug: 'ukulele',
     age: 'Dès 6 ans',
-    teacherRole: 'Ukulélé',
     name: 'Ukulélé',
     color: '#6E7A64',
     colorLight: '#E6EADF',
@@ -652,7 +642,6 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   'eveil-musical': {
     slug: 'eveil-musical',
     age: 'De 3 à 6 ans',
-    teacherRole: 'Éveil',
     path: '/eveil-musical',
     name: 'Éveil musical',
     courseLabel: 'Éveil musical',
@@ -846,7 +835,6 @@ export default function CoursInstrument({ slug }: { slug: string }) {
   const courseLabel = data.courseLabel ?? `Cours de ${nomBas}`
   const path = coursePath(data)
   const enGroupe = data.format === 'groupe'
-  const profs = teachers.filter((t) => t.role.includes(data.teacherRole))
 
   /* Fiche du cours : les faits qu'un parent cherche avant de s'inscrire. */
   const fiche: [string, string][] = enGroupe
@@ -1011,46 +999,6 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             </div>
           </aside>
         </section>
-
-        {/* ─── Les profs qui enseignent ce cours ─── */}
-        {profs.length > 0 && (
-          <section className="mb-16 md:mb-24">
-            <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
-              <h2
-                className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em]"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
-              >
-                {profs.length > 1 ? 'Vos professeurs' : 'Votre professeur'}
-              </h2>
-              <Link
-                to="/nos-professeurs"
-                className="text-marine font-display font-bold text-sm underline underline-offset-4 decoration-marine/30 transition-colors duration-200 hover:decoration-marine"
-              >
-                Toute l’équipe
-              </Link>
-            </div>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-              {profs.slice(0, 10).map((t) => (
-                <li key={t.name} className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3 / 4' }}>
-                  <img
-                    src={`/images/professeurs/${t.img}`}
-                    alt={`${t.name}, professeur de ${t.role.toLowerCase()} à l’École le Studio`}
-                    className="absolute inset-0 w-full h-full object-cover object-top"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <p className="font-display font-extrabold text-white leading-[1.15]" style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1rem)' }}>
-                      {t.name}
-                    </p>
-                    <p className="text-white/70 text-xs mt-1">{t.role}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
 
         {/* ─── Benefits Section ─── */}
         <section className="mb-16 md:mb-24">

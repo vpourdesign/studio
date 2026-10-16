@@ -889,6 +889,54 @@ function Fondateur() {
   )
 }
 
+/* ─── Page 404 ─── */
+/* Prérendue en dist/404.html et servie avec un vrai statut 404 par _redirects,
+   pour que les anciennes adresses non redirigées ne passent pas pour l'accueil. */
+function NotFound() {
+  return (
+    <section className="bg-cream min-h-[70dvh] pt-36 pb-24">
+      <SEO
+        title="Page introuvable | École le Studio, Sainte-Rose"
+        description="Cette page n'existe pas ou a été déplacée. Retrouvez nos cours de musique à Laval."
+        path="/404"
+        noindex
+      />
+      <div className="mx-auto max-w-[1400px] px-6 md:px-12 xl:px-16">
+        <p className="text-slate font-semibold uppercase tracking-[0.14em] mb-5" style={{ fontSize: 'clamp(0.75rem, 1vw, 0.8125rem)' }}>
+          Erreur 404
+        </p>
+        <h1
+          className="font-display font-extrabold text-marine tracking-[-0.03em] leading-[1.05] max-w-[18ch]"
+          style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+        >
+          Cette page a changé d’adresse.
+        </h1>
+        <p className="text-slate mt-6 max-w-[52ch]" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.125rem)', lineHeight: 1.65 }}>
+          Notre site a fait peau neuve et certaines pages n’existent plus. Voici les plus consultées.
+        </p>
+        <ul className="flex flex-wrap gap-2 mt-8">
+          {[...courses.map((c) => ({ label: c.name, to: courseTo(c) })), { label: 'Tarifs', to: '/tarifs' }, { label: 'Nos professeurs', to: '/nos-professeurs' }, { label: 'Nous joindre', to: '/nous-joindre' }].map((l) => (
+            <li key={l.to}>
+              <Link
+                to={l.to}
+                className="inline-flex items-center bg-white text-marine font-medium text-sm px-4 py-2 rounded-full border border-marine/10 transition-[background-color,color,border-color] duration-200 hover:bg-marine hover:text-white hover:border-marine focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-6 py-3 rounded-lg mt-10 transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+        >
+          Retour à l’accueil
+        </Link>
+      </div>
+    </section>
+  )
+}
+
 /* ─── Homepage ─── */
 function HomePage() {
   return (
@@ -934,6 +982,7 @@ function App() {
           <Route path="/temoignages" element={<Temoignages />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/nos-locaux" element={<NosLocaux />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       <Footer />

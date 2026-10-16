@@ -19,6 +19,7 @@ const COURSES = [
   { name: 'Cours de violon', path: '/cours-de-violon', description: 'Cours de violon classique et contemporain dès 4 ans à Laval' },
   { name: 'Cours de ukulélé', path: '/cours-de-ukulele', description: 'Cours de ukulélé pour enfants et adultes à Laval' },
   { name: 'Cours de basse', path: '/cours-de-basse', description: 'Cours de basse électrique pour enfants et adultes à Laval' },
+  { name: 'Éveil musical', path: '/eveil-musical', description: 'Éveil musical en petits groupes pour les enfants de 3 à 6 ans à Laval' },
 ]
 
 interface SEOProps {

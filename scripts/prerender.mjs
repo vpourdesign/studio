@@ -1,5 +1,5 @@
 // Prérendu statique de chaque route après `vite build`.
-// Écrit dist/<route>.html : Netlify sert ce fichier avant la règle SPA de _redirects,
+// Écrit dist/<route>.html : Netlify sert ce fichier avant la règle 404 de _redirects,
 // et sans redirection vers une barre oblique finale (le canonical n'en a pas).
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -11,6 +11,8 @@ const dist = resolve(root, 'dist')
 // Source unique des routes : le sitemap. Une page ajoutée au sitemap est prérendue.
 const sitemap = readFileSync(resolve(root, 'public/sitemap.xml'), 'utf8')
 const routes = [...sitemap.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map((m) => m[1] || '/')
+// Hors sitemap : la page 404, écrite en dist/404.html et servie par la règle finale de _redirects.
+routes.push('/404')
 
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 const { render } = await import(pathToFileURL(resolve(root, 'dist-ssr/entry-server.js')).href)
@@ -38,6 +40,8 @@ for (const route of routes) {
 
     let page = template
     for (const re of stripFromTemplate) page = page.replace(re, '')
+    // Une page qui déclare son propre robots (la 404 en noindex) remplace celui du gabarit.
+    if (/<meta name="robots"/.test(head)) page = page.replace(/<meta name="robots"[^>]*>\s*/, '')
     page = page
       .replace('</head>', `    ${head}\n  </head>`)
       .replace('<div id="root"></div>', `<div id="root">${html}</div>`)

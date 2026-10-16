@@ -1,1 +1,100 @@
-/*    /index.html   200
+# Redirections du site WordPress vers le nouveau site, à la mise en ligne.
+# Inventaire : les 82 URL de sitemap_index.xml au 2026-10-16, plus /cours-de-chant/ (lien du menu).
+#
+# Netlify compare les chemins avec et sans barre oblique finale : une règle
+# /nos-tarifs couvre aussi /nos-tarifs/. Les pages qui gardent leur adresse
+# (/, /cours-de-piano, /cours-de-guitare, /cours-de-violon, /cours-de-batterie,
+# /cours-de-chant, /nos-professeurs, /inscription, /nous-joindre) n'ont pas de
+# règle : le fichier .html prérendu répond, et le canonical sans barre oblique fait foi.
+# Une seule redirection par ancienne URL, jamais de chaîne.
+
+# ─── Changements d'adresse ───
+/nos-tarifs                                                   /tarifs            301
+/politique-dinscriptions-et-de-paiements                      /tarifs            301
+/cours-deveil-musical                                         /eveil-musical     301
+/nos-cours                                                    /                  301
+/notre-approche                                               /nos-professeurs   301
+/cours-en-ligne                                               /faq               301
+
+# ─── Chant : anciennes pages et doublons ───
+/cours-de-chant-a-laval                                       /cours-de-chant    301
+/ecole-de-musique-le-studio-cours-de-chant-pour-tous-a-laval  /cours-de-chant    301
+/cours-de-chant-a-rosemere                                    /cours-de-chant    301
+
+# ─── Pages géolocalisées et débutants : vers la page de l'instrument ───
+# À remplacer par de vraies pages si Search Console montre qu'elles amènent du trafic.
+/cours-de-guitare-a-rosemere                                  /cours-de-guitare  301
+/cours-de-guitare-pour-debutant-a-laval                       /cours-de-guitare  301
+/cours-de-piano-a-rosemere                                    /cours-de-piano    301
+/cours-de-piano-a-auteuil                                     /cours-de-piano    301
+/cours-de-violon-a-rosemere                                   /cours-de-violon   301
+/cours-de-violon-a-auteuil                                    /cours-de-violon   301
+/cours-de-drum-pour-debutant-a-laval                          /cours-de-batterie 301
+/cours-de-drum-pour-debutant-a-rosemere                       /cours-de-batterie 301
+
+# ─── L'atelier (luthier) : À TRANCHER avec le client ───
+# Si l'atelier a son propre site, remplacer la destination par son adresse.
+/luthier-a-laval-latelier-reparation                          /nous-joindre      301
+/luthier-a-auteuil-latelier-reparation                        /nous-joindre      301
+/luthier-a-rosemere-latelier-reparation                       /nous-joindre      301
+
+# ─── Fiches de professeurs (50 URL) : vers la page de l'équipe ───
+# Une ligne par fiche plutôt qu'un joker /nos-professeurs/*, qui risquerait
+# d'attraper /nos-professeurs lui-même et de boucler.
+/nos-professeurs/adam-mohr                                    /nos-professeurs   301
+/nos-professeurs/alain-jalbert                                /nos-professeurs   301
+/nos-professeurs/alex-brunel                                  /nos-professeurs   301
+/nos-professeurs/alex-weng                                    /nos-professeurs   301
+/nos-professeurs/amine-chakir                                 /nos-professeurs   301
+/nos-professeurs/arden-arapyan                                /nos-professeurs   301
+/nos-professeurs/benoit-girard                                /nos-professeurs   301
+/nos-professeurs/clarisse-dubois                              /nos-professeurs   301
+/nos-professeurs/clarisse-dubois-2                            /nos-professeurs   301
+/nos-professeurs/diana-banna                                  /nos-professeurs   301
+/nos-professeurs/elise-bellerive                              /nos-professeurs   301
+/nos-professeurs/elizabeth-lauzon                             /nos-professeurs   301
+/nos-professeurs/emanuel-simard                               /nos-professeurs   301
+/nos-professeurs/emile-levesque                               /nos-professeurs   301
+/nos-professeurs/erika-denis                                  /nos-professeurs   301
+/nos-professeurs/etienne-ducharme                             /nos-professeurs   301
+/nos-professeurs/eva-shahzabian                               /nos-professeurs   301
+/nos-professeurs/francis-boudreau                             /nos-professeurs   301
+/nos-professeurs/francois-dube                                /nos-professeurs   301
+/nos-professeurs/genevieve-cayer                              /nos-professeurs   301
+/nos-professeurs/guillaume-valiquette-comeau                  /nos-professeurs   301
+/nos-professeurs/jadli-verilli                                /nos-professeurs   301
+/nos-professeurs/jean-daniel-thibeault-desbiens               /nos-professeurs   301
+/nos-professeurs/jeremie-berube                               /nos-professeurs   301
+/nos-professeurs/joey-carey                                   /nos-professeurs   301
+/nos-professeurs/jonathan-mavila                              /nos-professeurs   301
+/nos-professeurs/jonathan-racine-menard                       /nos-professeurs   301
+/nos-professeurs/kathryn-perusse                              /nos-professeurs   301
+/nos-professeurs/laurence-hamon-bernard                       /nos-professeurs   301
+/nos-professeurs/laurent-lambert                              /nos-professeurs   301
+/nos-professeurs/lis-anne-perron                              /nos-professeurs   301
+/nos-professeurs/loriane-costantino                           /nos-professeurs   301
+/nos-professeurs/mathias-javgureanu                           /nos-professeurs   301
+/nos-professeurs/mathilde-farot                               /nos-professeurs   301
+/nos-professeurs/mathilde-robitaille                          /nos-professeurs   301
+/nos-professeurs/mathys-lortie-groleau                        /nos-professeurs   301
+/nos-professeurs/michel-el-zoghby                             /nos-professeurs   301
+/nos-professeurs/micheline-choquette                          /nos-professeurs   301
+/nos-professeurs/mustapha-khazem                              /nos-professeurs   301
+/nos-professeurs/nathalia-martinez-granado                    /nos-professeurs   301
+/nos-professeurs/nicolas-jarret                               /nos-professeurs   301
+/nos-professeurs/phil-charmettant                             /nos-professeurs   301
+/nos-professeurs/rachel-dupras                                /nos-professeurs   301
+/nos-professeurs/roxanne-frechette                            /nos-professeurs   301
+/nos-professeurs/sacha-desjardins                             /nos-professeurs   301
+/nos-professeurs/samuel-gagnon                                /nos-professeurs   301
+/nos-professeurs/sarah-plouffe                                /nos-professeurs   301
+/nos-professeurs/tanya-rizkala                                /nos-professeurs   301
+/nos-professeurs/vincent-gravel-trudel                        /nos-professeurs   301
+/nos-professeurs/wissem-elleuch                               /nos-professeurs   301
+
+# ─── Tout le reste : vraie 404 ───
+# Aucune règle : Netlify sert dist/404.html (prérendu) avec un statut 404 pour
+# toute adresse inconnue. Ça couvre les pages vides (/shop, /portfolio,
+# /documentation, /znpb_template_mngr/...), les restes WordPress (/feed,
+# /wp-admin, /wp-login.php, /wp-content/...) et le reste. Surtout pas de
+# renvoi vers l'accueil en 200 : Google y verrait des doublons (soft 404).
