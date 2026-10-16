@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO, { CourseSchema, FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { teachers } from '../data/professeurs'
 
 import imgPiano from '../assets/piano.png'
 import imgGuitare from '../assets/guitare.png'
@@ -16,6 +17,10 @@ import imgEveil from '../assets/photos/cours-eveil-musical.webp'
 
 interface InstrumentData {
   slug: string
+  /* Âge d'entrée, affiché dans la fiche du cours. */
+  age: string
+  /* Mot cherché dans le champ role de l'équipe pour afficher les profs du cours. */
+  teacherRole: string
   name: string
   color: string
   colorLight: string
@@ -57,12 +62,14 @@ const coursePath = (i: { slug: string; path?: string }) => i.path ?? `/cours-de-
 const INSTRUMENTS: Record<string, InstrumentData> = {
   piano: {
     slug: 'piano',
+    age: 'Dès 4 ans',
+    teacherRole: 'Piano',
     name: 'Piano',
     color: '#525266',
     colorLight: '#E8E8ED',
     image: imgPiano,
     imagePosition: '75% 68%',
-    metaTitle: 'Cours de piano à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de piano à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de piano à Laval pour enfants et adultes, débutants et avancés. Apprenez le piano avec nos professeurs qualifiés à Sainte-Rose. Classique, jazz, pop, blues. Dès 34$/cours.',
     h1: 'Cours de piano à Laval',
@@ -95,7 +102,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'À quel âge peut-on commencer les cours de piano à Laval?',
         answer:
-          'Les cours de piano pour enfant à Laval débutent dès l\u2019âge de 4 ans à l\u2019École le Studio. À cet âge, nous utilisons une approche ludique qui développe l\u2019oreille musicale et la coordination avant d\u2019introduire progressivement la lecture de notes. Il n\u2019y a pas de limite d\u2019âge supérieure — de nombreux adultes débutants s\u2019inscrivent chaque année.',
+          'Les cours de piano pour enfant à Laval débutent dès l\u2019âge de 4 ans à l\u2019École le Studio. À cet âge, nous utilisons une approche ludique qui développe l\u2019oreille musicale et la coordination avant d\u2019introduire progressivement la lecture de notes. Il n\u2019y a pas de limite d\u2019âge supérieure : de nombreux adultes débutants s\u2019inscrivent chaque année.',
       },
       {
         question: 'Faut-il avoir un piano à la maison pour suivre des cours?',
@@ -117,7 +124,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Développe la coordination et la mémoire',
         description:
-          'Jouer du piano sollicite les deux hémisphères du cerveau simultanément, améliorant la coordination motrice, la mémoire de travail et la concentration — des bienfaits prouvés chez les enfants comme les adultes.',
+          'Jouer du piano sollicite les deux hémisphères du cerveau simultanément, améliorant la coordination motrice, la mémoire de travail et la concentration, des bienfaits prouvés chez les enfants comme les adultes.',
       },
       {
         title: 'Un instrument polyvalent',
@@ -139,19 +146,21 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
 
   guitare: {
     slug: 'guitare',
+    age: 'Dès 6 ans',
+    teacherRole: 'Guitare',
     name: 'Guitare',
     color: '#4D5C60',
     colorLight: '#D1E0DE',
     image: imgGuitare,
     imagePosition: '50% 62%',
-    metaTitle: 'Cours de guitare à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de guitare à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de guitare à Laval pour tous les niveaux. Guitare acoustique, électrique, classique. Apprenez la guitare avec nos professeurs qualifiés à Sainte-Rose. Dès 34$/cours.',
     h1: 'Cours de guitare à Laval',
     heroSubtitle:
-      'Acoustique, électrique ou classique — apprenez la guitare avec des professeurs passionnés qui vous guident vers le style qui vous fait vibrer.',
+      'Acoustique, électrique ou classique : apprenez la guitare avec des professeurs passionnés qui vous guident vers le style qui vous fait vibrer.',
     longDescription: [
-      'Les cours de guitare à Laval de l\u2019École le Studio accueillent les musiciens de tous niveaux dans un environnement stimulant et convivial à Sainte-Rose. Que vous rêviez de jouer vos accords préférés autour d\u2019un feu de camp ou de maîtriser des solos de rock enflammés, notre équipe de professeurs qualifiés vous accompagne pas à pas. Depuis plus de 20 ans, l\u2019école fondée par Benoit Girard — lui-même guitariste professionnel — est devenue la référence pour apprendre la guitare à Laval.',
+      'Les cours de guitare à Laval de l\u2019École le Studio accueillent les musiciens de tous niveaux dans un environnement stimulant et convivial à Sainte-Rose. Que vous rêviez de jouer vos accords préférés autour d\u2019un feu de camp ou de maîtriser des solos de rock enflammés, notre équipe de professeurs qualifiés vous accompagne pas à pas. Depuis plus de 20 ans, l\u2019école fondée par Benoit Girard, lui-même guitariste professionnel, est devenue la référence pour apprendre la guitare à Laval.',
       'Un des choix les plus fréquents de nos nouveaux élèves concerne la guitare acoustique vs électrique. Nos professeurs prennent le temps d\u2019expliquer les différences et vous aident à choisir l\u2019instrument qui correspond le mieux à vos goûts musicaux et vos objectifs. Beaucoup d\u2019élèves commencent avec la guitare acoustique pour développer la force des doigts et les bases d\u2019accords, avant d\u2019explorer la guitare électrique et ses effets. Nous offrons aussi des cours de guitare classique pour ceux qui souhaitent explorer le répertoire du nylon.',
       'Ce qui rend nos cours de guitare à Laval uniques, c\u2019est notre approche centrée sur les goûts de l\u2019élève. Dès le premier cours, votre professeur identifie les chansons et les styles qui vous motivent pour construire un parcours d\u2019apprentissage personnalisé. Nos plus de 30 professeurs couvrent le rock, le blues, le folk, le jazz, le fingerpicking, le metal et la musique populaire québécoise. Avec 425+ élèves actifs et une communauté musicale dynamique à Sainte-Rose, l\u2019École le Studio est l\u2019endroit idéal pour apprendre la guitare à Laval, que vous ayez 6 ou 66 ans.',
     ],
@@ -199,12 +208,12 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'L\u2019instrument social par excellence',
         description:
-          'La guitare se transporte partout et s\u2019invite dans toutes les occasions. Autour d\u2019un feu, en voyage, entre amis — c\u2019est l\u2019instrument idéal pour partager la musique et créer des moments inoubliables.',
+          'La guitare se transporte partout et s\u2019invite dans toutes les occasions. Autour d\u2019un feu, en voyage, entre amis : c\u2019est l\u2019instrument idéal pour partager la musique et créer des moments inoubliables.',
       },
       {
         title: 'Une variété de styles infinie',
         description:
-          'Rock, blues, folk, jazz, classique, flamenco, metal — la guitare ouvre les portes de pratiquement tous les genres musicaux. Votre professeur adapte le parcours à vos goûts pour que chaque cours soit motivant.',
+          'Rock, blues, folk, jazz, classique, flamenco, metal : la guitare ouvre les portes de pratiquement tous les genres musicaux. Votre professeur adapte le parcours à vos goûts pour que chaque cours soit motivant.',
       },
       {
         title: 'Renforce la confiance en soi',
@@ -221,12 +230,14 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
 
   chant: {
     slug: 'chant',
+    age: 'Dès 5 ans',
+    teacherRole: 'Chant',
     name: 'Chant',
     color: '#8A8A6E',
     colorLight: '#EEF4CE',
     image: imgChant,
     imagePosition: '62% 38%',
-    metaTitle: 'Cours de chant à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de chant à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de chant et technique vocale à Laval pour tous les niveaux. Développez votre voix avec nos professeurs qualifiés à Sainte-Rose. Pop, jazz, classique, comédie musicale. Dès 34$/cours.',
     h1: 'Cours de chant à Laval',
@@ -235,13 +246,13 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     longDescription: [
       'Les cours de chant à Laval de l\u2019École le Studio offrent un espace bienveillant et professionnel pour développer votre voix, que vous soyez un débutant timide ou un chanteur expérimenté cherchant à perfectionner sa technique vocale à Laval. Depuis plus de 20 ans, notre école à Sainte-Rose forme des chanteurs de tous âges et de tous niveaux, avec une approche qui respecte l\u2019unicité de chaque voix et les aspirations musicales de chaque élève.',
       'Nos leçons de chant à Laval sont bien plus qu\u2019un simple cours de musique : c\u2019est un parcours de découverte de soi à travers la voix. Nos professeurs de technique vocale à Laval enseignent différentes techniques de respiration, le placement de la voix, le développement de la tessiture, la justesse, la projection et l\u2019interprétation. Chaque leçon de chant à Laval est adaptée à votre niveau et à vos objectifs : certains élèves souhaitent chanter pour le plaisir personnel, d\u2019autres préparent des auditions ou des prestations publiques.',
-      'L\u2019École le Studio se distingue par la diversité des styles enseignés dans nos cours de chant à Laval. Pop, jazz, classique, comédie musicale, soul, R&B — nos professeurs maîtrisent les techniques spécifiques à chaque genre. La technique vocale à Laval que nous enseignons s\u2019appuie sur des principes physiologiques solides pour protéger votre voix tout en l\u2019aidant à s\u2019épanouir. Avec plus de 30 professeurs et 425+ élèves actifs, notre communauté musicale à Sainte-Rose est l\u2019endroit idéal pour libérer votre potentiel vocal dans la grande région de Laval.',
+      'L\u2019École le Studio se distingue par la diversité des styles enseignés dans nos cours de chant à Laval. Pop, jazz, classique, comédie musicale, soul, R&B : nos professeurs maîtrisent les techniques spécifiques à chaque genre. La technique vocale à Laval que nous enseignons s\u2019appuie sur des principes physiologiques solides pour protéger votre voix tout en l\u2019aidant à s\u2019épanouir. Avec plus de 30 professeurs et 425+ élèves actifs, notre communauté musicale à Sainte-Rose est l\u2019endroit idéal pour libérer votre potentiel vocal dans la grande région de Laval.',
     ],
     levels: [
       {
         name: 'Débutant',
         description:
-          'Découvrez les bases de la technique vocale : respiration abdominale, justesse, placement de la voix et confiance en soi. Aucune expérience préalable requise — juste l\u2019envie de chanter.',
+          'Découvrez les bases de la technique vocale : respiration abdominale, justesse, placement de la voix et confiance en soi. Aucune expérience préalable requise, juste l\u2019envie de chanter.',
       },
       {
         name: 'Intermédiaire',
@@ -264,7 +275,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'À quel âge peut-on commencer les cours de chant à Laval?',
         answer:
-          'Nos cours de chant sont offerts dès l\u2019âge de 5 ans. L\u2019enseignement est adapté à l\u2019âge, au niveau et au développement de chaque enfant, avec une approche progressive qui permet de découvrir sa voix et les bases du chant dans le plaisir. Pour les adultes, il n\u2019est jamais trop tard — plusieurs de nos élèves de technique vocale à Laval ont commencé après 50 ans.',
+          'Nos cours de chant sont offerts dès l\u2019âge de 5 ans. L\u2019enseignement est adapté à l\u2019âge, au niveau et au développement de chaque enfant, avec une approche progressive qui permet de découvrir sa voix et les bases du chant dans le plaisir. Pour les adultes, il n\u2019est jamais trop tard : plusieurs de nos élèves de technique vocale à Laval ont commencé après 50 ans.',
       },
       {
         question: 'Quelle est la différence entre les cours de chant et de technique vocale?',
@@ -281,7 +292,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Votre instrument, c\u2019est vous',
         description:
-          'Le chant est le seul instrument que vous portez en vous. Pas d\u2019achat d\u2019équipement nécessaire — juste votre voix, votre motivation et un bon professeur pour vous guider dans votre progression.',
+          'Le chant est le seul instrument que vous portez en vous. Pas d\u2019achat d\u2019équipement nécessaire, juste votre voix, votre motivation et un bon professeur pour vous guider dans votre progression.',
       },
       {
         title: 'Bienfaits sur la santé et le bien-être',
@@ -296,20 +307,22 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Explorez tous les genres musicaux',
         description:
-          'Pop, jazz, classique, comédie musicale, soul — nos leçons de chant à Laval vous permettent d\u2019explorer les styles qui vous passionnent et de découvrir des genres que vous n\u2019auriez jamais imaginé chanter.',
+          'Pop, jazz, classique, comédie musicale, soul : nos leçons de chant à Laval vous permettent d\u2019explorer les styles qui vous passionnent et de découvrir des genres que vous n\u2019auriez jamais imaginé chanter.',
       },
     ],
   },
 
   batterie: {
     slug: 'batterie',
+    age: 'Dès 5 ans',
+    teacherRole: 'Batterie',
     name: 'Batterie',
     color: '#383838',
     colorLight: '#E0E0E0',
     image: imgBatterie,
     imagePosition: '50% 25%',
     imageFlip: true,
-    metaTitle: 'Cours de batterie à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de batterie à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de batterie à Laval pour enfants et adultes. Apprenez la batterie avec nos professeurs qualifiés à Sainte-Rose. Rock, jazz, funk, latin. Dès 34$/cours.',
     h1: 'Cours de batterie à Laval',
@@ -317,7 +330,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       'Développez votre sens du rythme et votre coordination avec des professeurs passionnés qui vous initient à la batterie dans une ambiance dynamique et motivante.',
     longDescription: [
       'Les cours de batterie à Laval de l\u2019École le Studio sont conçus pour les passionnés de rythme de tous âges et de tous niveaux. Que vous souhaitiez apprendre la batterie pour la première fois ou perfectionner vos compétences de batteur expérimenté, notre école à Sainte-Rose offre un enseignement de qualité depuis plus de 20 ans. Nos leçons de batterie à Laval combinent la technique fondamentale avec le plaisir de jouer sur des morceaux réels dès le premier cours.',
-      'Apprendre la batterie développe des compétences uniques que peu d\u2019instruments offrent : la coordination des quatre membres, le sens du tempo, l\u2019écoute musicale globale et la capacité à maintenir l\u2019énergie d\u2019un groupe. Nos leçons de batterie à Laval sont dispensées par des batteurs professionnels qui jouent activement sur la scène musicale québécoise. Ils transmettent non seulement la technique, mais aussi la musicalité, le groove et l\u2019art de servir la chanson — des compétences essentielles pour tout batteur.',
+      'Apprendre la batterie développe des compétences uniques que peu d\u2019instruments offrent : la coordination des quatre membres, le sens du tempo, l\u2019écoute musicale globale et la capacité à maintenir l\u2019énergie d\u2019un groupe. Nos leçons de batterie à Laval sont dispensées par des batteurs professionnels qui jouent activement sur la scène musicale québécoise. Ils transmettent non seulement la technique, mais aussi la musicalité, le groove et l\u2019art de servir la chanson, des compétences essentielles pour tout batteur.',
       'L\u2019École le Studio a équipé ses studios de Sainte-Rose de batteries hybrides électroniques qui reprennent les dimensions et la configuration d\u2019une batterie acoustique : l\u2019élève retrouve exactement les mêmes repères de jeu, avec un contrôle du volume en prime. Nos cours de batterie à Laval couvrent le rock, le jazz, le funk, la musique latine, le hip-hop et les percussions world. Nous accueillons les enfants dès 5 ans avec des configurations adaptées à leur taille. Avec plus de 30 professeurs et une communauté de 425+ élèves actifs, notre école est le choix de confiance pour apprendre la batterie dans la grande région de Laval et les environs de Sainte-Rose.',
     ],
     levels: [
@@ -352,7 +365,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Est-ce que la batterie est un instrument bruyant?',
         answer:
-          'La batterie acoustique est effectivement un instrument sonore. C\u2019est pourquoi nous recommandons souvent une batterie hybride électronique pour la pratique à la maison — on peut jouer avec des écouteurs à tout moment. En cours à l\u2019école, nos studios à Sainte-Rose sont équipés de batteries hybrides électroniques aux dimensions et à la configuration d\u2019une batterie acoustique.',
+          'La batterie acoustique est effectivement un instrument sonore. C\u2019est pourquoi nous recommandons souvent une batterie hybride électronique pour la pratique à la maison : on peut jouer avec des écouteurs à tout moment. En cours à l\u2019école, nos studios à Sainte-Rose sont équipés de batteries hybrides électroniques aux dimensions et à la configuration d\u2019une batterie acoustique.',
       },
       {
         question: 'Les cours de batterie aident-ils la concentration des enfants?',
@@ -374,7 +387,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Le coeur de tout groupe musical',
         description:
-          'Le batteur est le pilier rythmique de tout ensemble musical. Apprendre la batterie, c\u2019est développer le sens du tempo, l\u2019écoute et la capacité à guider musicalement un groupe — des compétences recherchées.',
+          'Le batteur est le pilier rythmique de tout ensemble musical. Apprendre la batterie, c\u2019est développer le sens du tempo, l\u2019écoute et la capacité à guider musicalement un groupe, des compétences recherchées.',
       },
       {
         title: 'Résultats rapides et gratifiants',
@@ -386,12 +399,14 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
 
   violon: {
     slug: 'violon',
+    age: 'Dès 4 ans',
+    teacherRole: 'Violon',
     name: 'Violon',
     color: '#6B7F82',
     colorLight: '#D1E0DE',
     image: imgViolon,
     imagePosition: '62% 52%',
-    metaTitle: 'Cours de violon à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de violon à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de violon à Laval pour enfants et adultes. Violon classique et contemporain avec nos professeurs qualifiés à Sainte-Rose. Méthode Suzuki disponible. Dès 34$/cours.',
     h1: 'Cours de violon à Laval',
@@ -451,7 +466,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Discipline et rigueur transférables',
         description:
-          'Apprendre le violon développe la patience, la persévérance et la rigueur — des qualités qui se transfèrent dans les études, le travail et tous les aspects de la vie. Un investissement dans le caractère autant que dans la musique.',
+          'Apprendre le violon développe la patience, la persévérance et la rigueur, des qualités qui se transfèrent dans les études, le travail et tous les aspects de la vie. Un investissement dans le caractère autant que dans la musique.',
       },
       {
         title: 'Un instrument pour la vie',
@@ -468,12 +483,14 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
 
   basse: {
     slug: 'basse',
+    age: 'Dès 8 ans',
+    teacherRole: 'Basse',
     name: 'Basse',
     color: '#5C5F52',
     colorLight: '#E3E5DA',
     image: imgBasse,
     imagePosition: '55% 48%',
-    metaTitle: 'Cours de basse à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de basse à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de basse électrique à Laval pour enfants et adultes, débutants et avancés. Groove, lecture, jeu en groupe avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
     h1: 'Cours de basse à Laval',
@@ -550,13 +567,15 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
 
   ukulele: {
     slug: 'ukulele',
+    age: 'Dès 6 ans',
+    teacherRole: 'Ukulélé',
     name: 'Ukulélé',
     color: '#6E7A64',
     colorLight: '#E6EADF',
     image: imgUkulele,
     imagePosition: '50% 55%',
     imageFlip: true,
-    metaTitle: 'Cours de ukulélé à Laval | École le Studio — Sainte-Rose',
+    metaTitle: 'Cours de ukulélé à Laval | École le Studio, Sainte-Rose',
     metaDescription:
       'Cours de ukulélé à Laval pour enfants et adultes. Un instrument facile d’approche, des chansons dès le premier cours, avec nos professeurs à Sainte-Rose. Dès 34$/cours.',
     h1: 'Cours de ukulélé à Laval',
@@ -632,6 +651,8 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   },
   'eveil-musical': {
     slug: 'eveil-musical',
+    age: 'De 3 à 6 ans',
+    teacherRole: 'Éveil',
     path: '/eveil-musical',
     name: 'Éveil musical',
     courseLabel: 'Éveil musical',
@@ -825,6 +846,25 @@ export default function CoursInstrument({ slug }: { slug: string }) {
   const courseLabel = data.courseLabel ?? `Cours de ${nomBas}`
   const path = coursePath(data)
   const enGroupe = data.format === 'groupe'
+  const profs = teachers.filter((t) => t.role.includes(data.teacherRole))
+
+  /* Fiche du cours : les faits qu'un parent cherche avant de s'inscrire. */
+  const fiche: [string, string][] = enGroupe
+    ? [
+        ['Âge', data.age],
+        ['Format', 'En petits groupes'],
+        ['Horaire et tarif', 'Sur demande'],
+        ['Expérience', 'Aucune requise'],
+        ['Lieu', '191B boul. Sainte-Rose, Laval'],
+      ]
+    : [
+        ['Âge', `${data.age}, adultes bienvenus`],
+        ['Format', 'Cours privés, un élève et un prof'],
+        ['Durée', '30, 45 ou 60 minutes'],
+        ['Tarif', 'Dès 34 $ par cours'],
+        ['Horaire', '7 jours sur 7'],
+        ['Lieu', '191B boul. Sainte-Rose, Laval'],
+      ]
 
   return (
     <div className="bg-cream min-h-screen pt-28 pb-20">
@@ -911,18 +951,107 @@ export default function CoursInstrument({ slug }: { slug: string }) {
           </div>
         </section>
 
-        {/* ─── Long Description / SEO Content ─── */}
-        <section className="mb-16 md:mb-24 max-w-3xl">
-          {data.longDescription.map((paragraph, i) => (
+        {/* ─── Présentation : texte à gauche, fiche du cours à droite ─── */}
+        <section className="mb-16 md:mb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 xl:gap-20">
+          <div className="lg:col-span-7">
             <p
-              key={i}
-              className="text-marine/70 leading-[1.7] mb-4 last:mb-0"
-              style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}
+              className="font-semibold uppercase tracking-[0.14em] mb-5"
+              style={{ color: data.color, fontSize: 'clamp(0.75rem, 1vw, 0.8125rem)' }}
             >
-              {paragraph}
+              Le cours en bref
             </p>
-          ))}
+            {data.longDescription.map((paragraph, i) => (
+              <p
+                key={i}
+                className={i === 0 ? 'text-marine mb-6' : 'text-marine/70 mb-5 last:mb-0'}
+                style={
+                  i === 0
+                    ? { fontSize: 'clamp(1.0625rem, 1.6vw, 1.25rem)', lineHeight: 1.65 }
+                    : { fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)', lineHeight: 1.75 }
+                }
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <aside className="lg:col-span-5 lg:sticky lg:top-32 lg:self-start">
+            <div className="bg-white rounded-2xl overflow-hidden border border-marine/8">
+              <div className="relative overflow-hidden" style={{ aspectRatio: '16 / 10', backgroundColor: data.color }}>
+                <img
+                  src={data.image}
+                  alt={`${courseLabel} à Laval, École le Studio`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ objectPosition: data.imagePosition, transform: data.imageFlip ? 'scaleX(-1)' : undefined }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <dl className="px-6 md:px-7 pt-2">
+                {fiche.map(([label, value]) => (
+                  <div key={label} className="flex items-baseline justify-between gap-6 py-3.5 border-b border-marine/10">
+                    <dt className="text-marine/55 text-sm">{label}</dt>
+                    <dd className="text-marine font-semibold text-sm text-right" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <div className="p-6 md:p-7 pt-5 md:pt-6">
+                <Link
+                  to={enGroupe ? '/nous-joindre' : '/inscription'}
+                  className="flex items-center justify-center gap-2 w-full bg-marine text-white font-display font-bold text-sm px-6 py-4 rounded-xl transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
+                  style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+                >
+                  {enGroupe ? 'Réserver une place' : "S'inscrire"}
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </aside>
         </section>
+
+        {/* ─── Les profs qui enseignent ce cours ─── */}
+        {profs.length > 0 && (
+          <section className="mb-16 md:mb-24">
+            <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+              <h2
+                className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em]"
+                style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
+              >
+                {profs.length > 1 ? 'Vos professeurs' : 'Votre professeur'}
+              </h2>
+              <Link
+                to="/nos-professeurs"
+                className="text-marine font-display font-bold text-sm underline underline-offset-4 decoration-marine/30 transition-colors duration-200 hover:decoration-marine"
+              >
+                Toute l’équipe
+              </Link>
+            </div>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+              {profs.slice(0, 10).map((t) => (
+                <li key={t.name} className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: '3 / 4' }}>
+                  <img
+                    src={`/images/professeurs/${t.img}`}
+                    alt={`${t.name}, professeur de ${t.role.toLowerCase()} à l’École le Studio`}
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="font-display font-extrabold text-white leading-[1.15]" style={{ fontSize: 'clamp(0.9rem, 1.3vw, 1rem)' }}>
+                      {t.name}
+                    </p>
+                    <p className="text-white/70 text-xs mt-1">{t.role}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {/* ─── Benefits Section ─── */}
         <section className="mb-16 md:mb-24">

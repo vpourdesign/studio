@@ -3,47 +3,8 @@ import { Link } from 'react-router-dom'
 import SEO, { FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
 import imgMurProfs from '../assets/photos/mur-professeurs.webp'
+import { teachers } from '../data/professeurs'
 
-/* ─── Teacher Data — matched to /images/professeurs/ ─── */
-const teachers = [
-  { name: 'Benoit Girard', role: 'Fondateur', img: 'professeurs-benoit-girard-l-400x800.jpg' },
-  { name: 'Lis Anne Perron', role: 'Chant et Piano', img: 'professeur-lis-anne-perron-l-400x800.jpg' },
-  { name: 'Guillaume Valiquette Comeau', role: 'Guitare et Piano', img: 'professeurs-guillaume-valiquette-comeau-l-400x800.jpg' },
-  { name: 'Dania Banna', role: 'Piano', img: 'DaniaBanna-400x800.jpg' },
-  { name: 'Joey Carey', role: 'Guitare, Chant et Piano', img: 'professeur-joey-carey-l-400x800.jpg' },
-  { name: 'Nathalia Martinez Granado', role: 'Chant et Piano', img: 'Nathalia-400x800.jpg' },
-  { name: 'Émile Lévesque', role: 'Guitare', img: 'EmileLevesquePhoto-1-400x800.jpg' },
-  { name: 'Alain Jalbert', role: 'Batterie', img: 'AlainJalbertPhoto-400x800.jpg' },
-  { name: 'Adam Mohr', role: 'Piano', img: 'AdamMohr_2024-400x800.webp' },
-  { name: 'Laurent Lambert', role: 'Piano, Basse, Ukulélé et Guitare', img: 'LaurentLambert-400x800.jpg' },
-  { name: 'Sacha Desjardins', role: 'Piano', img: 'Sacha-400x800.jpg' },
-  { name: 'Alex Weng', role: 'Piano', img: 'AlexWeng-400x800.jpg' },
-  { name: 'Elizabeth Lauzon', role: 'Piano', img: 'ElizabethLauzon-400x800.jpg' },
-  { name: 'Roxanne Fréchette', role: 'Piano, Chant et Éveil', img: 'RoxanneFrechette-400x800.jpg' },
-  { name: 'Mathilde Robitaille', role: 'Chant', img: 'MathildeRobitaille_2024-400x800.webp' },
-  { name: 'Wissem Elleuch', role: 'Piano', img: 'WissemElleuch_2024-400x800.webp' },
-  { name: 'Eva Shahzabian', role: 'Piano et Violon', img: 'EvaShahzabian_2024-400x800.webp' },
-  { name: 'François Dubé', role: 'Assistant', img: 'FrancoisDube-400x800.webp' },
-  { name: 'Mathys Lortie Groleau', role: 'Guitare', img: 'MathysLortieGroleau_2024-400x800.webp' },
-  { name: 'Micheline Choquette', role: 'Piano et Chant', img: 'MichelineChoquette_2024-400x800.webp' },
-  { name: 'Michel El Zoghby', role: 'Piano', img: 'MichelElZoghby_2024-400x800.webp' },
-  { name: 'Jean-Daniel Thibeault-Desbiens', role: 'Batterie', img: 'Jean-Daniel-400x800.jpg' },
-  { name: 'Nicolas Jarret', role: 'Batterie', img: 'NicolasJarret_2024-400x800.webp' },
-  { name: 'Sarah Plouffe', role: 'Piano et Chant', img: 'SarahPlouffe_20241-400x800.webp' },
-  { name: 'Rachel Dupras', role: 'Piano et Saxophone', img: 'RachelDupras_20241-400x800.webp' },
-  { name: 'Phil Charmettant', role: 'Guitare', img: 'Phil-400x800.jpg' },
-  { name: 'Emanuel Simard', role: 'Piano', img: 'Emanuel-1-400x800.webp' },
-  { name: 'Arden Arapyan', role: 'Guitare et Piano', img: 'ArdenArapyan-400x800.webp' },
-  { name: 'Françis Boudreau', role: 'Guitare et Piano', img: 'FrancisBoudreau-400x800.webp' },
-  { name: 'Erika Denis', role: 'Chant et Guitare', img: 'ErikaDenis-400x800.webp' },
-  { name: 'Mathias Javgureanu', role: 'Guitare', img: 'MathiasJavgureanu-400x800.webp' },
-  { name: 'Genevieve Cayer', role: 'Chant et Piano', img: 'GenevieveCayer-400x800.webp' },
-  { name: 'Amine Chakir', role: 'Violon et Piano', img: 'AmineChakir-400x800.webp' },
-  { name: 'Mustapha Khazem', role: 'Guitare et Piano', img: 'MustaphaKhazem-400x800.webp' },
-  { name: 'Jonathan Racine Ménard', role: 'Batterie', img: 'JonathanRacineMenard-400x800.webp' },
-  { name: 'Mathilde Farot', role: 'Piano', img: 'MathildeFarot-400x800.webp' },
-  { name: 'Tanya Rizkala', role: 'Chant', img: 'TanyaRizkala-400x800.webp' },
-]
 
 /* ─── Pedagogical Approach ─── */
 const approachFeatures = [
