@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO, { FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { PAIEMENT_FAQ, FRAIS_FAQ, ANNULATION_FAQ } from '../data/ecole'
 
 /* ─── FAQ Data by Category ─── */
 const faqCategories = [
@@ -11,11 +12,11 @@ const faqCategories = [
     questions: [
       {
         question: 'Quand ont lieu les inscriptions pour les cours de musique ?',
-        answer: 'Les inscriptions sont ouvertes en continu tout au long de l\'année, sous réserve des disponibilités. Cependant, les périodes principales d\'inscription sont en août pour la session d\'automne (septembre à décembre) et en décembre pour la session d\'hiver (janvier à mai). Nous offrons également une session d\'été intensive de 8 semaines. Nous vous recommandons de nous contacter tôt pour réserver votre place, car certains créneaux sont très populaires.',
+        answer: 'Les inscriptions sont ouvertes en continu tout au long de l\'année, sous réserve des disponibilités. Cependant, les périodes principales d\'inscription sont en août pour la session d\'automne (31 août au 22 décembre 2026) et en décembre pour la session hiver-printemps (9 janvier au 18 juin 2027). Nous offrons également une session d\'été de 8 semaines. Nous vous recommandons de nous contacter tôt pour réserver votre place, car certains créneaux sont très populaires.',
       },
       {
         question: 'Comment fonctionne l\'inscription ?',
-        answer: 'L\'inscription se fait pour la session complète. Le premier cours vous permet de rencontrer votre professeur, d\'évaluer l\'ambiance de l\'école et de confirmer que le cours vous convient. Si le premier cours ne répond pas à vos attentes et que l\'inscription est interrompue après ce premier cours, seuls le premier cours et les frais d\'inscription sont facturés.',
+        answer: 'L\'inscription se fait pour la session complète. Le premier cours vous permet de rencontrer votre professeur, d\'évaluer l\'ambiance de l\'école et de confirmer que le cours vous convient. Si le premier cours ne répond pas à vos attentes, l\'inscription est remboursée, moins le coût du premier cours et les frais d\'inscription.',
       },
       {
         question: 'Comment se fait le jumelage professeur-élève ?',
@@ -37,15 +38,15 @@ const faqCategories = [
     questions: [
       {
         question: 'À quel âge peut-on commencer les cours de musique ?',
-        answer: 'Nous accueillons les élèves dès l\'âge de 4 ans pour le piano et la guitare, et dès 5-6 ans pour le chant, le violon et la batterie. L\'âge idéal varie selon l\'instrument et la maturité de l\'enfant. Nos professeurs spécialisés en petite enfance utilisent une approche ludique et adaptée pour les plus jeunes. Pour les adultes, il n\'y a aucune limite d\'âge — nous accueillons régulièrement des débutants dans la quarantaine, la cinquantaine et au-delà.',
+        answer: 'Les tout-petits de 3 à 5 ans peuvent commencer par l\'éveil musical. En cours d\'instrument, nous accueillons les enfants dès 4 ans pour le piano et le violon, dès 5 ans pour le chant et la batterie, et dès 6 ans pour la guitare, la basse électrique et le ukulélé. L\'âge idéal varie selon l\'instrument et la maturité de l\'enfant, et nos professeurs adoptent une approche ludique avec les plus jeunes. Pour les adultes, il n\'y a aucune limite d\'âge — nous accueillons régulièrement des débutants dans la quarantaine, la cinquantaine et au-delà.',
       },
       {
         question: 'Les cours sont-ils privés ou en groupe ?',
-        answer: 'Tous nos cours instrumentaux et de chant sont des cours privés (un élève, un professeur). Cette formule permet un enseignement véritablement personnalisé et une progression optimale. Chaque leçon est adaptée au niveau, aux objectifs et aux goûts de l\'élève. Le spectacle annuel offre par contre une belle occasion de jouer devant public et de développer des compétences musicales collectives.',
+        answer: 'Tous nos cours, y compris l\'éveil musical, sont des cours privés (un élève, un professeur). Cette formule permet un enseignement véritablement personnalisé et une progression optimale. Chaque leçon est adaptée au niveau, aux objectifs et aux goûts de l\'élève. Le spectacle annuel offre par contre une belle occasion de jouer devant public et de développer des compétences musicales collectives.',
       },
       {
         question: 'Dois-je avoir mon propre instrument pour suivre des cours ?',
-        answer: 'Pour progresser efficacement, il est recommandé d\'avoir accès à un instrument pour pratiquer à la maison. Cependant, si vous débutez et que vous n\'êtes pas encore sûr de votre choix, nos professeurs peuvent vous guider dans le choix et l\'achat d\'un instrument adapté à votre budget. Pour la batterie, un pad de pratique peut suffire au début. Nous offrons aussi la location de guitares et de basses à partir de 30 $ par mois : voyez la section Location d\'instruments de notre page tarifs.',
+        answer: 'Pour progresser efficacement, il est recommandé d\'avoir accès à un instrument pour pratiquer à la maison. Cependant, si vous débutez et que vous n\'êtes pas encore sûr de votre choix, nos professeurs peuvent vous guider dans le choix et l\'achat d\'un instrument adapté à votre budget. Pour la batterie, un pad de pratique peut suffire au début. Nous offrons aussi la location de guitares, de basses et de violons à partir de 30 $ par mois : voyez la section Location d\'instruments de notre page tarifs.',
       },
       {
         question: 'Comment choisir le bon instrument de musique ?',
@@ -53,7 +54,7 @@ const faqCategories = [
       },
       {
         question: 'Offrez-vous des cours de musique en ligne ?',
-        answer: 'Actuellement, tous nos cours sont offerts en présentiel dans nos studios de Sainte-Rose, Laval. Nous croyons que la qualité de l\'interaction en personne — le contact direct avec le professeur, l\'acoustique naturelle de nos studios, et la possibilité de corriger la posture et la technique en temps réel — offre la meilleure expérience d\'apprentissage. Nous évaluons régulièrement la possibilité d\'offrir des options hybrides pour l\'avenir.',
+        answer: 'Actuellement, tous nos cours sont offerts en présentiel dans nos studios de Sainte-Rose. Nous croyons que la qualité de l\'interaction en personne — le contact direct avec le professeur, l\'acoustique naturelle de nos studios, et la possibilité de corriger la posture et la technique en temps réel — offre la meilleure expérience d\'apprentissage. Nous évaluons régulièrement la possibilité d\'offrir des options hybrides pour l\'avenir.',
       },
     ],
   },
@@ -63,19 +64,19 @@ const faqCategories = [
     questions: [
       {
         question: 'Combien coûtent les cours de musique à l\'École le Studio ?',
-        answer: 'Nos tarifs sont de 34 $ par cours de 30 minutes, 44 $ par cours de 45 minutes, et 54 $ par cours de 60 minutes. S\'ajoutent des frais d\'inscription de 18,50 $ par famille et un cartable pédagogique de 21,50 $, à la première session seulement. Les trois durées sont offertes à tous : pour les enfants de 8 ans et moins, nous recommandons généralement les cours de 30 minutes afin de favoriser la concentration. Consultez notre page tarifs pour tous les détails.',
+        answer: 'Nos tarifs sont de 36 $ par cours de 30 minutes, 46 $ par cours de 45 minutes, et 56 $ par cours de 60 minutes. S\'ajoutent des frais d\'inscription de 18,50 $ par famille, par session (sauf l\'été), et un cartable pédagogique de 21,50 $, à la première session seulement. Les tarifs sont sujets à changement sans préavis. Les trois durées sont offertes à tous : pour les enfants de 8 ans et moins, nous recommandons généralement les cours de 30 minutes afin de favoriser la concentration. Consultez notre page tarifs pour tous les détails.',
       },
       {
-        question: 'Les frais incluent-ils le matériel pédagogique ?',
-        answer: 'Les frais d\'inscription annuels de 45 $ incluent le cartable scolaire avec les partitions de base et le matériel pédagogique initial. En cours de session, certains livres de méthode ou recueils de partitions supplémentaires peuvent être suggérés par le professeur, mais ces achats sont optionnels et généralement abordables (entre 15 $ et 30 $).',
+        question: 'Y a-t-il des frais supplémentaires ?',
+        answer: FRAIS_FAQ,
       },
       {
         question: 'Quels sont les modes de paiement acceptés ?',
-        answer: 'Nous acceptons les paiements par carte de crédit (Visa, Mastercard), carte de débit (Interac), virement Interac et argent comptant. Le paiement de la session se fait au début de chaque session (automne, hiver ou été). Nous offrons la possibilité de payer en plusieurs versements mensuels pour les sessions plus longues. Les reçus sont émis automatiquement.',
+        answer: PAIEMENT_FAQ,
       },
       {
         question: 'Quelle est la politique d\'annulation des cours ?',
-        answer: 'Si vous devez annuler un cours, nous demandons un préavis d\'au moins 24 heures. Les cours annulés avec un préavis suffisant peuvent être repris durant la session selon les disponibilités du professeur. Les cours annulés sans préavis de 24 heures ne peuvent malheureusement pas être remboursés ni repris. En cas de maladie ou de circonstances exceptionnelles, nous faisons preuve de flexibilité — communiquez avec nous et nous trouverons une solution.',
+        answer: ANNULATION_FAQ,
       },
     ],
   },
@@ -89,11 +90,11 @@ const faqCategories = [
       },
       {
         question: 'Quelles sont les sessions de cours ?',
-        answer: 'L\'année scolaire est divisée en deux sessions principales : la session d\'automne (septembre à décembre, environ 14 semaines) et la session d\'hiver (janvier à mai, environ 22 semaines). Nous offrons également une session d\'été intensive de 8 semaines (juin à août) pour les élèves qui souhaitent maintenir leur pratique ou rattraper du terrain pendant les vacances. Des cours à la carte sont disponibles durant la session d\'été.',
+        answer: 'L\'année est divisée en deux sessions principales : l\'automne, du 31 août au 22 décembre 2026 (16 semaines), et l\'hiver-printemps, du 9 janvier au 18 juin 2027 (22 semaines). L\'école est fermée durant la relâche (1er au 7 mars 2027), du Vendredi saint au lundi de Pâques (26 au 29 mars 2027) et le 24 mai 2027 (fête des Patriotes). Une session d\'été de 8 semaines (dates à confirmer) s\'ajoute pour les élèves qui souhaitent maintenir leur pratique ou rattraper du terrain pendant les vacances. Des cours à la carte sont disponibles durant la session d\'été.',
       },
       {
         question: 'Desservez-vous d\'autres quartiers que Sainte-Rose ?',
-        answer: 'Absolument ! Bien que notre école soit située dans le coeur du Vieux Sainte-Rose à Laval, nous accueillons des élèves de partout à Laval — Fabreville, Auteuil, Vimont, Chomedey, Laval-Ouest, Sainte-Dorothée — ainsi que des villes voisines comme Rosemère, Sainte-Thérèse, Boisbriand, Lorraine et Terrebonne. Notre emplacement central et le stationnement gratuit rendent l\'accès facile depuis toute la Rive-Nord.',
+        answer: 'Absolument ! Bien que notre école soit située au coeur du Vieux-Sainte-Rose, nous accueillons des élèves de toute l\'île : Fabreville, Auteuil, Vimont, Chomedey, Laval-Ouest, Sainte-Dorothée — ainsi que des villes voisines comme Rosemère, Sainte-Thérèse, Boisbriand, Lorraine et Terrebonne. Notre emplacement central et le stationnement gratuit rendent l\'accès facile depuis toute la Rive-Nord.',
       },
     ],
   },

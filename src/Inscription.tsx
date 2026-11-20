@@ -2,24 +2,25 @@ import { useState } from 'react'
 import SEO from './components/SEO'
 import Breadcrumbs from './components/Breadcrumbs'
 import MyMusicStaffForm from './components/MyMusicStaffForm'
+import { PAIEMENT_FAQ, FRAIS_FAQ, ANNULATION_FAQ } from './data/ecole'
 
 /* ─── FAQ Data ─── */
 const faqItems = [
   {
-    q: 'Puis-je annuler mon inscription en tout temps ?',
-    a: 'Le contrat peut être annulé en tout temps. Les frais d\'inscription et le matériel ne sont pas remboursables. Les leçons non suivies sont remboursées, sauf celles des deux dernières semaines de la session.',
+    q: 'Quelle est la politique d\'annulation ?',
+    a: ANNULATION_FAQ,
   },
   {
     q: 'Comment fonctionnent les sessions ?',
-    a: 'La session d\'automne compte 14 semaines de cours. La session hiver/printemps compte 22 semaines. Il est possible de s\'inscrire en cours de session, vous ne serez alors facturé que pour les leçons suivies.',
+    a: 'La session d\'automne 2026 se déroule du 31 août au 22 décembre (16 semaines). La session hiver-printemps 2027 se déroule du 9 janvier au 18 juin (22 semaines). Il est possible de s\'inscrire en cours de session, vous ne serez alors facturé que pour les leçons suivies.',
   },
   {
     q: 'Quels sont les frais d\'inscription ?',
-    a: 'Les frais d\'inscription sont de 18,50 $ par famille. Pour la session d\'été, il n\'y a aucun frais d\'inscription. Le cartable pédagogique de 21,50 $ est requis à la première session seulement.',
+    a: FRAIS_FAQ,
   },
   {
     q: 'Quels modes de paiement acceptez-vous ?',
-    a: 'Nous acceptons les chèques, l\'argent comptant et les virements Interac par courriel. Les chèques postdatés mensuels sont autorisés. Le 1er paiement doit être effectué lors de la 1ère semaine de cours.',
+    a: PAIEMENT_FAQ,
   },
   {
     q: 'Que se passe-t-il si mon enfant est absent ?',
@@ -27,7 +28,7 @@ const faqItems = [
   },
   {
     q: 'L\'inscription se fait-elle pour la session complète ?',
-    a: 'Oui, l\'inscription se fait pour la session complète. Si le premier cours ne répond pas à vos attentes et que l\'inscription est interrompue après ce premier cours, seuls le premier cours et les frais d\'inscription sont facturés.',
+    a: 'Oui, l\'inscription se fait pour la session complète. Si le premier cours ne répond pas à vos attentes, l\'inscription est remboursée, moins le coût du premier cours et les frais d\'inscription.',
   },
 ]
 
@@ -53,7 +54,7 @@ function FaqItem({ item }: { item: typeof faqItems[0] }) {
       </button>
       <div
         className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: open ? '300px' : '0', opacity: open ? 1 : 0 }}
+        style={{ maxHeight: open ? '480px' : '0', opacity: open ? 1 : 0 }}
       >
         <p className="pt-3 text-slate text-sm md:text-base leading-relaxed max-w-[65ch]">
           {item.a}

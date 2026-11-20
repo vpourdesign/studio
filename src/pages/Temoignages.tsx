@@ -158,7 +158,7 @@ export default function Temoignages() {
             className="mt-4 text-slate max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)' }}
           >
-            Depuis plus de 20 ans, l'École le Studio accompagne des centaines de musiciens à Sainte-Rose, Laval. Découvrez les témoignages authentiques de nos élèves et de leurs familles.
+            Depuis plus de 20 ans, l'École le Studio accompagne des centaines de musiciens à Sainte-Rose. Découvrez les témoignages authentiques de nos élèves et de leurs familles.
           </p>
         </section>
 

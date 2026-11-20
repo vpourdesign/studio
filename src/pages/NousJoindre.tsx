@@ -115,13 +115,13 @@ export default function NousJoindre() {
             className="font-display font-bold text-marine leading-[1.05] tracking-[-0.03em]"
             style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
           >
-            Contactez l'École le Studio à Laval
+            Contactez l'École le Studio
           </h1>
           <p
             className="mt-4 text-slate max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)' }}
           >
-            Une question sur nos cours de musique ? Envie de vous inscrire ou de planifier une visite ? Notre équipe est là pour vous accompagner dans votre démarche musicale à Sainte-Rose, Laval.
+            Une question sur nos cours de musique ? Envie de vous inscrire ou de planifier une visite ? Notre équipe est là pour vous accompagner dans votre démarche musicale.
           </p>
         </section>
 

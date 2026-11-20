@@ -2,27 +2,28 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO, { FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { TARIFS, TARIFS_NOTE, SESSIONS, PAIEMENT_COURT, PAIEMENT_FAQ, FRAIS_FAQ, ANNULATION_FAQ } from '../data/ecole'
 
 /* ─── Data ─── */
 
 const plans = [
   {
     duration: '30 minutes',
-    price: '34',
+    price: TARIFS[30],
     label: 'Idéal pour les jeunes débutants',
     badge: null,
     highlighted: false,
   },
   {
     duration: '45 minutes',
-    price: '44',
+    price: TARIFS[45],
     label: 'Pour approfondir sa pratique',
     badge: null,
     highlighted: false,
   },
   {
     duration: '60 minutes',
-    price: '54',
+    price: TARIFS[60],
     label: 'Pour les passionnés et avancés',
     badge: null,
     highlighted: false,
@@ -40,6 +41,16 @@ const locations = [
     prix: '40',
     detail: 'Guitare, amplificateur et câble inclus. Tout ce qu\u2019il faut pour pratiquer à la maison.',
   },
+  {
+    nom: 'Basse électrique avec amplificateur',
+    prix: '40',
+    detail: 'Basse, amplificateur et câble inclus. Pour pratiquer à la maison dès le premier cours.',
+  },
+  {
+    nom: 'Violon',
+    prix: '35',
+    detail: 'Violon avec étui et archet. Disponibilité très limitée. Si aucun instrument n\u2019est disponible, nous pouvons vous recommander un partenaire spécialisé en location de violons.',
+  },
 ]
 
 const inclusions = [
@@ -49,31 +60,12 @@ const inclusions = [
   'Salles équipées et matériel sur place',
 ]
 
-const sessions = [
-  {
-    name: 'Automne',
-    period: 'Septembre – Décembre',
-    weeks: '14 semaines',
-    note: null,
-  },
-  {
-    name: 'Hiver',
-    period: 'Janvier – Mai',
-    weeks: '22 semaines',
-    note: null,
-  },
-  {
-    name: 'Été',
-    period: 'Juin – Août',
-    weeks: '8 semaines',
-    note: 'Cours à la carte disponibles durant la session d\u2019été.',
-  },
-]
+const sessions = SESSIONS
 
 const advantages = [
   {
     label: 'Plus de 20 ans d\u2019expérience',
-    description: 'Une école établie et reconnue à Laval depuis 2004.',
+    description: 'Une école établie et reconnue à Sainte-Rose depuis 2004.',
   },
   {
     label: 'plus de 30 professeurs qualifiés',
@@ -97,12 +89,12 @@ const faqItems = [
   {
     question: 'Quels sont les modes de paiement acceptés?',
     answer:
-      'Nous acceptons les chèques, l\u2019argent comptant et les virements Interac par courriel. Les chèques postdatés mensuels sont autorisés. Le premier paiement doit être effectué lors de la première semaine de cours.',
+      PAIEMENT_FAQ,
   },
   {
     question: 'Y a-t-il des frais supplémentaires?',
     answer:
-      'Les frais d\u2019inscription / frais administratifs sont de 18,50\u00A0$ par session, par famille (aucuns frais pour la session d\u2019été). Le cartable pédagogique à 21,50\u00A0$ est requis à la première session seulement. Il n\u2019y a aucun autre frais caché.',
+      FRAIS_FAQ,
   },
   {
     question: 'Puis-je changer la durée de mon cours?',
@@ -112,7 +104,7 @@ const faqItems = [
   {
     question: 'Quelle est votre politique d\u2019annulation?',
     answer:
-      'Le contrat peut être annulé en tout temps. Les frais d\u2019inscription et le matériel ne sont pas remboursables. Les leçons non suivies sont remboursées, sauf celles des deux dernières semaines de la session.',
+      ANNULATION_FAQ,
   },
 ]
 
@@ -140,7 +132,7 @@ function FaqItem({ item }: { item: (typeof faqItems)[0] }) {
       </button>
       <div
         className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: open ? '200px' : '0', opacity: open ? 1 : 0 }}
+        style={{ maxHeight: open ? '480px' : '0', opacity: open ? 1 : 0 }}
       >
         <p className="pb-5 text-marine/70 leading-relaxed max-w-prose" style={{ fontSize: 'clamp(0.9rem, 1.2vw, 1rem)' }}>
           {item.answer}
@@ -155,8 +147,8 @@ export default function Tarifs() {
   return (
     <div className="bg-cream min-h-screen pt-28 pb-20">
       <SEO
-        title="Tarifs des cours de musique à Laval | École le Studio — Sainte-Rose"
-        description="Consultez les tarifs des cours de musique à l'École le Studio, Sainte-Rose, Laval. Cours de piano, guitare, basse, chant, batterie, violon et ukulélé. Inscription ouverte toute l'année."
+        title="Tarifs des cours de musique | École le Studio, Sainte-Rose (Laval)"
+        description="Consultez les tarifs des cours de musique de l'École le Studio, à Sainte-Rose (Laval). Cours de piano, guitare, basse, chant, batterie, violon et ukulélé. Inscription ouverte toute l'année."
         path="/tarifs"
       />
       <FAQSchema questions={faqItems} />
@@ -184,8 +176,8 @@ export default function Tarifs() {
         <section className="mb-16 md:mb-24 max-w-3xl">
           <p className="text-marine/70 leading-[1.7] mb-4" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
             À l'École le Studio, nous croyons que l'apprentissage de la musique devrait être accessible à tous.
-            Installée au coeur de Sainte-Rose à Laval depuis plus de 20 ans, notre école offre des cours privés de
-            piano, guitare, basse, chant, batterie, violon et ukulélé à des tarifs compétitifs pour la région de Laval. Chaque leçon
+            Installée au coeur de Sainte-Rose depuis plus de 20 ans, notre école offre des cours privés de
+            piano, guitare, basse, chant, batterie, violon et ukulélé à des tarifs compétitifs. Chaque leçon
             est personnalisée selon le rythme, les objectifs et les goûts musicaux de l'élève — qu'il soit débutant
             complet ou musicien avancé.
           </p>
@@ -197,10 +189,10 @@ export default function Tarifs() {
             sans frais d'inscription, pour permettre aux curieux de découvrir la musique sans engagement.
           </p>
           <p className="text-marine/70 leading-[1.7]" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
-            Que vous recherchiez des cours de musique à Laval pour votre enfant de 4 ans ou pour vous-même en tant
+            Que vous cherchiez des cours pour votre enfant de 4 ans ou pour vous-même en tant
             qu'adulte, nos trois formules de durée (30, 45 ou 60 minutes) s'adaptent à votre budget et à vos
             disponibilités. Avec plus de 425 élèves actifs et une note de 4,9 étoiles, l'École le Studio est la
-            référence en enseignement musical dans le quartier Sainte-Rose et les environs de Laval.
+            référence en enseignement musical dans le quartier Sainte-Rose et les environs.
           </p>
         </section>
 
@@ -290,6 +282,7 @@ export default function Tarifs() {
             Pour les enfants de 8&nbsp;ans et moins, nous recommandons généralement les cours de 30&nbsp;minutes afin
             de favoriser la concentration et de maintenir leur intérêt tout au long de la leçon.
           </p>
+          <p className="mt-4 text-marine/50 text-xs leading-relaxed">{TARIFS_NOTE}</p>
         </section>
 
         {/* ─── Frais supplémentaires ─── */}
@@ -357,7 +350,7 @@ export default function Tarifs() {
                 </div>
                 <div>
                   <p className="font-display font-bold text-marine text-sm mb-0.5">Modes de paiement</p>
-                  <p className="text-marine/60 text-sm leading-relaxed">Chèques, comptant, virement Interac. Chèques postdatés acceptés.</p>
+                  <p className="text-marine/60 text-sm leading-relaxed">{PAIEMENT_COURT}</p>
                 </div>
               </div>
             </div>
@@ -377,7 +370,7 @@ export default function Tarifs() {
             Location d'instruments
           </h2>
           <p className="text-marine/60 mb-8 max-w-2xl leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
-            Pas encore d'instrument à la maison? On loue des guitares au mois, alors l'élève peut commencer
+            Pas encore d'instrument à la maison? On loue des guitares, des basses et des violons au mois, alors l'élève peut commencer
             tout de suite et pratiquer entre les cours sans avoir à acheter. C'est souvent la meilleure façon
             de vérifier que l'instrument lui plaît avant d'y mettre le prix.
           </p>
@@ -421,7 +414,7 @@ export default function Tarifs() {
             Calendrier des sessions
           </h2>
           <p className="text-marine/60 mb-8 max-w-2xl" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
-            L'inscription est ouverte toute l'année. Vous pouvez commencer en cours de session : vous ne serez facturé que pour les leçons suivies.
+            Inscriptions ouvertes toute l'année. Vous pouvez commencer en cours de session : vous ne serez facturé que pour les leçons suivies.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -453,10 +446,10 @@ export default function Tarifs() {
             className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)' }}
           >
-            Pourquoi nos tarifs sont compétitifs à Laval
+            Pourquoi nos tarifs sont compétitifs
           </h2>
           <p className="text-marine/60 mb-10 max-w-2xl" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
-            Quand vous comparez les écoles de musique à Laval, regardez au-delà du prix affiché. Voici ce qui est inclus dans chaque cours à l'École le Studio.
+            Quand vous comparez les écoles de musique de la région, regardez au-delà du prix affiché. Voici ce qui est inclus dans chaque cours à l'École le Studio.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -469,19 +469,19 @@ function Hero() {
       {/* Bottom-left white cutout */}
       <div className="absolute bottom-0 left-0 z-20">
         <div className="relative">
-          <div className="bg-cream px-5 md:px-8 pt-5 pb-6 md:pt-6 md:pb-7 max-w-[21rem] md:max-w-sm lg:max-w-md rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <div className="bg-cream px-4 sm:px-5 md:px-8 pt-4 pb-4 sm:pt-5 sm:pb-6 md:pt-6 md:pb-7 max-w-[14.5rem] sm:max-w-[21rem] md:max-w-sm lg:max-w-md rounded-tr-2xl sm:rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <h2
-              className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-2"
-              style={{ fontSize: 'clamp(1.25rem, 2.6vw, 1.85rem)' }}
+              className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-3 sm:mb-2"
+              style={{ fontSize: 'clamp(1.125rem, 2.6vw, 1.85rem)' }}
             >
               La musique pour tous
             </h2>
-            <p className="text-slate text-[0.8rem] md:text-sm leading-relaxed mb-4 max-w-[36ch]">
-              Cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour enfants et adultes. Sainte-Rose, Laval.
+            <p className="hidden sm:block text-slate text-[0.8rem] md:text-sm leading-relaxed mb-4 max-w-[36ch]">
+              Cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour enfants et adultes, à Sainte-Rose.
             </p>
             <Link
               to="/inscription"
-              className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-6 py-3 rounded-lg transition-all duration-300 hover:bg-violet hover:-translate-y-px active:translate-y-px"
+              className="inline-flex items-center gap-2 bg-marine text-white font-semibold text-sm px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-300 hover:bg-violet hover:-translate-y-px active:translate-y-px"
               style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
             >
               Inscrivez-vous
@@ -545,10 +545,10 @@ function CoursesGrid() {
             className="font-display font-bold text-marine tracking-[-0.03em]"
             style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}
           >
-            Nos cours de musique à Laval
+            Nos cours de musique
           </h2>
           <p className="mt-3 text-slate max-w-[50ch]" style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1.0625rem)' }}>
-            Explorez notre offre complète de cours de musique pour enfants et adultes à Sainte-Rose, Laval.
+            Explorez notre offre complète de cours pour enfants et adultes.
           </p>
         </div>
 
@@ -604,7 +604,7 @@ function CourseCard({ course, tall }: { course: typeof courses[0]; tall: boolean
 const ecoleFacts: { label: string; body: React.ReactNode }[] = [
   {
     label: 'Pour qui',
-    body: <>Les enfants dès 3 ans avec l'<Link to="/eveil-musical" className="text-marine underline underline-offset-4 decoration-marine/30 transition-colors duration-200 hover:decoration-marine">éveil musical</Link>, puis dès 4 ans en cours d'instrument, les adolescents et les adultes. Des cours de musique pour enfants à Laval comme pour adultes, à leur rythme.</>,
+    body: <>Les enfants dès 3 ans avec l'<Link to="/eveil-musical" className="text-marine underline underline-offset-4 decoration-marine/30 transition-colors duration-200 hover:decoration-marine">éveil musical</Link>, puis dès 4 ans en cours d'instrument, les adolescents et les adultes, chacun à son rythme.</>,
   },
   {
     label: 'Styles',
@@ -635,7 +635,7 @@ function HomeSEOContent() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-16">
           <div className="lg:col-span-5 lg:sticky lg:top-28 lg:self-start">
             <p className="text-slate font-semibold uppercase tracking-[0.14em] mb-5 text-balance" style={{ fontSize: 'clamp(0.75rem, 1vw, 0.8125rem)' }}>
-              Sainte-Rose, Laval · depuis plus de 20&nbsp;ans
+              Vieux-Sainte-Rose · depuis plus de 20&nbsp;ans
             </p>
             <h2
               className="font-display font-extrabold text-marine tracking-[-0.03em] leading-[1.05]"
@@ -684,7 +684,7 @@ function HomeSEOContent() {
                   ))}
                 </ul>
                 <p className="text-slate mt-3" style={{ fontSize: 'clamp(0.875rem, 1.2vw, 0.9375rem)' }}>
-                  Cours de piano à Laval, cours de guitare pour débutants, leçons de chant, cours de batterie et de violon.
+                  Des cours privés pour débutants comme pour musiciens avancés, de l'enfance à l'âge adulte.
                 </p>
               </dd>
             </div>
@@ -813,10 +813,10 @@ function VieuxSteRose() {
               d'un quartier <span className="text-violet">inspirant</span>
             </h2>
             <p className="text-slate leading-relaxed mb-5">
-              Nichée au 191B boulevard Sainte-Rose, notre école de musique se trouve dans l'un des quartiers les plus charmants de Laval. Le Vieux-Sainte-Rose, avec ses rues bordées d'arbres, ses cafés et ses galeries, offre un cadre inspirant pour l'apprentissage de la musique.
+              Nichée au 191B boulevard Sainte-Rose, notre école se trouve dans l'un des quartiers les plus charmants de la ville. Le Vieux-Sainte-Rose, avec ses rues bordées d'arbres, ses cafés et ses galeries, offre un cadre inspirant pour l'apprentissage de la musique.
             </p>
             <p className="text-slate leading-relaxed mb-8">
-              Nous servons une clientèle provenant de Laval, Sainte-Rose, Auteuil, Rosemère, Fabreville et Sainte-Dorothée. Un stationnement gratuit est disponible sur place.
+              Nos élèves viennent de Sainte-Rose, Auteuil, Fabreville, Sainte-Dorothée, Rosemère et des environs. Un stationnement gratuit est disponible sur place.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <a
@@ -859,13 +859,13 @@ function Fondateur() {
               Benoit Girard
             </h2>
             <p className="text-white/70 leading-relaxed mb-5">
-              Anciennement connue sous le nom d'École de Guitare Benoit Girard, l'école porte l'héritage d'un musicien passionné qui a consacré sa carrière à l'enseignement de la musique à Laval.
+              Anciennement connue sous le nom d'École de Guitare Benoit Girard, l'école porte l'héritage d'un musicien passionné qui a consacré sa carrière à l'enseignement de la musique.
             </p>
             <p className="text-white/70 leading-relaxed mb-5">
               Avec près de 20 ans d'expérience et plus de 15 000 heures de cours à son actif, Benoit a formé des centaines d'élèves de tous âges. Sa philosophie : un apprentissage basé sur le plaisir et le dépassement de soi.
             </p>
             <p className="text-white/70 leading-relaxed mb-8">
-              Aujourd'hui, l'école qu'il a fondée compte plus de 30 professeurs qualifiés et accueille plus de 425 élèves actifs chaque année à Sainte-Rose.
+              Aujourd'hui, l'école qu'il a fondée compte plus de 30 professeurs qualifiés et accueille plus de 425 élèves actifs chaque année.
             </p>
             <div className="flex flex-wrap gap-8">
               {[

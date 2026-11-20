@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO, { FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { PROFS_FAQ } from '../data/ecole'
 import imgMurProfs from '../assets/photos/mur-professeurs.webp'
 import { teachers } from '../data/professeurs'
 
@@ -50,7 +51,7 @@ const approachFeatures = [
 const faqQuestions = [
   {
     question: 'Quelles sont les qualifications de vos professeurs de musique ?',
-    answer: 'Tous nos professeurs détiennent un diplôme universitaire ou collégial en musique (performance, interprétation ou pédagogie musicale). Ils sont également des musiciens actifs sur la scène québécoise, ce qui leur permet de transmettre une expérience concrète et actuelle à leurs élèves.',
+    answer: PROFS_FAQ,
   },
   {
     question: 'Comment est choisi le professeur pour mon enfant ?',
@@ -124,7 +125,7 @@ export default function Professeurs() {
             className="mt-4 text-slate max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)' }}
           >
-            Plus de 30 musiciens passionnés et pédagogues qualifiés, dédiés à l'apprentissage de la musique à Sainte-Rose, Laval.
+            Plus de 30 musiciens passionnés et pédagogues qualifiés, dédiés à l'apprentissage de la musique.
           </p>
         </section>
 
@@ -204,10 +205,10 @@ export default function Professeurs() {
         {/* ─── SEO part 2 — below the grid ─── */}
         <section className="max-w-[1400px] mx-auto px-6 md:px-12 xl:px-16 mt-14 md:mt-20 space-y-5">
           <p className="text-slate leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>
-            Que vous cherchiez un <Link to="/cours-de-piano" className="text-violet font-semibold hover:underline">cours de piano à Laval</Link>, un <Link to="/cours-de-guitare" className="text-violet font-semibold hover:underline">cours de guitare</Link>, un <Link to="/cours-de-chant" className="text-violet font-semibold hover:underline">cours de chant</Link>, un <Link to="/cours-de-batterie" className="text-violet font-semibold hover:underline">cours de batterie</Link> ou un <Link to="/cours-de-violon" className="text-violet font-semibold hover:underline">cours de violon</Link>, nos professeurs offrent un enseignement individualisé qui s'adapte à chaque élève. Enfants dès 5 ans, adolescents et adultes de tous niveaux profitent d'une pédagogie bienveillante et structurée, ancrée dans le plaisir de la musique.
+            Que vous cherchiez un <Link to="/cours-de-piano" className="text-violet font-semibold hover:underline">cours de piano</Link>, un <Link to="/cours-de-guitare" className="text-violet font-semibold hover:underline">cours de guitare</Link>, un <Link to="/cours-de-chant" className="text-violet font-semibold hover:underline">cours de chant</Link>, un <Link to="/cours-de-batterie" className="text-violet font-semibold hover:underline">cours de batterie</Link> ou un <Link to="/cours-de-violon" className="text-violet font-semibold hover:underline">cours de violon</Link>, nos professeurs offrent un enseignement individualisé qui s'adapte à chaque élève. Enfants dès 4 ans, adolescents et adultes de tous niveaux profitent d'une pédagogie bienveillante et structurée, ancrée dans le plaisir de la musique.
           </p>
           <p className="text-slate leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>
-            Située au 191B boulevard Sainte-Rose, l'<strong className="text-marine">école de musique le Studio</strong> dessert les familles de <strong className="text-marine">Sainte-Rose</strong>, Fabreville, Auteuil, Vimont, Chomedey, Rosemère et les environs depuis plus de deux décennies. Nos professeurs sont diplômés en musique et musiciens actifs sur scène — une combinaison qui garantit un enseignement à la fois rigoureux et inspirant. <Link to="/tarifs" className="text-violet font-semibold hover:underline">Consultez nos tarifs</Link> ou <Link to="/inscription" className="text-violet font-semibold hover:underline">inscrivez-vous dès aujourd'hui</Link> pour commencer votre parcours musical.
+            Située au 191B boulevard Sainte-Rose, l'<strong className="text-marine">école de musique le Studio</strong> dessert les familles de <strong className="text-marine">Sainte-Rose</strong>, Fabreville, Auteuil, Vimont, Chomedey, Rosemère et les environs depuis plus de deux décennies. Nos professeurs ont une formation en musique ou une solide expérience professionnelle, et plusieurs sont actifs sur scène : un enseignement à la fois rigoureux et inspirant. <Link to="/tarifs" className="text-violet font-semibold hover:underline">Consultez nos tarifs</Link> ou <Link to="/inscription" className="text-violet font-semibold hover:underline">inscrivez-vous dès aujourd'hui</Link> pour commencer votre parcours musical.
           </p>
         </section>
 
@@ -225,7 +226,7 @@ export default function Professeurs() {
             Notre approche pédagogique
           </h2>
           <p className="text-slate text-center max-w-xl mx-auto mb-12" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-            Ce qui distingue nos professeurs et fait la réputation de l'École le Studio à Laval.
+            Ce qui distingue nos professeurs et fait la réputation de l'École le Studio.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

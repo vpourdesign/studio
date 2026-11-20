@@ -12,18 +12,20 @@ Nom de la fiche Google : « Le Studio École de musique ». Ancien nom : École 
 - Stationnement : gratuit sur place
 - Secteurs desservis : Sainte-Rose, Fabreville, Auteuil, Vimont, Chomedey, Sainte-Dorothée, Rosemère, Lorraine, Bois-des-Filion, Boisbriand, Sainte-Thérèse
 - Format : cours privés (un élève, un professeur), 30, 45 ou 60 minutes, offerts 7 jours sur 7
-- Éveil musical : cours en petits groupes pour les enfants de 3 à 6 ans (comptines, activités ludiques, paramètres du son, familles d'instruments, initiation au langage musical). Horaire et tarif sur demande.
+- Éveil musical : cours individuels pour les enfants de 3 à 5 ans (comptines, activités ludiques, paramètres du son, familles d'instruments, initiation au langage musical). Horaire et tarif sur demande.
 - Langue d'enseignement : français
 
 ## Tarifs
 
-- 30 minutes : 34 $ par cours
-- 45 minutes : 44 $ par cours
-- 60 minutes : 54 $ par cours
-- Frais d'inscription : 18,50 $ par famille (aucuns frais à la session d'été)
+- 30 minutes : 36 $ par cours (tarifs de janvier 2027)
+- 45 minutes : 46 $ par cours
+- 60 minutes : 56 $ par cours
+- Les tarifs sont sujets à changement sans préavis.
+- Frais d'inscription : 18,50 $ par famille, par session (aucuns frais à la session d'été). Les photocopies et documents pédagogiques ajoutés au cartable par les professeurs sont inclus.
 - Cartable pédagogique : 21,50 $, à la première session seulement
 - Pour les enfants de 8 ans et moins, l'école recommande généralement les cours de 30 minutes.
-- Location de guitares et de basses : à partir de 30 $ par mois.
+- Modes de paiement : chèque, comptant, virement Interac et carte de crédit. Paiements mensuels par carte de crédit avec prélèvements préautorisés. Chèques postdatés mensuels acceptés.
+- Location d'instruments, par mois : guitare acoustique ou classique 30 $, guitare électrique avec ampli 40 $, basse électrique avec ampli 40 $, violon avec étui et archet 35 $ (disponibilité très limitée).
 
 ## Âge minimum par instrument
 
@@ -31,16 +33,16 @@ Nom de la fiche Google : « Le Studio École de musique ». Ancien nom : École 
 - Violon : 4 ans
 - Chant : 5 ans
 - Batterie : 5 ans
-- Guitare : 6 ans
-- Ukulélé et basse : enfants et adultes
+- Guitare, basse électrique et ukulélé : 6 ans
+- Éveil musical : 3 à 5 ans
 
 ## Sessions et inscription
 
-- Automne : septembre à décembre, 14 semaines
-- Hiver : janvier à mai, 22 semaines
-- Été : juin à août, 8 semaines
+- Automne 2026 : 31 août au 22 décembre 2026, 16 semaines
+- Hiver-printemps 2027 : 9 janvier au 18 juin 2027, 22 semaines. Fermé du 1er au 7 mars (relâche), du 26 au 29 mars (Pâques) et le 24 mai (fête des Patriotes).
+- Été 2027 : 8 semaines, dates à confirmer
 - L'inscription est ouverte toute l'année et se fait pour la session complète. On peut commencer en cours de session : seules les leçons suivies sont facturées.
-- Si l'inscription est interrompue après le premier cours, seuls ce cours et les frais d'inscription sont facturés.
+- Annulation : après le premier cours, l'inscription est remboursée moins le coût du premier cours et les frais d'inscription. Ensuite, frais d'annulation de 50 $; les deux dernières semaines de la session ne sont pas remboursables.
 - Un spectacle par année permet aux élèves de jouer devant public. La participation est facultative et n'est pas comprise dans les frais de cours.
 - Les cours de batterie se donnent sur des batteries hybrides électroniques qui ont les dimensions et la configuration d'une batterie acoustique.
 
@@ -54,7 +56,7 @@ Nom de la fiche Google : « Le Studio École de musique ». Ancien nom : École 
 - [Cours de violon](https://ecolelestudio.com/cours-de-violon)
 - [Cours de ukulélé](https://ecolelestudio.com/cours-de-ukulele)
 - [Cours de basse](https://ecolelestudio.com/cours-de-basse)
-- [Éveil musical (3 à 6 ans)](https://ecolelestudio.com/eveil-musical)
+- [Éveil musical (3 à 5 ans)](https://ecolelestudio.com/eveil-musical)
 - [Tarifs](https://ecolelestudio.com/tarifs)
 - [Nos professeurs](https://ecolelestudio.com/nos-professeurs)
 - [Nos locaux](https://ecolelestudio.com/nos-locaux)

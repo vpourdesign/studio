@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { TARIFS } from '../data/ecole'
 
 const SITE_NAME = 'École le Studio'
 const BASE_URL = 'https://ecolelestudio.com'
@@ -17,9 +18,9 @@ const COURSES = [
   { name: 'Cours de guitare', path: '/cours-de-guitare', description: 'Cours de guitare acoustique, électrique et classique dès 6 ans à Laval' },
   { name: 'Cours de batterie', path: '/cours-de-batterie', description: 'Cours de batterie dès 5 ans à Laval' },
   { name: 'Cours de violon', path: '/cours-de-violon', description: 'Cours de violon classique et contemporain dès 4 ans à Laval' },
-  { name: 'Cours de ukulélé', path: '/cours-de-ukulele', description: 'Cours de ukulélé pour enfants et adultes à Laval' },
-  { name: 'Cours de basse', path: '/cours-de-basse', description: 'Cours de basse électrique pour enfants et adultes à Laval' },
-  { name: 'Éveil musical', path: '/eveil-musical', description: 'Éveil musical en petits groupes pour les enfants de 3 à 6 ans à Laval' },
+  { name: 'Cours de ukulélé', path: '/cours-de-ukulele', description: 'Cours de ukulélé dès 6 ans à Laval' },
+  { name: 'Cours de basse', path: '/cours-de-basse', description: 'Cours de basse électrique dès 6 ans à Laval' },
+  { name: 'Éveil musical', path: '/eveil-musical', description: 'Éveil musical en cours individuels pour les enfants de 3 à 5 ans à Laval' },
 ]
 
 interface SEOProps {
@@ -120,7 +121,7 @@ export function LocalBusinessSchema() {
       { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday', 'Sunday'], opens: '09:00', closes: '18:00' },
     ],
     priceRange: '$$',
-    paymentAccepted: 'Cash, Credit Card, Debit Card, Interac',
+    paymentAccepted: 'Cash, Cheque, Credit Card, Interac e-Transfer',
     currenciesAccepted: 'CAD',
     numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 30 },
     aggregateRating: {
@@ -138,7 +139,7 @@ export function LocalBusinessSchema() {
       name: 'Cours de musique',
       itemListElement: COURSES.map((c) => ({
         '@type': 'Offer',
-        price: '34',
+        price: TARIFS[30],
         priceCurrency: 'CAD',
         itemOffered: { '@type': 'Course', name: c.name, description: c.description, url: `${BASE_URL}${c.path}` },
       })),
@@ -186,14 +187,14 @@ export function CourseSchema({ name, instrument, description, price, path }: {
       '@type': 'Thing',
       name: instrument,
     },
-    /* Sans prix (cours de groupe dont le tarif est donné sur demande), on
+    /* Sans prix (cours dont le tarif est donné sur demande, comme l'éveil musical), on
        n'annonce ni offres ni durée plutôt que des valeurs inventées. */
     ...(price
       ? {
           offers: [
             { '@type': 'Offer', name: '30 minutes', price, priceCurrency: 'CAD', eligibleDuration: 'PT30M' },
-            { '@type': 'Offer', name: '45 minutes', price: '44', priceCurrency: 'CAD', eligibleDuration: 'PT45M' },
-            { '@type': 'Offer', name: '60 minutes', price: '54', priceCurrency: 'CAD', eligibleDuration: 'PT60M' },
+            { '@type': 'Offer', name: '45 minutes', price: TARIFS[45], priceCurrency: 'CAD', eligibleDuration: 'PT45M' },
+            { '@type': 'Offer', name: '60 minutes', price: TARIFS[60], priceCurrency: 'CAD', eligibleDuration: 'PT60M' },
           ],
           hasCourseInstance: [
             { '@type': 'CourseInstance', courseMode: 'Onsite', courseWorkload: 'PT30M', instructor: { '@type': 'Person', name: 'Professeurs qualifiés' } },

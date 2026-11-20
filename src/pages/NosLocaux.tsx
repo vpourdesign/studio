@@ -38,17 +38,17 @@ const photos: Photo[] = [
   {
     src: salleBatterie, w: 800, h: 1067,
     titre: 'Batterie acoustique et électronique',
-    alt: 'Local de batterie avec kit acoustique et kit électronique, cours de batterie à Laval',
+    alt: 'Local de batterie avec kit acoustique et kit électronique, cours de batterie',
   },
   {
     src: salleGuitare, w: 800, h: 534,
     titre: 'Le local de guitare',
-    alt: 'Local de guitare avec guitares, basse et amplificateur, cours de guitare à Sainte-Rose, Laval',
+    alt: 'Local de guitare avec guitares, basse et amplificateur, cours de guitare à Sainte-Rose',
   },
   {
     src: salleLumineuse, w: 800, h: 1067,
     titre: 'Un local baigné de lumière',
-    alt: 'Local de piano lumineux avec grande fenêtre et plantes, École le Studio à Laval',
+    alt: 'Local de piano lumineux avec grande fenêtre et plantes, École le Studio',
   },
   {
     src: accueil, w: 800, h: 550,
@@ -58,7 +58,7 @@ const photos: Photo[] = [
   {
     src: salleChant, w: 800, h: 800,
     titre: 'Le local de chant',
-    alt: 'Local de chant avec micro sur pied, clavier et système de son, cours de chant à Laval',
+    alt: 'Local de chant avec micro sur pied, clavier et système de son, cours de chant',
   },
   {
     src: sallePianoVintage, w: 800, h: 1067,
@@ -68,17 +68,17 @@ const photos: Photo[] = [
   {
     src: sallePianoDroit, w: 800, h: 534,
     titre: 'Piano droit et traitement acoustique',
-    alt: 'Local de piano droit avec panneaux acoustiques, cours de piano à Laval',
+    alt: 'Local de piano droit avec panneaux acoustiques, cours de piano',
   },
   {
     src: corridorStudios, w: 800, h: 1067,
     titre: 'Le corridor des locaux',
-    alt: 'Corridor menant aux locaux de cours de l’École le Studio à Laval',
+    alt: 'Corridor menant aux locaux de cours de l’École le Studio',
   },
   {
     src: salleOrange, w: 800, h: 534,
     titre: 'Le local orange',
-    alt: 'Local de piano numérique aux murs orange avec pupitre et micro, École le Studio, Laval',
+    alt: 'Local de piano numérique aux murs orange avec pupitre et micro, École le Studio',
   },
   {
     src: deviseMurale, w: 800, h: 800,
@@ -88,7 +88,7 @@ const photos: Photo[] = [
   {
     src: salleViolon, w: 800, h: 1067,
     titre: 'Violon et piano Yamaha',
-    alt: 'Violon posé sur un piano Yamaha dans un local traité acoustiquement, cours de violon à Laval',
+    alt: 'Violon posé sur un piano Yamaha dans un local traité acoustiquement, cours de violon',
   },
   {
     src: salleBatterieEnsemble, w: 800, h: 534,
@@ -98,7 +98,7 @@ const photos: Photo[] = [
   {
     src: murBiographies, w: 800, h: 534,
     titre: 'Le mur des professeurs',
-    alt: 'Mur des biographies encadrées des professeurs de l’École le Studio à Laval',
+    alt: 'Mur des biographies encadrées des professeurs de l’École le Studio',
   },
   {
     src: vitrine, w: 800, h: 1067,
@@ -108,12 +108,12 @@ const photos: Photo[] = [
   {
     src: salleAttente, w: 800, h: 534,
     titre: 'La salle d’attente',
-    alt: 'Salle d’attente de l’École le Studio, avec le mur des professeurs, Sainte-Rose, Laval',
+    alt: 'Salle d’attente de l’École le Studio, avec le mur des professeurs, Sainte-Rose',
   },
   {
     src: enseigneEntree, w: 800, h: 534,
     titre: 'L’enseigne à l’entrée',
-    alt: 'Enseigne murale Le Studio, école de musique, à l’entrée des locaux à Laval',
+    alt: 'Enseigne murale Le Studio, école de musique, à l’entrée des locaux',
   },
   {
     src: affichesCorridor, w: 800, h: 1067,
@@ -154,7 +154,7 @@ export default function NosLocaux() {
             className="mt-4 text-slate max-w-2xl leading-relaxed"
             style={{ fontSize: 'clamp(1.05rem, 2vw, 1.25rem)' }}
           >
-            Un local par instrument, traité acoustiquement, au coeur du Vieux-Sainte-Rose à Laval.
+            Un local par instrument, traité acoustiquement, au coeur du Vieux-Sainte-Rose.
           </p>
 
           <div className="mt-8 max-w-3xl space-y-4 text-slate leading-relaxed" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>

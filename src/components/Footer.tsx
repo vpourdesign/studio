@@ -111,7 +111,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-white/40">
-              &copy; {new Date().getFullYear()} École le Studio. Tous droits réservés. École de musique à Laval, Sainte-Rose.
+              &copy; {new Date().getFullYear()} École le Studio. Tous droits réservés.
             </p>
             <div className="flex items-center gap-6 text-xs text-white/40">
               <span>Sainte-Rose &middot; Fabreville &middot; Auteuil &middot; Vimont &middot; Chomedey &middot; Rosemère</span>

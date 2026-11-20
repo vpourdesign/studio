@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SEO, { CourseSchema, FAQSchema } from '../components/SEO'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { TARIFS, TARIFS_NOTE } from '../data/ecole'
 
 import imgPiano from '../assets/piano.png'
 import imgGuitare from '../assets/guitare.png'
@@ -37,13 +38,14 @@ interface InstrumentData {
   styles: string[]
   faq: { question: string; answer: string }[]
   benefits: { title: string; description: string }[]
-  /* Les champs suivants servent aux cours qui ne sont pas des cours privés
-     d'instrument, comme l'éveil musical : URL, libellés et format propres. */
+  /* Les champs suivants servent aux cours qui ne sont pas des cours
+     d'instrument, comme l'éveil musical : URL, libellés, et horaire et tarif
+     donnés sur demande. */
   path?: string
   courseLabel?: string
   leNom?: string
   duNom?: string
-  format?: 'prive' | 'groupe'
+  format?: 'prive' | 'sur-demande'
   cardMeta?: string
   benefitsTitle?: string
   benefitsIntro?: string
@@ -72,9 +74,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     heroSubtitle:
       'Apprenez le piano dans un environnement chaleureux et personnalisé, avec des professeurs passionnés qui s\u2019adaptent à votre rythme et vos objectifs musicaux.',
     longDescription: [
-      'Les cours de piano à Laval de l\u2019École le Studio sont conçus pour accompagner chaque élève dans son parcours musical, qu\u2019il s\u2019agisse d\u2019un enfant qui découvre ses premières notes ou d\u2019un adulte qui souhaite apprendre le piano à Laval pour réaliser un rêve de longue date. Depuis plus de 20 ans, notre école située au coeur de Sainte-Rose offre un enseignement du piano de qualité supérieure, dispensé par des professeurs diplômés et passionnés qui maîtrisent autant le répertoire classique que les styles contemporains.',
-      'Nos cours de piano pour enfant à Laval débutent dès l\u2019âge de 4 ans, avec une approche ludique et progressive qui développe la coordination, la lecture musicale et la créativité. Pour les cours de piano débutant à Laval, nous utilisons des méthodes éprouvées qui permettent de jouer rapidement des pièces motivantes tout en posant des bases techniques solides. Les élèves intermédiaires et avancés approfondissent le répertoire, l\u2019interprétation et la théorie musicale avec un suivi personnalisé.',
-      'Ce qui distingue l\u2019École le Studio des autres écoles de musique de la région, c\u2019est notre approche véritablement individualisée. Chaque professeur de piano adapte son enseignement aux goûts, au rythme d\u2019apprentissage et aux objectifs de l\u2019élève. Que vous souhaitiez préparer une audition, jouer vos chansons préférées ou simplement apprendre le piano à Laval pour le plaisir, nous avons le professeur qu\u2019il vous faut parmi nos plus de 30 enseignants qualifiés. Nos 425+ élèves actifs et notre note de 4,9 étoiles témoignent de la qualité de notre enseignement à Sainte-Rose et dans les quartiers environnants de Laval.',
+      'Les cours de piano de l\u2019École le Studio accompagnent chaque élève dans son parcours musical, qu\u2019il s\u2019agisse d\u2019un enfant qui découvre ses premières notes ou d\u2019un adulte qui réalise enfin un rêve de longue date. Depuis plus de 20 ans, notre école du Vieux-Sainte-Rose offre un enseignement de qualité, donné par des professeurs passionnés qui maîtrisent autant le répertoire classique que les styles contemporains.',
+      'Les enfants peuvent commencer dès 4 ans, avec une approche ludique et progressive qui développe la coordination, la lecture musicale et la créativité. Avec les débutants, nous utilisons des méthodes éprouvées qui permettent de jouer rapidement des pièces motivantes tout en posant des bases techniques solides. Les élèves intermédiaires et avancés approfondissent le répertoire, l\u2019interprétation et la théorie musicale avec un suivi personnalisé.',
+      'Ce qui distingue l\u2019École le Studio des autres écoles de musique de la région, c\u2019est notre approche véritablement individualisée. Chaque professeur de piano adapte son enseignement aux goûts, au rythme d\u2019apprentissage et aux objectifs de l\u2019élève. Que vous souhaitiez préparer une audition, jouer vos chansons préférées ou simplement apprendre pour le plaisir, nous avons le professeur qu\u2019il vous faut. Nos 425 élèves actifs et notre note de 4,9 étoiles en témoignent.',
     ],
     levels: [
       {
@@ -96,9 +98,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     styles: ['Classique', 'Jazz', 'Pop', 'Blues', 'Accompagnement', 'Improvisation'],
     faq: [
       {
-        question: 'À quel âge peut-on commencer les cours de piano à Laval?',
+        question: 'À quel âge peut-on commencer les cours de piano?',
         answer:
-          'Les cours de piano pour enfant à Laval débutent dès l\u2019âge de 4 ans à l\u2019École le Studio. À cet âge, nous utilisons une approche ludique qui développe l\u2019oreille musicale et la coordination avant d\u2019introduire progressivement la lecture de notes. Il n\u2019y a pas de limite d\u2019âge supérieure : de nombreux adultes débutants s\u2019inscrivent chaque année.',
+          'Les cours de piano débutent dès l\u2019âge de 4 ans à l\u2019École le Studio. À cet âge, nous utilisons une approche ludique qui développe l\u2019oreille musicale et la coordination avant d\u2019introduire progressivement la lecture de notes. Il n\u2019y a pas de limite d\u2019âge supérieure : de nombreux adultes débutants s\u2019inscrivent chaque année.',
       },
       {
         question: 'Faut-il avoir un piano à la maison pour suivre des cours?',
@@ -108,12 +110,12 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Quel style de piano enseignez-vous à l\u2019École le Studio?',
         answer:
-          'Nos cours de piano à Laval couvrent le classique, le jazz, le pop, le blues, l\u2019accompagnement vocal et l\u2019improvisation. Chaque élève choisit le style qui le motive le plus, et nos professeurs adaptent le répertoire en conséquence. Plusieurs élèves explorent plusieurs styles au fil de leur progression.',
+          'Nos cours de piano couvrent le classique, le jazz, le pop, le blues, l\u2019accompagnement vocal et l\u2019improvisation. Chaque élève choisit le style qui le motive le plus, et nos professeurs adaptent le répertoire en conséquence. Plusieurs élèves explorent plusieurs styles au fil de leur progression.',
       },
       {
         question: 'Combien de temps faut-il pour apprendre le piano?',
         answer:
-          'Avec des cours de piano débutant à Laval réguliers et une pratique quotidienne de 15 à 30 minutes, la plupart des élèves jouent leurs premières pièces complètes en quelques mois. Après un an de cours, un élève assidu maîtrise généralement les bases techniques et peut jouer un répertoire varié. Le piano est un instrument qui offre des défis stimulants à vie.',
+          'Avec des cours réguliers et une pratique quotidienne de 15 à 30 minutes, la plupart des élèves jouent leurs premières pièces complètes en quelques mois. Après un an de cours, un élève assidu maîtrise généralement les bases techniques et peut jouer un répertoire varié. Le piano est un instrument qui offre des défis stimulants à vie.',
       },
     ],
     benefits: [
@@ -130,7 +132,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Accessible à tout âge',
         description:
-          'Que vous ayez 4 ou 74 ans, le piano s\u2019adapte à votre rythme. Nos cours de piano pour enfant à Laval et nos cours pour adultes sont conçus pour que chacun progresse à sa vitesse et avec plaisir.',
+          'Que vous ayez 4 ou 74 ans, le piano s\u2019adapte à votre rythme. Nos cours pour enfants et pour adultes sont conçus pour que chacun progresse à sa vitesse et avec plaisir.',
       },
       {
         title: 'Des résultats rapides et motivants',
@@ -155,9 +157,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     heroSubtitle:
       'Acoustique, électrique ou classique : apprenez la guitare avec des professeurs passionnés qui vous guident vers le style qui vous fait vibrer.',
     longDescription: [
-      'Les cours de guitare à Laval de l\u2019École le Studio accueillent les musiciens de tous niveaux dans un environnement stimulant et convivial à Sainte-Rose. Que vous rêviez de jouer vos accords préférés autour d\u2019un feu de camp ou de maîtriser des solos de rock enflammés, notre équipe de professeurs qualifiés vous accompagne pas à pas. Depuis plus de 20 ans, l\u2019école fondée par Benoit Girard, lui-même guitariste professionnel, est devenue la référence pour apprendre la guitare à Laval.',
+      'Les cours de guitare de l\u2019École le Studio accueillent les musiciens de tous niveaux dans un environnement stimulant et convivial. Que vous rêviez de jouer vos accords préférés autour d\u2019un feu de camp ou de maîtriser des solos de rock enflammés, notre équipe de professeurs qualifiés vous accompagne pas à pas. Depuis plus de 20 ans, l\u2019école fondée par Benoit Girard, lui-même guitariste professionnel, est devenue une référence pour apprendre la guitare dans la région.',
       'Un des choix les plus fréquents de nos nouveaux élèves concerne la guitare acoustique vs électrique. Nos professeurs prennent le temps d\u2019expliquer les différences et vous aident à choisir l\u2019instrument qui correspond le mieux à vos goûts musicaux et vos objectifs. Beaucoup d\u2019élèves commencent avec la guitare acoustique pour développer la force des doigts et les bases d\u2019accords, avant d\u2019explorer la guitare électrique et ses effets. Nous offrons aussi des cours de guitare classique pour ceux qui souhaitent explorer le répertoire du nylon.',
-      'Ce qui rend nos cours de guitare à Laval uniques, c\u2019est notre approche centrée sur les goûts de l\u2019élève. Dès le premier cours, votre professeur identifie les chansons et les styles qui vous motivent pour construire un parcours d\u2019apprentissage personnalisé. Nos plus de 30 professeurs couvrent le rock, le blues, le folk, le jazz, le fingerpicking, le metal et la musique populaire québécoise. Avec 425+ élèves actifs et une communauté musicale dynamique à Sainte-Rose, l\u2019École le Studio est l\u2019endroit idéal pour apprendre la guitare à Laval, que vous ayez 6 ou 66 ans.',
+      'Ce qui rend nos cours de guitare uniques, c\u2019est notre approche centrée sur les goûts de l\u2019élève. Dès le premier cours, votre professeur identifie les chansons et les styles qui vous motivent pour construire un parcours d\u2019apprentissage personnalisé. Nos professeurs couvrent le rock, le blues, le folk, le jazz, le fingerpicking, le metal et la musique populaire québécoise. Avec 425 élèves actifs et une communauté musicale dynamique, l\u2019École le Studio est l\u2019endroit idéal pour apprendre la guitare, que vous ayez 6 ou 66 ans.',
     ],
     levels: [
       {
@@ -179,14 +181,14 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     styles: ['Rock', 'Blues', 'Folk', 'Jazz', 'Classique', 'Fingerpicking', 'Metal', 'Pop'],
     faq: [
       {
-        question: 'Guitare acoustique ou électrique : par quoi commencer à Laval?',
+        question: 'Guitare acoustique ou électrique : par quoi commencer?',
         answer:
-          'Le choix entre guitare acoustique vs électrique dépend de vos goûts musicaux. La guitare acoustique est idéale pour le folk, le pop et l\u2019accompagnement, tandis que l\u2019électrique convient au rock, blues et metal. Nos professeurs de guitare à Laval vous conseillent gratuitement lors du premier cours pour vous aider à choisir.',
+          'Le choix entre guitare acoustique vs électrique dépend de vos goûts musicaux. La guitare acoustique est idéale pour le folk, le pop et l\u2019accompagnement, tandis que l\u2019électrique convient au rock, blues et metal. Nos professeurs vous conseillent gratuitement lors du premier cours pour vous aider à choisir.',
       },
       {
         question: 'À quel âge peut-on commencer les cours de guitare?',
         answer:
-          'Les cours de guitare à Laval sont offerts dès l\u2019âge de 6 ans à l\u2019École le Studio. Pour les plus jeunes, nous utilisons des guitares 1/2 ou 3/4 adaptées à leur taille. Des guitares classiques à cordes nylon sont recommandées pour les enfants, car elles sont plus douces pour les doigts.',
+          'Les cours de guitare sont offerts dès l\u2019âge de 6 ans à l\u2019École le Studio. Pour les plus jeunes, nous utilisons des guitares 1/2 ou 3/4 adaptées à leur taille. Des guitares classiques à cordes nylon sont recommandées pour les enfants, car elles sont plus douces pour les doigts.',
       },
       {
         question: 'Faut-il apporter sa propre guitare aux cours?',
@@ -196,7 +198,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Combien de temps pour jouer mes chansons préférées?',
         answer:
-          'Avec nos cours de guitare à Laval et une pratique régulière de 20 minutes par jour, la plupart des débutants jouent leurs premières chansons complètes en 2 à 3 mois. La clé est la régularité : un peu chaque jour vaut mieux qu\u2019une longue session par semaine.',
+          'Avec des cours réguliers et une pratique de 20 minutes par jour, la plupart des débutants jouent leurs premières chansons complètes en 2 à 3 mois. La clé est la régularité : un peu chaque jour vaut mieux qu\u2019une longue session par semaine.',
       },
     ],
     benefits: [
@@ -213,7 +215,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Renforce la confiance en soi',
         description:
-          'Maîtriser un morceau à la guitare procure un sentiment d\u2019accomplissement unique. Notre spectacle annuel à Sainte-Rose permet aux élèves de se produire sur scène et de gagner en assurance.',
+          'Maîtriser un morceau à la guitare procure un sentiment d\u2019accomplissement unique. Notre spectacle annuel permet aux élèves de se produire sur scène et de gagner en assurance.',
       },
       {
         title: 'Accessible et abordable',
@@ -233,14 +235,14 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '62% 38%',
     metaTitle: 'Cours de chant à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de chant et technique vocale à Laval pour tous les niveaux. Développez votre voix avec nos professeurs qualifiés à Sainte-Rose. Pop, jazz, classique, comédie musicale.',
+      'Cours de chant privés à Laval, dès 5 ans et pour les adultes. Développez votre voix avec nos professeurs à Sainte-Rose. Pop, jazz, classique, comédie musicale.',
     h1: 'Cours de chant à Laval',
     heroSubtitle:
       'Libérez votre voix et développez votre technique vocale avec des professeurs qui vous aident à trouver votre son unique et votre confiance artistique.',
     longDescription: [
-      'Les cours de chant à Laval de l\u2019École le Studio offrent un espace bienveillant et professionnel pour développer votre voix, que vous soyez un débutant timide ou un chanteur expérimenté cherchant à perfectionner sa technique vocale à Laval. Depuis plus de 20 ans, notre école à Sainte-Rose forme des chanteurs de tous âges et de tous niveaux, avec une approche qui respecte l\u2019unicité de chaque voix et les aspirations musicales de chaque élève.',
-      'Nos leçons de chant à Laval sont bien plus qu\u2019un simple cours de musique : c\u2019est un parcours de découverte de soi à travers la voix. Nos professeurs de technique vocale à Laval enseignent différentes techniques de respiration, le placement de la voix, le développement de la tessiture, la justesse, la projection et l\u2019interprétation. Chaque leçon de chant à Laval est adaptée à votre niveau et à vos objectifs : certains élèves souhaitent chanter pour le plaisir personnel, d\u2019autres préparent des auditions ou des prestations publiques.',
-      'L\u2019École le Studio se distingue par la diversité des styles enseignés dans nos cours de chant à Laval. Pop, jazz, classique, comédie musicale, soul, R&B : nos professeurs maîtrisent les techniques spécifiques à chaque genre. La technique vocale à Laval que nous enseignons s\u2019appuie sur des principes physiologiques solides pour protéger votre voix tout en l\u2019aidant à s\u2019épanouir. Avec plus de 30 professeurs et 425+ élèves actifs, notre communauté musicale à Sainte-Rose est l\u2019endroit idéal pour libérer votre potentiel vocal dans la grande région de Laval.',
+      'Les cours de chant de l\u2019École le Studio offrent un espace bienveillant et professionnel pour développer votre voix, que vous soyez un débutant timide ou un chanteur expérimenté qui veut perfectionner sa technique. Depuis plus de 20 ans, notre école forme des chanteurs de tous âges et de tous niveaux, avec une approche qui respecte l\u2019unicité de chaque voix et les aspirations musicales de chaque élève.',
+      'Un cours de chant, c\u2019est bien plus qu\u2019un simple cours de musique : c\u2019est un parcours de découverte de soi à travers la voix. Nos professeurs enseignent la respiration, le placement de la voix, le développement de la tessiture, la justesse, la projection et l\u2019interprétation. Chaque leçon est adaptée à votre niveau et à vos objectifs : certains élèves souhaitent chanter pour le plaisir personnel, d\u2019autres préparent des auditions ou des prestations publiques.',
+      'L\u2019École le Studio se distingue aussi par la diversité des styles enseignés. Pop, jazz, classique, comédie musicale, soul, R&B : nos professeurs maîtrisent les particularités de chaque genre. Leur enseignement s\u2019appuie sur des principes physiologiques solides, pour protéger votre voix tout en l\u2019aidant à s\u2019épanouir.',
     ],
     levels: [
       {
@@ -264,22 +266,22 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Est-ce que tout le monde peut apprendre à chanter?',
         answer:
-          'Absolument! La voix est un instrument que tout le monde possède. Nos cours de chant à Laval sont conçus pour développer le potentiel vocal de chaque élève, quel que soit son point de départ. La justesse, le timbre et la puissance s\u2019améliorent avec une technique vocale appropriée et une pratique régulière.',
+          'Absolument! La voix est un instrument que tout le monde possède. Nos cours sont conçus pour développer le potentiel vocal de chaque élève, quel que soit son point de départ. La justesse, le timbre et la puissance s\u2019améliorent avec une technique vocale appropriée et une pratique régulière.',
       },
       {
-        question: 'À quel âge peut-on commencer les cours de chant à Laval?',
+        question: 'À quel âge peut-on commencer les cours de chant?',
         answer:
-          'Nos cours de chant sont offerts dès l\u2019âge de 5 ans. L\u2019enseignement est adapté à l\u2019âge, au niveau et au développement de chaque enfant, avec une approche progressive qui permet de découvrir sa voix et les bases du chant dans le plaisir. Pour les adultes, il n\u2019est jamais trop tard : plusieurs de nos élèves de technique vocale à Laval ont commencé après 50 ans.',
+          'Nos cours de chant sont offerts dès l\u2019âge de 5 ans. L\u2019enseignement est adapté à l\u2019âge, au niveau et au développement de chaque enfant, avec une approche progressive qui permet de découvrir sa voix et les bases du chant dans le plaisir. Pour les adultes, il n\u2019est jamais trop tard : plusieurs de nos élèves ont commencé après 50 ans.',
       },
       {
         question: 'Quelle est la différence entre les cours de chant et de technique vocale?',
         answer:
-          'À l\u2019École le Studio, nos cours de chant à Laval intègrent toujours la technique vocale. Chaque leçon combine des exercices techniques (respiration, vocalises, placement) avec le travail de chansons dans le style de votre choix. La technique vocale à Laval est le fondement qui permet de chanter en toute liberté et sans fatigue.',
+          'À l\u2019École le Studio, les deux vont ensemble. Chaque leçon combine des exercices techniques (respiration, vocalises, placement) avec le travail de chansons dans le style de votre choix. La technique est le fondement qui permet de chanter en toute liberté et sans fatigue.',
       },
       {
         question: 'Faut-il chanter devant d\u2019autres élèves?',
         answer:
-          'Non, nos cours de chant à Laval sont des cours privés individuels. Vous chantez uniquement devant votre professeur dans un espace intime et sécurisant. Le spectacle annuel est facultatif mais fortement encouragé pour développer la confiance scénique.',
+          'Non, nos cours de chant sont des cours privés individuels. Vous chantez uniquement devant votre professeur dans un espace intime et sécurisant. Le spectacle annuel est facultatif mais fortement encouragé pour développer la confiance scénique.',
       },
     ],
     benefits: [
@@ -291,7 +293,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Bienfaits sur la santé et le bien-être',
         description:
-          'Chanter libère des endorphines, réduit le stress et améliore la respiration. Les cours de chant à Laval sont souvent décrits par nos élèves comme une véritable thérapie musicale hebdomadaire.',
+          'Chanter libère des endorphines, réduit le stress et améliore la respiration. Nos élèves décrivent souvent leur cours comme une véritable thérapie musicale hebdomadaire.',
       },
       {
         title: 'Gagnez en confiance en soi',
@@ -301,7 +303,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Explorez tous les genres musicaux',
         description:
-          'Pop, jazz, classique, comédie musicale, soul : nos leçons de chant à Laval vous permettent d\u2019explorer les styles qui vous passionnent et de découvrir des genres que vous n\u2019auriez jamais imaginé chanter.',
+          'Pop, jazz, classique, comédie musicale, soul : nos cours vous permettent d\u2019explorer les styles qui vous passionnent et de découvrir des genres que vous n\u2019auriez jamais imaginé chanter.',
       },
     ],
   },
@@ -322,9 +324,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     heroSubtitle:
       'Développez votre sens du rythme et votre coordination avec des professeurs passionnés qui vous initient à la batterie dans une ambiance dynamique et motivante.',
     longDescription: [
-      'Les cours de batterie à Laval de l\u2019École le Studio sont conçus pour les passionnés de rythme de tous âges et de tous niveaux. Que vous souhaitiez apprendre la batterie pour la première fois ou perfectionner vos compétences de batteur expérimenté, notre école à Sainte-Rose offre un enseignement de qualité depuis plus de 20 ans. Nos leçons de batterie à Laval combinent la technique fondamentale avec le plaisir de jouer sur des morceaux réels dès le premier cours.',
-      'Apprendre la batterie développe des compétences uniques que peu d\u2019instruments offrent : la coordination des quatre membres, le sens du tempo, l\u2019écoute musicale globale et la capacité à maintenir l\u2019énergie d\u2019un groupe. Nos leçons de batterie à Laval sont dispensées par des batteurs professionnels qui jouent activement sur la scène musicale québécoise. Ils transmettent non seulement la technique, mais aussi la musicalité, le groove et l\u2019art de servir la chanson, des compétences essentielles pour tout batteur.',
-      'L\u2019École le Studio a équipé ses studios de Sainte-Rose de batteries hybrides électroniques qui reprennent les dimensions et la configuration d\u2019une batterie acoustique : l\u2019élève retrouve exactement les mêmes repères de jeu, avec un contrôle du volume en prime. Nos cours de batterie à Laval couvrent le rock, le jazz, le funk, la musique latine, le hip-hop et les percussions world. Nous accueillons les enfants dès 5 ans avec des configurations adaptées à leur taille. Avec plus de 30 professeurs et une communauté de 425+ élèves actifs, notre école est le choix de confiance pour apprendre la batterie dans la grande région de Laval et les environs de Sainte-Rose.',
+      'Les cours de batterie de l\u2019École le Studio sont conçus pour les passionnés de rythme de tous âges et de tous niveaux. Que vous commenciez ou que vous soyez un batteur expérimenté, notre école offre un enseignement de qualité depuis plus de 20 ans. Chaque leçon combine la technique fondamentale avec le plaisir de jouer sur des morceaux réels dès le premier cours.',
+      'Apprendre la batterie développe des compétences uniques que peu d\u2019instruments offrent : la coordination des quatre membres, le sens du tempo, l\u2019écoute musicale globale et la capacité à maintenir l\u2019énergie d\u2019un groupe. Nos professeurs sont des batteurs professionnels qui jouent activement sur la scène musicale québécoise. Ils transmettent non seulement la technique, mais aussi la musicalité, le groove et l\u2019art de servir la chanson, des compétences essentielles pour tout batteur.',
+      'L\u2019École le Studio a équipé ses studios de Sainte-Rose de batteries hybrides électroniques qui reprennent les dimensions et la configuration d\u2019une batterie acoustique : l\u2019élève retrouve exactement les mêmes repères de jeu, avec un contrôle du volume en prime. Nos cours de batterie couvrent le rock, le jazz, le funk, la musique latine et le hip-hop. Nous accueillons les enfants dès 5 ans avec des configurations adaptées à leur taille.',
     ],
     levels: [
       {
@@ -348,17 +350,17 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Faut-il avoir une batterie à la maison pour suivre des cours?',
         answer:
-          'C\u2019est fortement recommandé pour progresser entre les leçons de batterie à Laval. Une batterie électronique est un excellent compromis pour pratiquer sans déranger les voisins. Nos professeurs peuvent vous conseiller sur les modèles adaptés à votre budget. Un pad de pratique est le strict minimum pour travailler la technique.',
+          'C\u2019est fortement recommandé pour progresser entre les leçons. Une batterie électronique est un excellent compromis pour pratiquer sans déranger les voisins. Nos professeurs peuvent vous conseiller sur les modèles adaptés à votre budget. Un pad de pratique est le strict minimum pour travailler la technique.',
       },
       {
         question: 'À quel âge peut-on commencer les cours de batterie?',
         answer:
-          'Les cours de batterie à Laval sont offerts dès l\u2019âge de 5 ans à l\u2019École le Studio. Pour les jeunes enfants, nous utilisons des configurations de batterie adaptées à leur taille et une approche ludique centrée sur le plaisir du rythme. La batterie est souvent l\u2019instrument préféré des enfants pour son côté physique et énergique.',
+          'Les cours de batterie sont offerts dès l\u2019âge de 5 ans à l\u2019École le Studio. Pour les jeunes enfants, nous utilisons des configurations de batterie adaptées à leur taille et une approche ludique centrée sur le plaisir du rythme. La batterie est souvent l\u2019instrument préféré des enfants pour son côté physique et énergique.',
       },
       {
         question: 'Est-ce que la batterie est un instrument bruyant?',
         answer:
-          'La batterie acoustique est effectivement un instrument sonore. C\u2019est pourquoi nous recommandons souvent une batterie hybride électronique pour la pratique à la maison : on peut jouer avec des écouteurs à tout moment. En cours à l\u2019école, nos studios à Sainte-Rose sont équipés de batteries hybrides électroniques aux dimensions et à la configuration d\u2019une batterie acoustique.',
+          'La batterie acoustique est effectivement un instrument sonore. C\u2019est pourquoi nous recommandons souvent une batterie hybride électronique pour la pratique à la maison : on peut jouer avec des écouteurs à tout moment. À l\u2019école, nos studios sont équipés de batteries hybrides électroniques aux dimensions et à la configuration d\u2019une batterie acoustique.',
       },
       {
         question: 'Les cours de batterie aident-ils la concentration des enfants?',
@@ -375,7 +377,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Libération physique et émotionnelle',
         description:
-          'Jouer de la batterie est une activité physique complète qui libère le stress et les tensions. Beaucoup de nos élèves de cours de batterie à Laval décrivent leur leçon comme le meilleur moment de leur semaine.',
+          'Jouer de la batterie est une activité physique complète qui libère le stress et les tensions. Beaucoup de nos élèves décrivent leur leçon comme le meilleur moment de leur semaine.',
       },
       {
         title: 'Le coeur de tout groupe musical',
@@ -385,7 +387,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         title: 'Résultats rapides et gratifiants',
         description:
-          'Dès les premiers cours de batterie à Laval, vous jouez des rythmes reconnaissables sur des chansons populaires. La progression est visible et motivante, ce qui est particulièrement stimulant pour les enfants.',
+          'Dès les premiers cours, vous jouez des rythmes reconnaissables sur des chansons populaires. La progression est visible et motivante, ce qui est particulièrement stimulant pour les enfants.',
       },
     ],
   },
@@ -400,20 +402,20 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     imagePosition: '62% 52%',
     metaTitle: 'Cours de violon à Laval | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours de violon à Laval pour enfants et adultes. Violon classique et contemporain avec nos professeurs qualifiés à Sainte-Rose. Méthode Suzuki disponible.',
+      'Cours de violon à Laval pour les enfants dès 4 ans et les adultes de tous niveaux. Violon classique et contemporain avec nos professeurs à Sainte-Rose.',
     h1: 'Cours de violon à Laval',
     heroSubtitle:
       'Découvrez la beauté et l\u2019expressivité du violon avec des professeurs dévoués qui vous accompagnent dans la maîtrise de cet instrument noble et exigeant.',
     longDescription: [
-      'Les cours de violon à Laval de l\u2019École le Studio offrent un enseignement rigoureux et passionnant de cet instrument d\u2019une richesse expressive incomparable. Depuis plus de 20 ans, notre école à Sainte-Rose forme des violonistes de tous âges, en commençant dès 4 ans avec la méthode Suzuki et en accompagnant les adultes débutants ou avancés dans leur parcours musical. Nos professeurs de violon classique à Laval sont des musiciens diplômés qui partagent leur amour de l\u2019instrument avec chaque élève.',
-      'Apprendre le violon est un engagement qui développe la discipline, la patience et la sensibilité musicale comme aucun autre instrument. Nos cours de violon à Laval couvrent la posture, la tenue de l\u2019archet, l\u2019intonation, la lecture musicale, le vibrato et les techniques d\u2019archet avancées. Le violon classique à Laval reste notre spécialité, mais nous enseignons aussi le violon fiddle, le violon jazz et le répertoire de musique de chambre pour les élèves qui souhaitent explorer d\u2019autres horizons.',
-      'Ce qui rend nos cours de violon à Laval exceptionnels, c\u2019est l\u2019attention portée à la qualité du son dès les premières leçons. Nos professeurs guident chaque élève dans la production d\u2019un son beau et expressif, plutôt que de simplement jouer les bonnes notes. Cette philosophie d\u2019enseignement, combinée à notre approche personnalisée et nos professeurs qualifiés, fait de l\u2019École le Studio la destination de choix pour apprendre le violon dans la grande région de Laval et les quartiers avoisinants de Sainte-Rose, incluant Fabreville, Auteuil et Rosemère.',
+      'Nos cours de violon accueillent les enfants dès 4 ans ainsi que les adultes de tous niveaux. Chaque professeur adapte son enseignement à l\u2019âge, au niveau et aux objectifs de l\u2019élève. Depuis plus de 20 ans, l\u2019École le Studio offre un enseignement rigoureux et passionnant de cet instrument d\u2019une richesse expressive incomparable.',
+      'Apprendre le violon est un engagement qui développe la discipline, la patience et la sensibilité musicale comme aucun autre instrument. Les cours couvrent la posture, la tenue de l\u2019archet, l\u2019intonation, la lecture musicale, le vibrato et les techniques d\u2019archet avancées. Le violon classique reste notre spécialité, mais nous enseignons aussi le violon fiddle, le violon jazz et le répertoire de musique de chambre pour les élèves qui souhaitent explorer d\u2019autres horizons.',
+      'Ce qui rend nos cours de violon exceptionnels, c\u2019est l\u2019attention portée à la qualité du son dès les premières leçons. Nos professeurs guident chaque élève dans la production d\u2019un son beau et expressif, plutôt que de simplement jouer les bonnes notes. Cette philosophie d\u2019enseignement, combinée à notre approche personnalisée et nos professeurs qualifiés, fait de l\u2019École le Studio une destination de choix pour apprendre le violon, à quelques minutes de Fabreville, d\u2019Auteuil et de Rosemère.',
     ],
     levels: [
       {
         name: 'Débutant',
         description:
-          'Apprenez les fondamentaux : posture, tenue de l\u2019archet, production du son, premières notes et gammes. La méthode Suzuki est offerte pour les jeunes enfants. Un départ solide pour un parcours musical enrichissant.',
+          'Apprenez les fondamentaux : posture, tenue de l\u2019archet, production du son, premières notes et gammes, avec une approche adaptée à l\u2019âge de l\u2019élève. Un départ solide pour un parcours musical enrichissant.',
       },
       {
         name: 'Intermédiaire',
@@ -429,19 +431,19 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     styles: ['Classique', 'Fiddle / Traditionnel', 'Jazz', 'Musique de chambre', 'Contemporain'],
     faq: [
       {
-        question: 'À quel âge peut-on commencer les cours de violon à Laval?',
+        question: 'À quel âge peut-on commencer les cours de violon?',
         answer:
-          'Les cours de violon à Laval sont offerts dès l\u2019âge de 4 ans à l\u2019École le Studio, grâce à la méthode Suzuki qui permet aux très jeunes enfants d\u2019apprendre le violon de façon ludique et progressive. Des violons en tailles 1/16, 1/8, 1/4 et 1/2 sont disponibles pour s\u2019adapter à la croissance de l\u2019enfant.',
+          'Les cours de violon sont offerts dès l\u2019âge de 4 ans à l\u2019École le Studio. Le professeur adapte son approche à l\u2019âge de l\u2019enfant pour que l\u2019apprentissage reste ludique et progressif. Des violons en tailles 1/16, 1/8, 1/4 et 1/2 sont disponibles pour s\u2019adapter à la croissance de l\u2019enfant.',
       },
       {
         question: 'Le violon est-il un instrument difficile à apprendre?',
         answer:
-          'Apprendre le violon demande patience et régularité, car il n\u2019y a pas de frettes pour guider l\u2019intonation. Cependant, avec des cours de violon à Laval réguliers et une pratique quotidienne, les progrès sont constants et gratifiants. Nos professeurs rendent l\u2019apprentissage agréable en adaptant le rythme à chaque élève.',
+          'Apprendre le violon demande patience et régularité, car il n\u2019y a pas de frettes pour guider l\u2019intonation. Cependant, avec des cours réguliers et une pratique quotidienne, les progrès sont constants et gratifiants. Nos professeurs rendent l\u2019apprentissage agréable en adaptant le rythme à chaque élève.',
       },
       {
         question: 'Quelle taille de violon choisir pour mon enfant?',
         answer:
-          'La taille du violon dépend de la longueur du bras de l\u2019enfant. Nos professeurs de violon classique à Laval mesurent l\u2019enfant lors du premier cours et recommandent la taille appropriée (1/16 à 4/4). Il est important de ne pas utiliser un violon trop grand, car cela peut nuire à la posture et à la progression.',
+          'La taille du violon dépend de la longueur du bras de l\u2019enfant. Nos professeurs mesurent l\u2019enfant lors du premier cours et recommandent la taille appropriée (1/16 à 4/4). Il est important de ne pas utiliser un violon trop grand, car cela peut nuire à la posture et à la progression.',
       },
       {
         question: 'Peut-on se préparer à une audition avec vos professeurs?',
@@ -475,8 +477,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
 
   basse: {
     slug: 'basse',
-    age: 'Dès 8 ans',
-    name: 'Basse',
+    age: 'Dès 6 ans',
+    name: 'Basse électrique',
+    courseLabel: 'Cours de basse',
     color: '#5C5F52',
     colorLight: '#E3E5DA',
     image: imgBasse,
@@ -488,9 +491,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     heroSubtitle:
       'L’instrument qui tient la chanson debout. Apprenez la basse électrique avec des professeurs qui jouent sur scène, dans un local équipé d’amplis et de basses.',
     longDescription: [
-      'Les cours de basse à Laval de l’École le Studio s’adressent autant au débutant complet qu’au bassiste qui veut sortir de ses habitudes. La basse est l’instrument le plus rapide à rendre utile : après quelques semaines, vous tenez déjà une ligne simple sur une vraie chanson, et vous pouvez jouer avec d’autres musiciens. C’est ce qui rend l’apprentissage aussi motivant, et c’est pour ça que plusieurs de nos élèves de basse arrivent sans jamais avoir touché à un instrument.',
+      'Les cours de basse de l’École le Studio s’adressent autant au débutant complet qu’au bassiste qui veut sortir de ses habitudes. La basse est l’instrument le plus rapide à rendre utile : après quelques semaines, vous tenez déjà une ligne simple sur une vraie chanson, et vous pouvez jouer avec d’autres musiciens. C’est ce qui rend l’apprentissage aussi motivant, et c’est pour ça que plusieurs de nos élèves de basse arrivent sans jamais avoir touché à un instrument.',
       'Nos professeurs sont des bassistes actifs sur la scène québécoise. Ils enseignent la main droite et la main gauche, oui, mais surtout ce qui fait un bon bassiste : le placement rythmique avec la grosse caisse, le choix des notes dans l’accord, la retenue. Selon vos goûts, on travaille le rock, le funk, le blues, le jazz, le gospel, la pop québécoise ou le slap. La lecture de partitions et de tablatures s’ajoute au rythme qui vous convient, jamais comme un préalable.',
-      'Le local de basse de Sainte-Rose est équipé d’amplis et d’instruments sur place, alors vous pouvez venir les mains vides pour votre premier cours. Vous n’avez pas de basse à la maison? Nous en louons (voir la section Location d’instruments dans nos tarifs), ce qui permet de commencer sans acheter tout de suite. Les cours sont privés, d’une durée de 30, 45 ou 60 minutes, offerts 7 jours sur 7 au 191B boulevard Sainte-Rose, à quelques minutes de Fabreville, Auteuil, Vimont et Rosemère.',
+      'Notre local de basse est équipé d’amplis et d’instruments sur place, alors vous pouvez venir les mains vides pour votre premier cours. Vous n’avez pas de basse à la maison? Nous en louons (voir la section Location d’instruments dans nos tarifs), ce qui permet de commencer sans acheter tout de suite. Les cours sont privés, d’une durée de 30, 45 ou 60 minutes, offerts 7 jours sur 7 au 191B boulevard Sainte-Rose, à quelques minutes de Fabreville, Auteuil, Vimont et Rosemère.',
     ],
     levels: [
       {
@@ -514,17 +517,17 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       {
         question: 'Faut-il savoir jouer de la guitare avant d’apprendre la basse?',
         answer:
-          'Non. La basse s’apprend très bien comme premier instrument, et c’est même un excellent point de départ : quatre cordes, des lignes simples au début, et le plaisir de jouer avec d’autres musiciens rapidement. Plusieurs de nos élèves de basse à Laval n’avaient jamais touché à un instrument avant leur premier cours.',
+          'Non. La basse s’apprend très bien comme premier instrument, et c’est même un excellent point de départ : quatre cordes, des lignes simples au début, et le plaisir de jouer avec d’autres musiciens rapidement. Plusieurs de nos élèves de basse n’avaient jamais touché à un instrument avant leur premier cours.',
       },
       {
         question: 'À quel âge peut-on commencer les cours de basse?',
         answer:
-          'Dès 8 ans environ, le temps que la main soit assez grande pour couvrir le manche confortablement. Il existe aussi des basses au manche court qui permettent de commencer plus tôt. Chez les adultes, il n’y a aucune limite : nous enseignons à des débutants de tous les âges.',
+          'Dès 6 ans. Pour les jeunes enfants, une basse au manche court permet à la main de couvrir le manche confortablement. Chez les adultes, il n’y a aucune limite : nous enseignons à des débutants de tous les âges.',
       },
       {
         question: 'Dois-je avoir ma propre basse et un ampli?',
         answer:
-          'Pas pour le premier cours : le local est équipé. Pour pratiquer à la maison, il faut cependant un instrument. Nous offrons la location de guitares et de basses à partir de 30 $ par mois, ampli inclus dans la formule électrique, ce qui évite un achat avant d’être certain de votre choix.',
+          'Pas pour le premier cours : le local est équipé. Pour pratiquer à la maison, il faut cependant un instrument. Nous louons la basse électrique avec amplificateur et câble à 40 $ par mois, ce qui évite un achat avant d’être certain de votre choix.',
       },
       {
         question: 'Vais-je pouvoir jouer avec d’autres musiciens?',
@@ -572,7 +575,7 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
     heroSubtitle:
       'Quatre cordes, une chanson complète dès le premier cours. Le ukulélé est l’instrument le plus accueillant pour commencer la musique, à 6 ans comme à 70 ans.',
     longDescription: [
-      'Les cours de ukulélé à Laval de l’École le Studio attirent deux types d’élèves : les enfants qui commencent la musique et les adultes qui veulent enfin s’y mettre sans passer six mois à se faire mal aux doigts. Le ukulélé répond aux deux. Ses cordes de nylon sont douces, son manche est court, et trois accords suffisent à accompagner des dizaines de chansons. C’est l’instrument qui donne le plus de musique pour le moins d’effort au départ.',
+      'Les cours de ukulélé de l’École le Studio attirent deux types d’élèves : les enfants qui commencent la musique et les adultes qui veulent enfin s’y mettre sans passer six mois à se faire mal aux doigts. Le ukulélé répond aux deux. Ses cordes de nylon sont douces, son manche est court, et trois accords suffisent à accompagner des dizaines de chansons. C’est l’instrument qui donne le plus de musique pour le moins d’effort au départ.',
       'Nos professeurs enseignent le ukulélé comme un vrai instrument, pas comme un jouet. On y travaille les accords et les enchaînements, les patrons de grattage, le jeu aux doigts, le chant accompagné et, pour ceux qui veulent aller plus loin, la mélodie en solo et les arrangements. Le répertoire vient de vous : pop, folk, chanson québécoise, Beatles, musique hawaïenne ou les pièces du moment. Les enfants dès 6 ans y trouvent un premier instrument à leur taille, et plusieurs passent ensuite à la guitare avec des bases déjà solides.',
       'Les cours sont privés, de 30, 45 ou 60 minutes, offerts 7 jours sur 7 au 191B boulevard Sainte-Rose. Un ukulélé d’entrée de gamme se trouve à petit prix, et votre professeur vous conseillera sur le modèle (soprano, concert ou ténor) qui convient à votre main et à vos objectifs avant que vous achetiez quoi que ce soit. Comme pour tous nos cours, l’inscription se fait en tout temps dans l’année, et des cours à la carte sont offerts durant la session d’été.',
     ],
@@ -641,28 +644,28 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
   },
   'eveil-musical': {
     slug: 'eveil-musical',
-    age: 'De 3 à 6 ans',
+    age: 'De 3 à 5 ans',
     path: '/eveil-musical',
     name: 'Éveil musical',
     courseLabel: 'Éveil musical',
     leNom: 'l’éveil musical',
     duNom: 'de l’éveil musical',
-    format: 'groupe',
-    cardMeta: '3 à 6 ans · En petits groupes',
+    format: 'sur-demande',
+    cardMeta: '3 à 5 ans · Cours individuels',
     color: '#7A6A58',
     colorLight: '#EEE9E2',
     image: imgEveil,
     imagePosition: '50% 30%',
-    metaTitle: 'Éveil musical à Laval pour les 3 à 6 ans | École le Studio, Sainte-Rose',
+    metaTitle: 'Éveil musical à Laval pour les 3 à 5 ans | École le Studio, Sainte-Rose',
     metaDescription:
-      'Cours d’éveil musical à Laval pour les enfants de 3 à 6 ans : comptines, jeux, découverte des sons et des instruments, en petits groupes. École le Studio, Sainte-Rose.',
+      'Cours d’éveil musical à Laval pour les enfants de 3 à 5 ans : comptines, jeux, découverte des sons et des instruments, en cours individuels. École le Studio, Sainte-Rose.',
     h1: 'Éveil musical à Laval',
     heroSubtitle:
-      'Un premier contact avec la musique pour les enfants de 3 à 6 ans. Comptines, jeux et découvertes en petits groupes, pour développer l’oreille, le rythme et le goût de jouer.',
+      'Un premier contact avec la musique pour les enfants de 3 à 5 ans. Comptines, jeux et découvertes en cours individuels, pour développer l’oreille, le rythme et le goût de jouer.',
     longDescription: [
-      'Le cours d’éveil musical de l’École le Studio s’adresse aux enfants de 3 à 6 ans qui n’ont pas encore choisi d’instrument, ou qui sont encore un peu jeunes pour un cours privé. Par le biais de comptines, de chansons et d’activités ludiques, votre enfant se familiarise avec le monde de la musique à son rythme, sans pression de performance. Il chante, il bouge, il écoute : la musique se vit avant de s’expliquer.',
+      'Le cours d’éveil musical de l’École le Studio s’adresse aux enfants de 3 à 5 ans qui n’ont pas encore choisi d’instrument, ou qui sont encore un peu jeunes pour un cours d’instrument. Par le biais de comptines, de chansons et d’activités ludiques, votre enfant se familiarise avec le monde de la musique à son rythme, sans pression de performance. Il chante, il bouge, il écoute : la musique se vit avant de s’expliquer.',
       'Au fil des activités, votre enfant apprend à distinguer les grands paramètres du son. La hauteur, pour entendre le grave et l’aigu. La durée, pour sentir le long et le court. L’intensité, pour jouer fort ou doux. Et le timbre, cette couleur qui permet de reconnaître une voix ou un instrument les yeux fermés. Il découvre aussi les familles d’instruments, des cordes aux percussions en passant par les vents et les claviers. Ces découvertes l’aident à repérer l’instrument qui l’attire et guident ensuite son choix, s’il souhaite poursuivre sa formation vers un instrument en particulier.',
-      'Qu’est-ce qu’une portée, une gamme, le nom des notes ou une figure rythmique? Le cours initie aussi l’enfant au langage musical, par le jeu et à la mesure de son âge. Ces premiers repères rendent ses débuts sur un instrument beaucoup plus faciles. Et parce que le cours se vit en petits groupes, il favorise la socialisation : écouter les autres, attendre son tour, faire de la musique ensemble. Les cours se donnent à nos locaux du 191B boulevard Sainte-Rose, à Laval.',
+      'Qu’est-ce qu’une portée, une gamme, le nom des notes ou une figure rythmique? Le cours initie aussi l’enfant au langage musical, par le jeu et à la mesure de son âge. Ces premiers repères rendent ses débuts sur un instrument beaucoup plus faciles. Les cours d’éveil musical sont offerts individuellement, dans un environnement adapté au rythme et aux besoins de chaque enfant. Cette approche personnalisée favorise la découverte de la musique à travers le jeu, l’écoute et l’exploration des sons.',
     ],
     levelsTitle: 'Ce que votre enfant découvre',
     levelsIntro:
@@ -685,41 +688,41 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
       },
     ],
     stylesTitle: 'Au programme',
-    styles: ['Comptines', 'Activités ludiques', 'Rythme et pulsation', 'Grave et aigu', 'Fort et doux', 'Familles d’instruments', 'Langage musical', 'Musique en groupe'],
+    styles: ['Comptines', 'Activités ludiques', 'Rythme et pulsation', 'Grave et aigu', 'Fort et doux', 'Familles d’instruments', 'Langage musical', 'Écoute et exploration'],
     faq: [
       {
         question: 'À quel âge mon enfant peut-il s’inscrire à l’éveil musical?',
         answer:
-          'Le cours d’éveil musical s’adresse aux enfants de 3 à 6 ans. Aucune expérience musicale n’est nécessaire : le cours est justement conçu comme un premier contact avec la musique.',
+          'Le cours d’éveil musical s’adresse aux enfants de 3 à 5 ans. Aucune expérience musicale n’est nécessaire : le cours est justement conçu comme un premier contact avec la musique.',
       },
       {
         question: 'Est-ce un cours privé ou un cours de groupe?',
         answer:
-          'L’éveil musical se donne en petits groupes. C’est la grande différence avec nos cours d’instrument, qui sont privés. Ici, le groupe fait partie de l’apprentissage : les enfants chantent, jouent et écoutent ensemble.',
+          'L’éveil musical est présentement offert en cours privé seulement. Le professeur travaille avec un seul enfant à la fois, au rythme et selon les besoins de celui-ci.',
       },
       {
         question: 'Mon enfant est timide. Est-ce que le cours lui convient?',
         answer:
-          'Oui. Les activités sont pensées pour que chaque enfant participe à sa façon, et le petit groupe permet au professeur de laisser à chacun le temps de prendre sa place.',
+          'Oui, tout à fait! Les cours d’éveil musical sont offerts en formule individuelle, ce qui permet au professeur de respecter le rythme et la personnalité de chaque enfant. Cette approche personnalisée offre un environnement rassurant où l’enfant peut découvrir la musique à son propre rythme.',
       },
       {
         question: 'Et après l’éveil musical?',
         answer:
-          'Le cours aide votre enfant à découvrir l’instrument qui l’attire. Il peut ensuite poursuivre en cours privé : le piano est offert dès 4 ans, le chant dès 5 ans et le ukulélé dès 6 ans. Nos professeurs peuvent vous conseiller selon ce qu’ils observent en classe.',
+          'Le cours aide votre enfant à découvrir l’instrument qui l’attire. Il peut ensuite poursuivre en cours d’instrument : dès 4 ans, le piano et le violon; dès 5 ans, le chant et la batterie; dès 6 ans, la guitare, la basse électrique et le ukulélé. Nos professeurs peuvent vous conseiller selon ce qu’ils observent pendant les cours.',
       },
       {
         question: 'Quels sont l’horaire et le tarif de l’éveil musical?',
         answer:
-          'Les places sont limitées puisque le cours se donne en petits groupes. Communiquez avec nous au 514-677-7713 ou par notre page Nous joindre pour connaître l’horaire et le tarif de la prochaine session.',
+          'Les places sont limitées. Communiquez avec nous au 514-677-7713 ou par notre page Nous joindre pour connaître l’horaire et le tarif de la prochaine session.',
       },
     ],
     benefitsTitle: 'Pourquoi l’éveil musical?',
-    benefitsIntro: 'Ce qu’un enfant de 3 à 6 ans retire d’un cours d’éveil musical à l’École le Studio de Sainte-Rose, Laval.',
+    benefitsIntro: 'Ce qu’un enfant de 3 à 5 ans retire d’un cours d’éveil musical à l’École le Studio.',
     benefits: [
       {
         title: 'Une oreille qui s’affine tôt',
         description:
-          'Entre 3 et 6 ans, l’enfant apprend à écouter avec une grande curiosité. Distinguer les sons, suivre une pulsation, reprendre une mélodie : ces habiletés deviennent naturelles quand on les cultive tôt.',
+          'Entre 3 et 5 ans, l’enfant apprend à écouter avec une grande curiosité. Distinguer les sons, suivre une pulsation, reprendre une mélodie : ces habiletés deviennent naturelles quand on les cultive tôt.',
       },
       {
         title: 'Un choix d’instrument éclairé',
@@ -727,9 +730,9 @@ const INSTRUMENTS: Record<string, InstrumentData> = {
           'En découvrant les familles d’instruments, votre enfant sait mieux ce qui l’attire. Le passage vers un cours privé de piano, de violon ou de chant se fait ensuite plus naturellement.',
       },
       {
-        title: 'Apprendre avec les autres',
+        title: 'Un apprentissage personnalisé',
         description:
-          'Le cours se vit en petits groupes. L’enfant apprend à écouter, à attendre son tour et à faire de la musique avec d’autres enfants de son âge.',
+          'Les cours d’éveil musical sont offerts individuellement, dans un environnement adapté au rythme et aux besoins de chaque enfant. Cette approche personnalisée favorise la découverte de la musique à travers le jeu, l’écoute et l’exploration des sons.',
       },
       {
         title: 'Le plaisir avant tout',
@@ -798,9 +801,9 @@ function FaqItem({ item }: { item: { question: string; answer: string } }) {
 /* ─── Pricing Plans ─── */
 
 const plans = [
-  { duration: '30 minutes', price: '34', label: 'Idéal pour les jeunes débutants', badge: null, highlighted: false },
-  { duration: '45 minutes', price: '44', label: 'Pour approfondir sa pratique', badge: null, highlighted: false },
-  { duration: '60 minutes', price: '54', label: 'Pour les passionnés et avancés', badge: null, highlighted: false },
+  { duration: '30 minutes', price: TARIFS[30], label: 'Idéal pour les jeunes débutants', badge: null, highlighted: false },
+  { duration: '45 minutes', price: TARIFS[45], label: 'Pour approfondir sa pratique', badge: null, highlighted: false },
+  { duration: '60 minutes', price: TARIFS[60], label: 'Pour les passionnés et avancés', badge: null, highlighted: false },
 ]
 
 /* ─── Page Component ─── */
@@ -839,13 +842,13 @@ export default function CoursInstrument({ slug }: { slug: string }) {
   const duNom = data.duNom ?? `${feminin ? 'de la' : 'du'} ${nomBas}`
   const courseLabel = data.courseLabel ?? `Cours de ${nomBas}`
   const path = coursePath(data)
-  const enGroupe = data.format === 'groupe'
+  const surDemande = data.format === 'sur-demande'
 
   /* Fiche du cours : les faits qu'un parent cherche avant de s'inscrire. */
-  const fiche: [string, string][] = enGroupe
+  const fiche: [string, string][] = surDemande
     ? [
         ['Âge', data.age],
-        ['Format', 'En petits groupes'],
+        ['Format', 'Cours individuels'],
         ['Horaire et tarif', 'Sur demande'],
         ['Expérience', 'Aucune requise'],
         ['Lieu', '191B boul. Sainte-Rose, Laval'],
@@ -865,7 +868,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         name={courseLabel}
         instrument={data.name}
         description={data.metaDescription}
-        price={enGroupe ? undefined : '34'}
+        price={surDemande ? undefined : TARIFS[30]}
         path={path}
       />
       <FAQSchema questions={data.faq} />
@@ -1004,11 +1007,11 @@ export default function CoursInstrument({ slug }: { slug: string }) {
               </dl>
               <div className="p-6 md:p-7 pt-5 md:pt-6">
                 <Link
-                  to={enGroupe ? '/nous-joindre' : '/inscription'}
+                  to={surDemande ? '/nous-joindre' : '/inscription'}
                   className="flex items-center justify-center gap-2 w-full bg-marine text-white font-display font-bold text-sm px-6 py-4 rounded-xl transition-[background-color,transform] duration-300 hover:bg-violet hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marine"
                   style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
                 >
-                  {enGroupe ? 'Réserver une place' : "S'inscrire"}
+                  {surDemande ? 'Réserver une place' : "S'inscrire"}
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -1031,7 +1034,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
             style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}
           >
             {data.benefitsIntro ??
-              `Découvrez les bienfaits uniques de l'apprentissage ${duNom} à l'École le Studio de Sainte-Rose, Laval.`}
+              `Découvrez les bienfaits de l'apprentissage ${duNom} à l'École le Studio.`}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -1146,7 +1149,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
         </section>
 
         {/* ─── Pricing Section ─── */}
-        {enGroupe ? (
+        {surDemande ? (
         <section className="mb-16 md:mb-24">
           <div
             className="grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-8 md:gap-12 items-center rounded-2xl p-8 md:p-12"
@@ -1160,7 +1163,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                 Horaire et tarifs
               </h2>
               <p className="text-marine/70 max-w-[52ch]" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)', lineHeight: 1.7 }}>
-                L’éveil musical se donne en petits groupes, par session. Les places sont limitées : communiquez avec nous
+                L’éveil musical se donne en cours individuels, par session. Les places sont limitées : communiquez avec nous
                 pour connaître l’horaire et le tarif de la prochaine session, et réserver la place de votre enfant.
               </p>
             </div>
@@ -1224,6 +1227,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
               <p className="text-marine/60 text-sm mt-4 leading-relaxed">
                 Pour les enfants de 8 ans et moins, on recommande généralement le cours de 30 minutes.
               </p>
+              <p className="text-marine/45 text-xs mt-2">{TARIFS_NOTE}</p>
             </div>
             <div className="p-5 sm:p-7 md:p-8 bg-cream/60 border-t lg:border-t-0 lg:border-l border-marine/8">
               <p className="font-display font-bold text-marine text-sm mb-4">Inclus dans chaque cours</p>
@@ -1311,7 +1315,7 @@ export default function CoursInstrument({ slug }: { slug: string }) {
                 className="text-white/60 max-w-xl mx-auto mb-8 leading-relaxed"
                 style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.1rem)' }}
               >
-                L'inscription est ouverte toute l'année à l'École le Studio de Sainte-Rose, Laval.
+                Inscriptions ouvertes toute l'année.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
