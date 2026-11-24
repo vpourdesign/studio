@@ -466,10 +466,10 @@ function Hero() {
 
       <HeroCanvas />
 
-      {/* Bottom-left white cutout */}
-      <div className="absolute bottom-0 left-0 z-20">
+      {/* Bottom-left white cutout — détaché du bas en mobile pour ne pas se fondre dans la section crème */}
+      <div className="absolute bottom-6 sm:bottom-0 left-0 z-20">
         <div className="relative">
-          <div className="bg-cream px-4 sm:px-5 md:px-8 pt-4 pb-4 sm:pt-5 sm:pb-6 md:pt-6 md:pb-7 max-w-[14.5rem] sm:max-w-[21rem] md:max-w-sm lg:max-w-md rounded-tr-2xl sm:rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <div className="bg-cream px-4 sm:px-5 md:px-8 pt-4 pb-4 sm:pt-5 sm:pb-6 md:pt-6 md:pb-7 max-w-[14.5rem] sm:max-w-[21rem] md:max-w-sm lg:max-w-md rounded-r-2xl sm:rounded-br-none sm:rounded-tr-3xl origin-bottom-left transition-transform duration-500 hover:scale-105" style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}>
             <h2
               className="font-display font-extrabold text-marine leading-[1.1] tracking-[-0.02em] mb-3 sm:mb-2"
               style={{ fontSize: 'clamp(1.125rem, 2.6vw, 1.85rem)' }}
