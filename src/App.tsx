@@ -893,7 +893,7 @@ function Fondateur() {
               <div className="absolute inset-0 bg-gradient-to-t from-marine/60 via-transparent to-teal/10" />
             </div>
             <div
-              className="absolute -bottom-6 -left-6 lg:-left-12 bg-white rounded-2xl p-6 max-w-xs"
+              className="relative z-10 -mt-10 ml-4 max-w-[18rem] lg:absolute lg:mt-0 lg:ml-0 lg:max-w-xs lg:-bottom-6 lg:-left-12 bg-white rounded-2xl p-5 lg:p-6"
               style={{ boxShadow: '0 4px 24px rgba(26,31,75,0.12)' }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-violet/30 mb-2" fill="currentColor" viewBox="0 0 24 24">
