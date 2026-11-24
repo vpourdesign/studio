@@ -189,7 +189,7 @@ export default function FAQ() {
           >
             <div className="space-y-4 text-slate leading-relaxed max-w-[65ch]" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.05rem)' }}>
               <p>
-                L'<strong className="text-marine">École le Studio</strong> offre des <strong className="text-marine">cours de musique à Sainte-Rose, Laval</strong> depuis plus de 20 ans. Que vous soyez un parent cherchant le meilleur cours de piano pour votre enfant, un adolescent rêvant de jouer de la guitare électrique, ou un adulte souhaitant découvrir le chant, nous avons les réponses à vos questions. Notre équipe de plus de 30 professeurs qualifiés accompagne plus de 425 élèves actifs avec une approche personnalisée et bienveillante.
+                L'<strong className="text-marine">École le Studio</strong> offre des <strong className="text-marine">cours de musique à Sainte-Rose, Laval</strong> depuis plus de 20 ans. Que vous soyez un parent cherchant le meilleur cours de piano pour votre enfant, un adolescent rêvant de jouer de la guitare électrique, ou un adulte souhaitant découvrir le chant, nous avons les réponses à vos questions. Notre équipe de plus de 30 professeurs qualifiés accompagne plus de 450 élèves actifs avec une approche personnalisée et bienveillante.
               </p>
               <p>
                 Parcourez les catégories ci-dessous pour trouver les informations dont vous avez besoin, ou <Link to="/nous-joindre" className="text-violet hover:text-violet-dark underline underline-offset-2 transition-colors duration-200">contactez-nous directement</Link> au <a href="tel:5146777713" className="text-violet hover:text-violet-dark underline underline-offset-2 transition-colors duration-200">514-677-7713</a> pour une réponse personnalisée.
@@ -343,7 +343,7 @@ export default function FAQ() {
               Prêt à commencer ?
             </h2>
             <p className="text-white/70 max-w-lg mx-auto mb-8" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-              Inscrivez-vous dès aujourd'hui. Plus de 425 élèves nous font déjà confiance à Sainte-Rose, Laval.
+              Inscrivez-vous dès aujourd'hui. Plus de 450 élèves nous font déjà confiance à Sainte-Rose, Laval.
             </p>
             <Link
               to="/inscription"

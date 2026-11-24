@@ -197,7 +197,7 @@ export default function Temoignages() {
                 className="font-display font-bold text-yellow-600"
                 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: '#525266' }}
               >
-                425+
+                450+
               </p>
               <p className="text-marine font-semibold text-sm mt-1 mb-1">Élèves actifs</p>
               <p className="text-slate text-sm">Cette année</p>
@@ -287,7 +287,7 @@ export default function Temoignages() {
               Rejoignez notre communauté musicale
             </h2>
             <p className="text-white/70 max-w-lg mx-auto mb-8" style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)' }}>
-              Plus de 425 élèves nous font déjà confiance. Inscrivez-vous dès maintenant et vivez l'expérience le Studio.
+              Plus de 450 élèves nous font déjà confiance. Inscrivez-vous dès maintenant et vivez l'expérience le Studio.
             </p>
             <Link
               to="/inscription"

@@ -706,7 +706,7 @@ const stats = [
   { num: '~20', label: "années d'expérience" },
   { num: '+15 000', label: 'heures de cours (Benoit Girard)' },
   { num: '+5 000', label: 'cours par année' },
-  { num: '+425', label: 'élèves actifs' },
+  { num: '+450', label: 'élèves actifs' },
   { num: '+30', label: 'professeurs qualifiés' },
   { num: '+100', label: 'heures de spectacles étudiants' },
 ]
@@ -865,7 +865,7 @@ function Fondateur() {
               Avec près de 20 ans d'expérience et plus de 15 000 heures de cours à son actif, Benoit a formé des centaines d'élèves de tous âges. Sa philosophie : un apprentissage basé sur le plaisir et le dépassement de soi.
             </p>
             <p className="text-white/70 leading-relaxed mb-8">
-              Aujourd'hui, l'école qu'il a fondée compte plus de 30 professeurs qualifiés et accueille plus de 425 élèves actifs chaque année.
+              Aujourd'hui, l'école qu'il a fondée compte plus de 30 professeurs qualifiés et accueille plus de 450 élèves actifs chaque année.
             </p>
             <div className="flex flex-wrap gap-8">
               {[

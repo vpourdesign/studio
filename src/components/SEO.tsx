@@ -80,7 +80,7 @@ export function LocalBusinessSchema() {
     logo: `${BASE_URL}/favicon.svg`,
     hasMap: 'https://www.google.com/maps/search/?api=1&query=Le+Studio+%C3%89cole+de+musique+191B+boulevard+Sainte-Rose+Laval',
     knowsLanguage: ['fr', 'en'],
-    description: "École de musique à Sainte-Rose, Laval offrant des cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour tous les âges depuis plus de 20 ans. Plus de 30 professeurs qualifiés et 425 élèves actifs.",
+    description: "École de musique à Sainte-Rose, Laval offrant des cours de piano, guitare, basse, chant, batterie, violon et ukulélé pour tous les âges depuis plus de 20 ans. Plus de 30 professeurs qualifiés et plus de 450 élèves actifs.",
     url: BASE_URL,
     telephone: PHONE,
     email: 'info@ecolelestudio.com',

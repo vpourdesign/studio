@@ -191,7 +191,7 @@ export default function Tarifs() {
           <p className="text-marine/70 leading-[1.7]" style={{ fontSize: 'clamp(0.95rem, 1.3vw, 1.05rem)' }}>
             Que vous cherchiez des cours pour votre enfant de 4 ans ou pour vous-même en tant
             qu'adulte, nos trois formules de durée (30, 45 ou 60 minutes) s'adaptent à votre budget et à vos
-            disponibilités. Avec plus de 425 élèves actifs et une note de 4,9 étoiles, l'École le Studio est la
+            disponibilités. Avec plus de 450 élèves actifs et une note de 4,9 étoiles, l'École le Studio est la
             référence en enseignement musical dans le quartier Sainte-Rose et les environs.
           </p>
         </section>
